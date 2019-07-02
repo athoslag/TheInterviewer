@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E39420722CC0A2800579F29 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39420622CC0A2800579F29 /* MainViewModel.swift */; };
 		7E3C4D3422BAB9E200490D16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3C4D3322BAB9E200490D16 /* AppDelegate.swift */; };
 		7E3C4D3C22BAB9E200490D16 /* TheInterviewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E3C4D3A22BAB9E200490D16 /* TheInterviewer.xcdatamodeld */; };
 		7E3C4D3E22BAB9E400490D16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E3C4D3D22BAB9E400490D16 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E39420622CC0A2800579F29 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		7E3C4D3022BAB9E200490D16 /* TheInterviewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheInterviewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E3C4D3322BAB9E200490D16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E3C4D3B22BAB9E200490D16 /* TheInterviewer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TheInterviewer.xcdatamodel; sourceTree = "<group>"; };
@@ -41,6 +43,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E39420422CC09F700579F29 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7E5A918D22BAC20A00963ABB /* MainScreenViewController.swift */,
+				7E5A918E22BAC20A00963ABB /* MainScreenViewController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7E39420522CC0A0F00579F29 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7E39420622CC0A2800579F29 /* MainViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		7E3C4D2722BAB9E200490D16 = {
 			isa = PBXGroup;
 			children = (
@@ -62,8 +81,8 @@
 			children = (
 				7E3C4D3322BAB9E200490D16 /* AppDelegate.swift */,
 				7EF19E1422C442D700E95AAF /* Coordinators */,
-				7E5A918D22BAC20A00963ABB /* MainScreenViewController.swift */,
-				7E5A918E22BAC20A00963ABB /* MainScreenViewController.xib */,
+				7E39420522CC0A0F00579F29 /* ViewModels */,
+				7E39420422CC09F700579F29 /* Controllers */,
 				7E3C4D3D22BAB9E400490D16 /* Assets.xcassets */,
 				7E3C4D3F22BAB9E400490D16 /* LaunchScreen.storyboard */,
 				7E3C4D4222BAB9E400490D16 /* Info.plist */,
@@ -157,6 +176,7 @@
 				7EF19E1322C4415000E95AAF /* Coordinator.swift in Sources */,
 				7E3C4D3422BAB9E200490D16 /* AppDelegate.swift in Sources */,
 				7E3C4D3C22BAB9E200490D16 /* TheInterviewer.xcdatamodeld in Sources */,
+				7E39420722CC0A2800579F29 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
