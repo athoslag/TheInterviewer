@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63FF8A25B944172A567B4448 /* Pods_TheInterviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B1EC06222285251E9D29B7 /* Pods_TheInterviewer.framework */; };
 		7E39420722CC0A2800579F29 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39420622CC0A2800579F29 /* MainViewModel.swift */; };
 		7E3C4D3422BAB9E200490D16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3C4D3322BAB9E200490D16 /* AppDelegate.swift */; };
 		7E3C4D3C22BAB9E200490D16 /* TheInterviewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E3C4D3A22BAB9E200490D16 /* TheInterviewer.xcdatamodeld */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30C94D8515AA94388E3110B0 /* Pods-TheInterviewer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheInterviewer.release.xcconfig"; path = "Target Support Files/Pods-TheInterviewer/Pods-TheInterviewer.release.xcconfig"; sourceTree = "<group>"; };
+		71B1EC06222285251E9D29B7 /* Pods_TheInterviewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheInterviewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E39420622CC0A2800579F29 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		7E3C4D3022BAB9E200490D16 /* TheInterviewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheInterviewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E3C4D3322BAB9E200490D16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 		7E5A918E22BAC20A00963ABB /* MainScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainScreenViewController.xib; sourceTree = "<group>"; };
 		7E5A919122BAC28800963ABB /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		7EF19E1222C4415000E95AAF /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		C4409D55E2C59E1EB80DE33F /* Pods-TheInterviewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheInterviewer.debug.xcconfig"; path = "Target Support Files/Pods-TheInterviewer/Pods-TheInterviewer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,12 +47,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63FF8A25B944172A567B4448 /* Pods_TheInterviewer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0334B32A5691D9AB62C72881 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C4409D55E2C59E1EB80DE33F /* Pods-TheInterviewer.debug.xcconfig */,
+				30C94D8515AA94388E3110B0 /* Pods-TheInterviewer.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		7E39420422CC09F700579F29 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +86,8 @@
 			children = (
 				7E3C4D3222BAB9E200490D16 /* TheInterviewer */,
 				7E3C4D3122BAB9E200490D16 /* Products */,
+				0334B32A5691D9AB62C72881 /* Pods */,
+				AE9A879BE07BA023D3C3C753 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +134,14 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
+		AE9A879BE07BA023D3C3C753 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				71B1EC06222285251E9D29B7 /* Pods_TheInterviewer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -124,9 +149,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E3C4D4522BAB9E400490D16 /* Build configuration list for PBXNativeTarget "TheInterviewer" */;
 			buildPhases = (
+				E5955E9C02D0C01505AF85A0 /* [CP] Check Pods Manifest.lock */,
 				7E3C4D2C22BAB9E200490D16 /* Sources */,
 				7E3C4D2D22BAB9E200490D16 /* Frameworks */,
 				7E3C4D2E22BAB9E200490D16 /* Resources */,
+				077502123345843E2AF4AF42 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -182,6 +209,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		077502123345843E2AF4AF42 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TheInterviewer/Pods-TheInterviewer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TheInterviewer/Pods-TheInterviewer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TheInterviewer/Pods-TheInterviewer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5955E9C02D0C01505AF85A0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TheInterviewer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7E3C4D2C22BAB9E200490D16 /* Sources */ = {
@@ -332,6 +401,7 @@
 		};
 		7E3C4D4622BAB9E400490D16 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4409D55E2C59E1EB80DE33F /* Pods-TheInterviewer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -350,6 +420,7 @@
 		};
 		7E3C4D4722BAB9E400490D16 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30C94D8515AA94388E3110B0 /* Pods-TheInterviewer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
