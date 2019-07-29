@@ -12,6 +12,9 @@
 		7E3C4D3C22BAB9E200490D16 /* TheInterviewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E3C4D3A22BAB9E200490D16 /* TheInterviewer.xcdatamodeld */; };
 		7E3C4D3E22BAB9E400490D16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E3C4D3D22BAB9E400490D16 /* Assets.xcassets */; };
 		7E3C4D4122BAB9E400490D16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E3C4D3F22BAB9E400490D16 /* LaunchScreen.storyboard */; };
+		7E42034022EF8C7800DFA490 /* InterviewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E42033F22EF8C7800DFA490 /* InterviewCoordinator.swift */; };
+		7E42034322EF918400DFA490 /* Interview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E42034222EF918400DFA490 /* Interview.swift */; };
+		7E42034522EF91C400DFA490 /* QuestionPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E42034422EF91C400DFA490 /* QuestionPair.swift */; };
 		7E5A918F22BAC20A00963ABB /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A918D22BAC20A00963ABB /* MainScreenViewController.swift */; };
 		7E5A919022BAC20A00963ABB /* MainScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5A918E22BAC20A00963ABB /* MainScreenViewController.xib */; };
 		7E5A919222BAC28800963ABB /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A919122BAC28800963ABB /* AppCoordinator.swift */; };
@@ -26,6 +29,9 @@
 		7E3C4D3D22BAB9E400490D16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E3C4D4022BAB9E400490D16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E3C4D4222BAB9E400490D16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E42033F22EF8C7800DFA490 /* InterviewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewCoordinator.swift; sourceTree = "<group>"; };
+		7E42034222EF918400DFA490 /* Interview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interview.swift; sourceTree = "<group>"; };
+		7E42034422EF91C400DFA490 /* QuestionPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPair.swift; sourceTree = "<group>"; };
 		7E5A918D22BAC20A00963ABB /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		7E5A918E22BAC20A00963ABB /* MainScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainScreenViewController.xib; sourceTree = "<group>"; };
 		7E5A919122BAC28800963ABB /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -80,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				7E3C4D3322BAB9E200490D16 /* AppDelegate.swift */,
+				7E42034122EF917300DFA490 /* Model */,
 				7EF19E1422C442D700E95AAF /* Coordinators */,
 				7E39420522CC0A0F00579F29 /* ViewModels */,
 				7E39420422CC09F700579F29 /* Controllers */,
@@ -91,11 +98,21 @@
 			path = TheInterviewer;
 			sourceTree = "<group>";
 		};
+		7E42034122EF917300DFA490 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7E42034222EF918400DFA490 /* Interview.swift */,
+				7E42034422EF91C400DFA490 /* QuestionPair.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		7EF19E1422C442D700E95AAF /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
 				7EF19E1222C4415000E95AAF /* Coordinator.swift */,
 				7E5A919122BAC28800963ABB /* AppCoordinator.swift */,
+				7E42033F22EF8C7800DFA490 /* InterviewCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -176,7 +193,10 @@
 				7EF19E1322C4415000E95AAF /* Coordinator.swift in Sources */,
 				7E3C4D3422BAB9E200490D16 /* AppDelegate.swift in Sources */,
 				7E3C4D3C22BAB9E200490D16 /* TheInterviewer.xcdatamodeld in Sources */,
+				7E42034022EF8C7800DFA490 /* InterviewCoordinator.swift in Sources */,
 				7E39420722CC0A2800579F29 /* MainViewModel.swift in Sources */,
+				7E42034522EF91C400DFA490 /* QuestionPair.swift in Sources */,
+				7E42034322EF918400DFA490 /* Interview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
