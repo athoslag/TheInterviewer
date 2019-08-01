@@ -10,7 +10,7 @@ import Foundation
 
 struct QuestionPair {
     let question: String
-    let answer: String?
+    var answer: String?
     
     // TODO: Add recorded answer option
 }

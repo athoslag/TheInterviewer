@@ -10,10 +10,10 @@ import Foundation
 
 final class Interview {
     
-    typealias Section = (String, [QuestionPair])
+    typealias Section = (title: String, questions: [QuestionPair])
     
     let title: String
-    var parts: [(String, [Section])]
+    var parts: [(title: String, sections: [Section])]
     
     init(title: String) {
         self.title = title
@@ -73,7 +73,7 @@ final class Interview {
                         ]),
                         ("Fechamento / Conclusão",
                          [
-                            QuestionPair(question: "Qual é o estado esperado do sistema na conclusão?", answer: nil), // rever
+                            QuestionPair(question: "Qual é o estado esperado do sistema na conclusão?", answer: nil),
                             QuestionPair(question: "Atividades relacionadas", answer: nil),
                             QuestionPair(question: "Alguma outra pessoa poderia me prestar informações adicionais?", answer: nil),
                             QuestionPair(question: "Eu deveria lhe perguntar algo mais?", answer: nil),
