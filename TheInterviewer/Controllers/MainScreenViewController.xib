@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainScreenViewController" customModule="TheInterviewer" customModuleProvider="target">
             <connections>
                 <outlet property="calloutLabel" destination="Emv-Fu-8nz" id="q1c-xj-C9O"/>
+                <outlet property="newInterviewButton" destination="6Ev-ls-C04" id="u1K-Uz-j1R"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,17 +22,32 @@
             <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Callout label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Emv-Fu-8nz">
-                    <rect key="frame" x="369.5" y="588.5" width="95" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seja bem-vindo ao TheInterviewer!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Emv-Fu-8nz">
+                    <rect key="frame" x="20" y="254" width="449.5" height="34"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="28"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ev-ls-C04">
+                    <rect key="frame" x="175" y="574" width="484" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="ABr-ro-scv"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="Nova entrevista"/>
+                    <connections>
+                        <action selector="didTapNew:" destination="-1" eventType="touchUpInside" id="R6Y-hc-hIb"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Emv-Fu-8nz" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="OCm-HS-KT7"/>
-                <constraint firstItem="Emv-Fu-8nz" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="wKO-P4-JVY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Emv-Fu-8nz" secondAttribute="trailing" constant="20" id="3Of-8n-d3g"/>
+                <constraint firstItem="Emv-Fu-8nz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="8f0-Zl-h1e"/>
+                <constraint firstItem="6Ev-ls-C04" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="rGw-eI-aCm"/>
+                <constraint firstItem="6Ev-ls-C04" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="sLw-qf-rIA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6Ev-ls-C04" secondAttribute="trailing" constant="175" id="w6h-cW-vBQ"/>
+                <constraint firstItem="Emv-Fu-8nz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="230" id="wnm-9b-b62"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="138.84892086330936" y="128.643216080402"/>

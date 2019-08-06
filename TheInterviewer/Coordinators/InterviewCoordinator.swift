@@ -21,6 +21,7 @@ final class InterviewCoordinator: Coordinator<Void> {
     
     override func start() -> Void {
         // TODO: - startup code
+        rootViewController = MainInterviewViewController(progress: 0.2, question: "What do I have in my pocket?", answer: nil)
         
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()

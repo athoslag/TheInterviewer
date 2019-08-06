@@ -31,9 +31,26 @@ final class AppCoordinator: Coordinator<Void> {
     
     override func start() -> Void {
         // TODO: instantiate coordinators or viewControllers
-        rootViewController = MainScreenViewController(text: "Hello, world!")
+        rootViewController = makeMainScreen()
         
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
+    }
+}
+
+// MARK: ViewController Factory
+extension AppCoordinator {
+    func makeMainScreen() -> MainScreenViewController {
+        let viewController = MainScreenViewController()
+        viewController.delegate = self
+        return viewController
+    }
+}
+
+// MARK: Main Screen Delegate
+extension AppCoordinator: MainScreenDelegate {
+    func didTapNew(_ mainScreen: MainScreenViewController) {
+        let interview = InterviewCoordinator(window: window, interview: Interview(title: "Interview example"))
+        coordinate(to: interview)
     }
 }
