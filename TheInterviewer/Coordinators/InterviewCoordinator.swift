@@ -12,9 +12,11 @@ import UIKit
 final class InterviewCoordinator: Coordinator<Void> {
     private let window: UIWindow
     private var rootViewController: UIViewController!
+    private var interview: Interview
     
-    init(window: UIWindow) {
+    init(window: UIWindow, interview: Interview) {
         self.window = window
+        self.interview = interview
     }
     
     override func start() -> Void {
@@ -23,4 +25,9 @@ final class InterviewCoordinator: Coordinator<Void> {
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
     }
+}
+
+// MARK: ???
+extension InterviewCoordinator {
+    
 }
