@@ -10,13 +10,24 @@ import Foundation
 import UIKit
 
 final class InterviewCoordinator: Coordinator<Void> {
+    
+    private enum Step {
+        case overview
+        case start
+        case interstep
+        case finish
+    }
+    
     private let window: UIWindow
     private var rootViewController: UIViewController!
     private var interviewVM: InterviewViewModel
     
+    private var currentStep: Step
+    
     init(window: UIWindow, interviewVM: InterviewViewModel) {
         self.window = window
         self.interviewVM = interviewVM
+        self.currentStep = .start
     }
     
     override func start() -> Void {
@@ -25,6 +36,25 @@ final class InterviewCoordinator: Coordinator<Void> {
         
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
+    }
+}
+
+// MARK: Navigation
+extension InterviewCoordinator {
+    func goToNext() {
+        
+    }
+    
+    func goToPrevious() {
+        
+    }
+    
+    func goToOverview() {
+        
+    }
+    
+    func goToFinish() {
+        
     }
 }
 
