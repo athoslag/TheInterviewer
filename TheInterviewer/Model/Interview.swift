@@ -15,13 +15,13 @@ final class Interview {
     let title: String
     var parts: [(title: String, sections: [Section])]
     
-    init(title: String) {
+    init(title: String, parts: [(title: String, sections: [Section])] = []) {
         self.title = title
-        self.parts = []
+        self.parts = parts
     }
     
     init() {
-        self.title = "Default Interview"
+        self.title = "Entrevista BPM"
         self.parts = [("Análise Quantitativa",
                        [
                         ("Sobre o negócio",

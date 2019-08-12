@@ -1,5 +1,5 @@
 //
-//  MainInterviewViewController.swift
+//  OverviewViewController.swift
 //  TheInterviewer
 //
 //  Created by Athos Lagemann on 06/08/19.
@@ -8,21 +8,16 @@
 
 import UIKit
 
-final class MainInterviewViewController: UIViewController {
+final class OverviewViewController: UIViewController {
 
     @IBOutlet private weak var progressBar: UIProgressView!
     @IBOutlet private weak var progressLabel: UILabel!
     @IBOutlet private weak var informationLabel: UILabel!
     
-    private let progress: Float
-    private let question: String
-    private var answer: String?
+    private let viewModel: InterviewViewModel
     
-    init(progress: Float, question: String, answer: String?) {
-        self.progress = progress
-        self.question = question
-        self.answer = answer
-        
+    init(interviewVM: InterviewViewModel) {
+        self.viewModel = interviewVM
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -34,10 +29,10 @@ final class MainInterviewViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         
-        progressBar.progress = progress
-        progressLabel.text = "\(Int(progress * 100))%"
+        progressBar.progress = viewModel.completionRate
+        progressLabel.text = "\(Int(viewModel.completionRate * 100))%"
         
-        informationLabel.text = question
+        informationLabel.text = viewModel.title
     }
     
     private func configureUI() {

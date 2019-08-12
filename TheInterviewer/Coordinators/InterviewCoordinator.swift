@@ -12,23 +12,32 @@ import UIKit
 final class InterviewCoordinator: Coordinator<Void> {
     private let window: UIWindow
     private var rootViewController: UIViewController!
-    private var interview: Interview
+    private var interviewVM: InterviewViewModel
     
-    init(window: UIWindow, interview: Interview) {
+    init(window: UIWindow, interviewVM: InterviewViewModel) {
         self.window = window
-        self.interview = interview
+        self.interviewVM = interviewVM
     }
     
     override func start() -> Void {
         // TODO: - startup code
-        rootViewController = MainInterviewViewController(progress: 0.2, question: "What do I have in my pocket?", answer: nil)
+        rootViewController = makeOverviewController(viewModel: interviewVM)
         
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
     }
 }
 
-// MARK: ???
+// MARK: ViewController Factory
 extension InterviewCoordinator {
     
+    func makeOverviewController(viewModel: InterviewViewModel) -> UIViewController {
+        return OverviewViewController(interviewVM: viewModel)
+    }
+    
+    func makeQAViewController(questionPair: QuestionPair) -> UIViewController {
+        let controller = UIViewController()
+        // setup Q/A
+        return controller
+    }
 }

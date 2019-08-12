@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainInterviewViewController" customModule="TheInterviewer" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OverviewViewController" customModule="TheInterviewer" customModuleProvider="target">
             <connections>
                 <outlet property="informationLabel" destination="UAz-qW-Ldj" id="ibE-5T-tms"/>
                 <outlet property="progressBar" destination="c1E-dk-lE6" id="8l5-P2-Ust"/>

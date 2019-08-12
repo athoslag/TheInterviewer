@@ -16,8 +16,8 @@
 		7E42034022EF8C7800DFA490 /* InterviewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E42033F22EF8C7800DFA490 /* InterviewCoordinator.swift */; };
 		7E42034322EF918400DFA490 /* Interview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E42034222EF918400DFA490 /* Interview.swift */; };
 		7E42034522EF91C400DFA490 /* QuestionPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E42034422EF91C400DFA490 /* QuestionPair.swift */; };
-		7E51B93B22FA2E790091C9A1 /* MainInterviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E51B93922FA2E790091C9A1 /* MainInterviewViewController.swift */; };
-		7E51B93C22FA2E790091C9A1 /* MainInterviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E51B93A22FA2E790091C9A1 /* MainInterviewViewController.xib */; };
+		7E51B93B22FA2E790091C9A1 /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E51B93922FA2E790091C9A1 /* OverviewViewController.swift */; };
+		7E51B93C22FA2E790091C9A1 /* OverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E51B93A22FA2E790091C9A1 /* OverviewViewController.xib */; };
 		7E51B93F22FA32370091C9A1 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E51B93E22FA32370091C9A1 /* AppConfiguration.swift */; };
 		7E51B94122FA32E10091C9A1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E51B94022FA32E10091C9A1 /* Extensions.swift */; };
 		7E51B94F22FA34940091C9A1 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E51B94322FA34940091C9A1 /* SF-Pro-Text-Light.otf */; };
@@ -52,8 +52,8 @@
 		7E42033F22EF8C7800DFA490 /* InterviewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewCoordinator.swift; sourceTree = "<group>"; };
 		7E42034222EF918400DFA490 /* Interview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interview.swift; sourceTree = "<group>"; };
 		7E42034422EF91C400DFA490 /* QuestionPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPair.swift; sourceTree = "<group>"; };
-		7E51B93922FA2E790091C9A1 /* MainInterviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInterviewViewController.swift; sourceTree = "<group>"; };
-		7E51B93A22FA2E790091C9A1 /* MainInterviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainInterviewViewController.xib; sourceTree = "<group>"; };
+		7E51B93922FA2E790091C9A1 /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
+		7E51B93A22FA2E790091C9A1 /* OverviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverviewViewController.xib; sourceTree = "<group>"; };
 		7E51B93E22FA32370091C9A1 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		7E51B94022FA32E10091C9A1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7E51B94322FA34940091C9A1 /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
@@ -102,8 +102,8 @@
 			children = (
 				7E5A918D22BAC20A00963ABB /* MainScreenViewController.swift */,
 				7E5A918E22BAC20A00963ABB /* MainScreenViewController.xib */,
-				7E51B93922FA2E790091C9A1 /* MainInterviewViewController.swift */,
-				7E51B93A22FA2E790091C9A1 /* MainInterviewViewController.xib */,
+				7E51B93922FA2E790091C9A1 /* OverviewViewController.swift */,
+				7E51B93A22FA2E790091C9A1 /* OverviewViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -274,7 +274,7 @@
 				7E51B95422FA34940091C9A1 /* SF-Pro-Text-Semibold.otf in Resources */,
 				7E51B95A22FA34940091C9A1 /* SF-Pro-Display-Heavy.otf in Resources */,
 				7E51B95722FA34940091C9A1 /* SF-Pro-Display-Medium.otf in Resources */,
-				7E51B93C22FA2E790091C9A1 /* MainInterviewViewController.xib in Resources */,
+				7E51B93C22FA2E790091C9A1 /* OverviewViewController.xib in Resources */,
 				7E5A919022BAC20A00963ABB /* MainScreenViewController.xib in Resources */,
 				7E51B95522FA34940091C9A1 /* SF-Pro-Text-Medium.otf in Resources */,
 				7E51B95322FA34940091C9A1 /* SF-Pro-Text-Heavy.otf in Resources */,
@@ -346,7 +346,7 @@
 				7E51B93F22FA32370091C9A1 /* AppConfiguration.swift in Sources */,
 				7E42034022EF8C7800DFA490 /* InterviewCoordinator.swift in Sources */,
 				7E51B94122FA32E10091C9A1 /* Extensions.swift in Sources */,
-				7E51B93B22FA2E790091C9A1 /* MainInterviewViewController.swift in Sources */,
+				7E51B93B22FA2E790091C9A1 /* OverviewViewController.swift in Sources */,
 				7E39420722CC0A2800579F29 /* MainViewModel.swift in Sources */,
 				7E42034522EF91C400DFA490 /* QuestionPair.swift in Sources */,
 				7E42034322EF918400DFA490 /* Interview.swift in Sources */,
@@ -498,7 +498,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.athoslag.TheInterviewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -517,7 +517,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.athoslag.TheInterviewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

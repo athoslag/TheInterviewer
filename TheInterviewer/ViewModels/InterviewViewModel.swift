@@ -29,6 +29,7 @@ final class InterviewViewModel {
             }
         }
         
+        guard total != 0 else { return 0 }
         return Float(rate / total)
     }
     
@@ -46,6 +47,10 @@ final class InterviewViewModel {
 
 // MARK: Getters
 extension InterviewViewModel {
+    var title: String {
+        return interview.title
+    }
+    
     var numberOfParts: Int {
         return interview.parts.count
     }
