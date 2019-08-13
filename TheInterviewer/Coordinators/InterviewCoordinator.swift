@@ -51,7 +51,8 @@ extension InterviewCoordinator {
     }
     
     func goToOverview() {
-        
+        let overview = makeOverviewController(viewModel: interviewVM)
+        navigationController.present(overview, animated: true)
     }
     
     func goToFinish() {

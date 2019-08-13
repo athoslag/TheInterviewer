@@ -13,6 +13,7 @@ final class OverviewViewController: UIViewController {
     @IBOutlet private weak var progressBar: UIProgressView!
     @IBOutlet private weak var progressLabel: UILabel!
     @IBOutlet private weak var informationLabel: UILabel!
+    @IBOutlet private weak var tableView: UITableView!
     
     private let viewModel: InterviewViewModel
     
@@ -29,6 +30,9 @@ final class OverviewViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         
+        tableView.dataSource = self
+        tableView.delegate = self
+        
         progressBar.progress = viewModel.completionRate
         progressLabel.text = "\(Int(viewModel.completionRate * 100))%"
         
@@ -43,6 +47,41 @@ final class OverviewViewController: UIViewController {
         
         // Information
         informationLabel.font = UIFont(SFPro: .text, variant: .medium, size: 26)
+        
+        // Tableview
+        let nibView = UIView()
+        nibView.backgroundColor = .white
+        tableView.tableFooterView = nibView
     }
 }
 
+extension OverviewViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.numberOfParts
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfSections(part: section)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let part = indexPath.section
+        let section = indexPath.row
+        
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "reuseID")
+        cell.textLabel?.text = "\(viewModel.sectionTitle(part: part, section: section)): \(viewModel.numberOfQuestions(section: section, part: part)) questions"
+        cell.textLabel?.font = UIFont(SFPro: .text, variant: .medium, size: 20)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return viewModel.partTitles[section]
+    }
+}
+
+extension OverviewViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // TODO: Call delegate
+    }
+}

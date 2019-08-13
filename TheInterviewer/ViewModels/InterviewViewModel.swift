@@ -39,9 +39,9 @@ final class InterviewViewModel {
     }
     
     private func validateIndex(_ index: Index) -> Bool {
-        return interview.parts.count < index.part &&
-            interview.parts[index.part].sections.count < index.section &&
-            interview.parts[index.part].sections[index.section].questions.count < index.row
+        return interview.parts.count > index.part &&
+            interview.parts[index.part].sections.count > index.section &&
+            interview.parts[index.part].sections[index.section].questions.count > index.row
     }
 }
 
@@ -51,18 +51,27 @@ extension InterviewViewModel {
         return interview.title
     }
     
+    var partTitles: [String] {
+        return interview.parts.map { $0.title }
+    }
+    
+    func sectionTitle(part: Int, section: Int) -> String {
+        guard part < interview.parts.count, section < interview.parts[part].sections.count else { return "" }
+        return interview.parts[part].sections[section].title
+    }
+    
     var numberOfParts: Int {
         return interview.parts.count
     }
     
     func numberOfSections(part: Int) -> Int {
-        guard numberOfParts < part else { return -1 }
+        guard part < numberOfParts else { return -1 }
         return interview.parts[part].sections.count
     }
     
     func numberOfQuestions(section: Int, part: Int) -> Int {
-        guard numberOfParts < part,
-            numberOfSections(part: part) < section else { return -1 }
+        guard part < numberOfParts,
+            section < numberOfSections(part: part) else { return -1 }
         
         return interview.parts[part].sections[section].questions.count
     }
