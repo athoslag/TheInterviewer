@@ -59,7 +59,6 @@ extension InterviewCoordinator {
         
     }
 }
-
 // MARK: ViewController Factory
 extension InterviewCoordinator {
     
