@@ -56,8 +56,8 @@ final class QAViewController: UIViewController {
     
     private func configureUI() {
         // Progress
-        progressView.progressTintColor = AppConfiguration.mainColor.color
-        progressLabel.textColor = AppConfiguration.mainColor.color
+        progressView.progressTintColor = AppConfiguration.mainColor
+        progressLabel.textColor = AppConfiguration.mainColor
         progressLabel.font = UIFont(SFPro: .display, variant: .medium, size: 22)
         
         // Question

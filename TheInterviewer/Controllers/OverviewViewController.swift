@@ -41,8 +41,8 @@ final class OverviewViewController: UIViewController {
     
     private func configureUI() {
         // Progress
-        progressBar.progressTintColor = AppConfiguration.mainColor.color
-        progressLabel.textColor = AppConfiguration.mainColor.color
+        progressBar.progressTintColor = AppConfiguration.mainColor
+        progressLabel.textColor = AppConfiguration.mainColor
         progressLabel.font = UIFont(SFPro: .display, variant: .medium, size: 22)
         
         // Information

@@ -38,7 +38,7 @@ final class MainScreenViewController: UIViewController {
         
         // Buttons
         newInterviewButton.titleLabel?.font = UIFont(SFPro: .text, variant: .medium, size: 18)
-        newInterviewButton.setTitleColor(AppConfiguration.mainColor.color, for: .normal)
+        newInterviewButton.setTitleColor(AppConfiguration.mainColor, for: .normal)
         newInterviewButton.layer.cornerRadius = newInterviewButton.bounds.height / 2
         newInterviewButton.layer.borderWidth = 1.5
         newInterviewButton.layer.borderColor = AppConfiguration.mainColor.cgColor
