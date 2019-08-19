@@ -13,7 +13,6 @@ final class InterviewCoordinator: Coordinator<Void> {
     
     private enum Step {
         case overview
-        case start
         case interstep
         case finish
     }
@@ -27,7 +26,7 @@ final class InterviewCoordinator: Coordinator<Void> {
     init(context: UIViewController, interviewVM: InterviewViewModel) {
         self.context = context
         self.interviewVM = interviewVM
-        self.currentStep = .start
+        self.currentStep = .overview
     }
     
     override func start() -> Void {

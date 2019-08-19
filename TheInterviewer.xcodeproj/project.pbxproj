@@ -35,6 +35,8 @@
 		7E5A918F22BAC20A00963ABB /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A918D22BAC20A00963ABB /* MainScreenViewController.swift */; };
 		7E5A919022BAC20A00963ABB /* MainScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5A918E22BAC20A00963ABB /* MainScreenViewController.xib */; };
 		7E5A919222BAC28800963ABB /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A919122BAC28800963ABB /* AppCoordinator.swift */; };
+		7EB0923A230ADA010026001C /* QAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB09238230ADA010026001C /* QAViewController.swift */; };
+		7EB0923B230ADA010026001C /* QAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB09239230ADA010026001C /* QAViewController.xib */; };
 		7EB4B52D22F39329005410EF /* InterviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB4B52C22F39329005410EF /* InterviewViewModel.swift */; };
 		7EF19E1322C4415000E95AAF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF19E1222C4415000E95AAF /* Coordinator.swift */; };
 /* End PBXBuildFile section */
@@ -71,6 +73,8 @@
 		7E5A918D22BAC20A00963ABB /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		7E5A918E22BAC20A00963ABB /* MainScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainScreenViewController.xib; sourceTree = "<group>"; };
 		7E5A919122BAC28800963ABB /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		7EB09238230ADA010026001C /* QAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAViewController.swift; sourceTree = "<group>"; };
+		7EB09239230ADA010026001C /* QAViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QAViewController.xib; sourceTree = "<group>"; };
 		7EB4B52C22F39329005410EF /* InterviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewViewModel.swift; sourceTree = "<group>"; };
 		7EF19E1222C4415000E95AAF /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C4409D55E2C59E1EB80DE33F /* Pods-TheInterviewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheInterviewer.debug.xcconfig"; path = "Target Support Files/Pods-TheInterviewer/Pods-TheInterviewer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -104,6 +108,8 @@
 				7E5A918E22BAC20A00963ABB /* MainScreenViewController.xib */,
 				7E51B93922FA2E790091C9A1 /* OverviewViewController.swift */,
 				7E51B93A22FA2E790091C9A1 /* OverviewViewController.xib */,
+				7EB09238230ADA010026001C /* QAViewController.swift */,
+				7EB09239230ADA010026001C /* QAViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -282,6 +288,7 @@
 				7E3C4D3E22BAB9E400490D16 /* Assets.xcassets in Resources */,
 				7E51B95122FA34940091C9A1 /* SF-Pro-Display-Regular.otf in Resources */,
 				7E51B95222FA34940091C9A1 /* SF-Pro-Display-Bold.otf in Resources */,
+				7EB0923B230ADA010026001C /* QAViewController.xib in Resources */,
 				7E51B95922FA34940091C9A1 /* SF-Pro-Display-Semibold.otf in Resources */,
 				7E51B95622FA34940091C9A1 /* SF-Pro-Display-Light.otf in Resources */,
 				7E51B94F22FA34940091C9A1 /* SF-Pro-Text-Light.otf in Resources */,
@@ -339,6 +346,7 @@
 			files = (
 				7EB4B52D22F39329005410EF /* InterviewViewModel.swift in Sources */,
 				7E5A919222BAC28800963ABB /* AppCoordinator.swift in Sources */,
+				7EB0923A230ADA010026001C /* QAViewController.swift in Sources */,
 				7E5A918F22BAC20A00963ABB /* MainScreenViewController.swift in Sources */,
 				7EF19E1322C4415000E95AAF /* Coordinator.swift in Sources */,
 				7E3C4D3422BAB9E200490D16 /* AppDelegate.swift in Sources */,
