@@ -55,22 +55,28 @@ final class QAViewController: UIViewController {
     }
     
     private func configureUI() {
-        // setup progress
+        // Progress
+        progressView.progressTintColor = AppConfiguration.mainColor.color
+        progressLabel.textColor = AppConfiguration.mainColor.color
+        progressLabel.font = UIFont(SFPro: .display, variant: .medium, size: 22)
         
-        // setup question
+        // Question
+        questionLabel.font = UIFont(SFPro: .text, variant: .medium, size: 26)
         
-        // setup answer
-        
+        // Answer
+        answerTextField.font = UIFont(SFPro: .text, variant: .regular, size: 20)
+        answerTextField.textAlignment = .justified
+        answerTextField.placeholder = AppConfiguration.Placeholders.answer.rawValue
     }
     
     @objc
     func showKeyboard(_ notification: NSNotification) {
-        
+        // code
     }
     
     @objc
     func hideKeyboard(_ notification: NSNotification) {
-        
+        // code
     }
 }
 

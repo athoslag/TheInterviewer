@@ -26,6 +26,10 @@ final class AppConfiguration {
         }
     }
     
+    enum Placeholders: String {
+        case answer = "Resposta..."
+    }
+    
     private init() { }
     static var shared: AppConfiguration = AppConfiguration()
     
