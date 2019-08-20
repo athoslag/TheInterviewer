@@ -33,6 +33,18 @@ final class InterviewViewModel {
         return Float(rate / total)
     }
     
+    var questionPairs: [QuestionPair] {
+        var pairs: [QuestionPair] = []
+        
+        for part in interview.parts {
+            for section in part.sections {
+                pairs.append(contentsOf: section.questions)
+            }
+        }
+        
+        return pairs
+    }
+    
     // Methods
     init(interview: Interview) {
         self.interview = interview

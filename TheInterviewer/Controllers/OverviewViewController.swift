@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol OverviewDelegate: class {
+    func didSelect(_ viewController: OverviewViewController, itemIndex: IndexPath)
+}
+
 final class OverviewViewController: UIViewController {
 
     @IBOutlet private weak var progressBar: UIProgressView!
@@ -16,6 +20,7 @@ final class OverviewViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     private let viewModel: InterviewViewModel
+    weak var delegate: OverviewDelegate?
     
     init(interviewVM: InterviewViewModel) {
         self.viewModel = interviewVM
@@ -82,6 +87,7 @@ extension OverviewViewController: UITableViewDataSource {
 
 extension OverviewViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: Call delegate
+        // FIXME: change IndexPath to (Part, Section, Row) format
+        delegate?.didSelect(self, itemIndex: indexPath)
     }
 }

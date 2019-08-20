@@ -11,27 +11,26 @@ import UIKit
 
 final class InterviewCoordinator: Coordinator<Void> {
     
-    private enum Step {
-        case overview
+    private enum Step: Int, CaseIterable {
+        case overview = 1
         case interstep
         case finish
     }
     
     private let context: UIViewController
     private var navigationController: UINavigationController!
-    private var interviewVM: InterviewViewModel
+    private var viewModel: InterviewViewModel
     
-    private var currentStep: Step
+    private var currentStep: Step = .overview
     
     init(context: UIViewController, interviewVM: InterviewViewModel) {
         self.context = context
-        self.interviewVM = interviewVM
-        self.currentStep = .overview
+        self.viewModel = interviewVM
     }
     
     override func start() -> Void {
         // TODO: - startup code
-        navigationController = UINavigationController(rootViewController: makeOverviewController(viewModel: interviewVM))
+        navigationController = UINavigationController(rootViewController: makeOverviewController(viewModel: viewModel))
         navigationController.navigationBar.tintColor = .black
         navigationController.modalPresentationStyle = .fullScreen
         
@@ -41,23 +40,27 @@ final class InterviewCoordinator: Coordinator<Void> {
 
 // MARK: Navigation
 extension InterviewCoordinator {
-    func goToNext() {
+    func nextStep() {
+        let next: Step
+        let nextViewController: UIViewController
         
-    }
-    
-    func goToPrevious() {
+        switch currentStep {
+        case .interstep:
+            next = .finish
+            nextViewController = makeOverviewController(viewModel: viewModel)
+        case .overview:
+            next = .interstep
+            nextViewController = makeQAViewController(questionPair: viewModel.questionPairs[0]) // FIXME: Count inter-steps
+        case .finish:
+            next = .finish
+            nextViewController = makeOverviewController(viewModel: viewModel)
+        }
         
-    }
-    
-    func goToOverview() {
-        let overview = makeOverviewController(viewModel: interviewVM)
-        navigationController.present(overview, animated: true)
-    }
-    
-    func goToFinish() {
-        
+        currentStep = next
+        navigationController.pushViewController(nextViewController, animated: true)
     }
 }
+
 // MARK: ViewController Factory
 extension InterviewCoordinator {
     
@@ -67,7 +70,15 @@ extension InterviewCoordinator {
     
     func makeQAViewController(questionPair: QuestionPair) -> UIViewController {
         let controller = UIViewController()
-        // setup Q/A
+        // TODO: setup Q/A
         return controller
+    }
+}
+
+// MARK: Delegates
+extension InterviewCoordinator: OverviewDelegate {
+    func didSelect(_ viewController: OverviewViewController, itemIndex: IndexPath) {
+        // TODO: << code >>
+        nextStep()
     }
 }
