@@ -35,6 +35,7 @@
 		7E5A918F22BAC20A00963ABB /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A918D22BAC20A00963ABB /* MainScreenViewController.swift */; };
 		7E5A919022BAC20A00963ABB /* MainScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5A918E22BAC20A00963ABB /* MainScreenViewController.xib */; };
 		7E5A919222BAC28800963ABB /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A919122BAC28800963ABB /* AppCoordinator.swift */; };
+		7E936652230F434E00D636DF /* InterviewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E936651230F434E00D636DF /* InterviewSection.swift */; };
 		7EB0923A230ADA010026001C /* QAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB09238230ADA010026001C /* QAViewController.swift */; };
 		7EB0923B230ADA010026001C /* QAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB09239230ADA010026001C /* QAViewController.xib */; };
 		7EB4B52D22F39329005410EF /* InterviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB4B52C22F39329005410EF /* InterviewViewModel.swift */; };
@@ -73,6 +74,7 @@
 		7E5A918D22BAC20A00963ABB /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		7E5A918E22BAC20A00963ABB /* MainScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainScreenViewController.xib; sourceTree = "<group>"; };
 		7E5A919122BAC28800963ABB /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		7E936651230F434E00D636DF /* InterviewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewSection.swift; sourceTree = "<group>"; };
 		7EB09238230ADA010026001C /* QAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAViewController.swift; sourceTree = "<group>"; };
 		7EB09239230ADA010026001C /* QAViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QAViewController.xib; sourceTree = "<group>"; };
 		7EB4B52C22F39329005410EF /* InterviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewViewModel.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				7E42034222EF918400DFA490 /* Interview.swift */,
+				7E936651230F434E00D636DF /* InterviewSection.swift */,
 				7E42034422EF91C400DFA490 /* QuestionPair.swift */,
 			);
 			path = Model;
@@ -354,6 +357,7 @@
 				7E51B93F22FA32370091C9A1 /* AppConfiguration.swift in Sources */,
 				7E42034022EF8C7800DFA490 /* InterviewCoordinator.swift in Sources */,
 				7E51B94122FA32E10091C9A1 /* Extensions.swift in Sources */,
+				7E936652230F434E00D636DF /* InterviewSection.swift in Sources */,
 				7E51B93B22FA2E790091C9A1 /* OverviewViewController.swift in Sources */,
 				7E39420722CC0A2800579F29 /* MainViewModel.swift in Sources */,
 				7E42034522EF91C400DFA490 /* QuestionPair.swift in Sources */,

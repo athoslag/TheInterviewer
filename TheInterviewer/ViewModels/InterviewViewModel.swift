@@ -20,7 +20,7 @@ final class InterviewViewModel {
         
         for part in interview.parts {
             for section in part.sections {
-                for question in section.questions {
+                for question in section.questionPairs {
                     total += 1
                     if question.answer != nil {
                         rate += 1
@@ -38,7 +38,7 @@ final class InterviewViewModel {
         
         for part in interview.parts {
             for section in part.sections {
-                pairs.append(contentsOf: section.questions)
+                pairs.append(contentsOf: section.questionPairs)
             }
         }
         
@@ -53,7 +53,7 @@ final class InterviewViewModel {
     private func validateIndex(_ index: Index) -> Bool {
         return interview.parts.count > index.part &&
             interview.parts[index.part].sections.count > index.section &&
-            interview.parts[index.part].sections[index.section].questions.count > index.row
+            interview.parts[index.part].sections[index.section].questionPairs.count > index.row
     }
 }
 
@@ -85,12 +85,12 @@ extension InterviewViewModel {
         guard part < numberOfParts,
             section < numberOfSections(part: part) else { return -1 }
         
-        return interview.parts[part].sections[section].questions.count
+        return interview.parts[part].sections[section].questionPairs.count
     }
     
     func question(on index: Index) -> String? {
         guard validateIndex(index) else { return nil }
-        return interview.parts[index.part].sections[index.section].questions[index.row].question
+        return interview.parts[index.part].sections[index.section].questionPairs[index.row].question
     }
 }
 
@@ -98,6 +98,6 @@ extension InterviewViewModel {
 extension InterviewViewModel {
     func updateAnswer(_ newAnswer: String, index: Index) {
         guard validateIndex(index) else { return }
-        interview.parts[index.part].sections[index.section].questions[index.row].answer = newAnswer
+        interview.parts[index.part].sections[index.section].questionPairs[index.row].answer = newAnswer
     }
 }
