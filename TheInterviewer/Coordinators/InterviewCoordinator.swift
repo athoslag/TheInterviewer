@@ -22,6 +22,7 @@ final class InterviewCoordinator: Coordinator<Void> {
     private var viewModel: InterviewViewModel
     
     private var currentStep: Step = .overview
+    private var currentIndex: Int = 0
     
     init(context: UIViewController, interviewVM: InterviewViewModel) {
         self.context = context
@@ -50,7 +51,8 @@ extension InterviewCoordinator {
             nextViewController = makeOverviewController(viewModel: viewModel)
         case .overview:
             next = .interstep
-            nextViewController = makeQAViewController(questionPair: viewModel.questionPairs[0]) // FIXME: Count inter-steps
+            // FIXME: Count inter-steps
+            nextViewController = makeQAViewController(questionPair: viewModel.questionPairs[currentIndex], index: currentIndex)
         case .finish:
             next = .finish
             nextViewController = makeOverviewController(viewModel: viewModel)
@@ -65,12 +67,13 @@ extension InterviewCoordinator {
 extension InterviewCoordinator {
     
     func makeOverviewController(viewModel: InterviewViewModel) -> UIViewController {
-        return OverviewViewController(interviewVM: viewModel)
+        let overview = OverviewViewController(interviewVM: viewModel)
+        overview.delegate = self
+        return overview
     }
     
-    func makeQAViewController(questionPair: QuestionPair) -> UIViewController {
-        let controller = UIViewController()
-        // TODO: setup Q/A
+    func makeQAViewController(questionPair: QuestionPair, index: Int) -> UIViewController {
+        let controller = QAViewController(pair: questionPair, index: index)
         return controller
     }
 }
@@ -78,7 +81,14 @@ extension InterviewCoordinator {
 // MARK: Delegates
 extension InterviewCoordinator: OverviewDelegate {
     func didSelect(_ viewController: OverviewViewController, itemIndex: IndexPath) {
-        // TODO: << code >>
+        print("[Delegate call] Callout received.")
+        currentIndex = itemIndex.row
         nextStep()
+    }
+}
+
+extension InterviewCoordinator: QAViewControllerDelegate {
+    func didFinishAnswer(_ viewController: QAViewController, answer: String?) {
+        print("[Delegate call] Did return answer: \(answer ?? "nil")")
     }
 }
