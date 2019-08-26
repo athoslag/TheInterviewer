@@ -20,11 +20,7 @@ final class OverviewViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     private let viewModel: InterviewViewModel
-    var delegate: OverviewDelegate? {
-        didSet {
-            print("[Overview delegate] Delegate setup status: \(delegate.debugDescription)")
-        }
-    }
+    var delegate: OverviewDelegate? // FIXME: turn weak
     
     init(interviewVM: InterviewViewModel) {
         self.viewModel = interviewVM
@@ -93,7 +89,5 @@ extension OverviewViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // FIXME: change IndexPath to (Part, Section, Row) format
         delegate?.didSelect(self, itemIndex: indexPath)
-        print("[Overview delegate] Callout sent w/ index: \(indexPath)")
-        print("[Overview delegate] Delegate status: \(delegate == nil ? "nil" : "OK")")
     }
 }

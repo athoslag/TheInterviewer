@@ -81,14 +81,16 @@ extension InterviewCoordinator {
 // MARK: Delegates
 extension InterviewCoordinator: OverviewDelegate {
     func didSelect(_ viewController: OverviewViewController, itemIndex: IndexPath) {
-        print("[Delegate call] Callout received.")
+        // TODO: implement flow
         currentIndex = itemIndex.row
         nextStep()
     }
 }
 
 extension InterviewCoordinator: QAViewControllerDelegate {
-    func didFinishAnswer(_ viewController: QAViewController, answer: String?) {
-        print("[Delegate call] Did return answer: \(answer ?? "nil")")
+    func didFinishAnswer(_ viewController: QAViewController, index: Int, answer: String?) {
+        // TODO: implement flow
+        currentIndex = index
+        nextStep()
     }
 }

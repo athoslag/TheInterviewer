@@ -9,7 +9,7 @@
 import UIKit
 
 protocol QAViewControllerDelegate: class {
-    func didFinishAnswer(_ viewController: QAViewController, answer: String?)
+    func didFinishAnswer(_ viewController: QAViewController, index: Int, answer: String?)
 }
 
 final class QAViewController: UIViewController {
@@ -85,6 +85,6 @@ final class QAViewController: UIViewController {
 
 extension QAViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        delegate?.didFinishAnswer(self, answer: textField.text)
+        delegate?.didFinishAnswer(self, index: questionIndex, answer: textField.text)
     }
 }
