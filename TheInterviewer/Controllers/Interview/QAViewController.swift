@@ -17,16 +17,17 @@ final class QAViewController: UIViewController {
     @IBOutlet private weak var progressView: UIProgressView!
     @IBOutlet private weak var progressLabel: UILabel!
     @IBOutlet private weak var questionLabel: UILabel!
-    @IBOutlet private weak var answerTextField: UITextField!
-    @IBOutlet private weak var textFieldBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var textView: UITextView!
     
+    private let questionIndex: Int
     private let pair: QuestionPair
     private let progress: Float?
     
     weak var delegate: QAViewControllerDelegate?
     
-    init(pair: QuestionPair, progress: Float? = nil) {
+    init(pair: QuestionPair, index: Int, progress: Float? = nil) {
         self.pair = pair
+        self.questionIndex = index
         self.progress = progress
         super.init(nibName: nil, bundle: nil)
     }
@@ -51,7 +52,7 @@ final class QAViewController: UIViewController {
         }
         
         questionLabel.text = pair.question
-        answerTextField.text = pair.answer
+        textView.text = pair.answer
     }
     
     private func configureUI() {
@@ -64,9 +65,11 @@ final class QAViewController: UIViewController {
         questionLabel.font = UIFont(SFPro: .text, variant: .medium, size: 26)
         
         // Answer
-        answerTextField.font = UIFont(SFPro: .text, variant: .regular, size: 20)
-        answerTextField.textAlignment = .justified
-        answerTextField.placeholder = AppConfiguration.Placeholders.answer.rawValue
+        textView.font = UIFont(SFPro: .text, variant: .regular, size: 20)
+        textView.textAlignment = .justified
+        textView.layer.borderWidth = 1.0
+        textView.layer.borderColor = UIColor.lightGray.cgColor
+        textView.layer.cornerRadius = 6.0
     }
     
     @objc
