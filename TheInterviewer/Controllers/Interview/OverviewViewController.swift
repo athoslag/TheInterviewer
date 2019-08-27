@@ -20,7 +20,7 @@ final class OverviewViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     private let viewModel: InterviewViewModel
-    var delegate: OverviewDelegate? // FIXME: turn weak
+    weak var delegate: OverviewDelegate?
     
     init(interviewVM: InterviewViewModel) {
         self.viewModel = interviewVM

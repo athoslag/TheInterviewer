@@ -17,6 +17,12 @@ class Coordinator<T>: NSObject {
     
     @discardableResult
     final func coordinate<U>(to coordinator: Coordinator<U>) -> U {
-        return coordinator.start()
+        let status = self.childCoordinators.insert(coordinator)
+        
+        if status.inserted {
+            return coordinator.start()
+        } else {
+            fatalError("Could not insert Coordinator in children set.")
+        }
     }
 }
