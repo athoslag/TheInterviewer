@@ -72,6 +72,12 @@ extension InterviewCoordinator {
         return overview
     }
     
+    func makeSectionOverview(section: Section) -> UIViewController {
+        let sectionOverview = SectionOverviewViewController(section: section)
+        sectionOverview.delegate = self
+        return sectionOverview
+    }
+    
     func makeQAViewController(questionPair: QuestionPair, index: Int) -> UIViewController {
         let controller = QAViewController(pair: questionPair, index: index)
         return controller
@@ -84,6 +90,13 @@ extension InterviewCoordinator: OverviewDelegate {
         // TODO: implement flow
         currentIndex = itemIndex.row
         nextStep()
+    }
+}
+
+extension InterviewCoordinator: SectionDelegate {
+    func didSelectRow(_ viewController: SectionOverviewViewController, row: IndexPath) {
+        // TODO: present selected QA
+        nextStep() // remove this later
     }
 }
 
