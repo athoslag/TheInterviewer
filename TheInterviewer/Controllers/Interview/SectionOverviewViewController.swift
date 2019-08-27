@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SectionDelegate: class {
+    func didSelectRow(_ viewController: SectionOverviewViewController, row: IndexPath)
+}
+
 final class SectionOverviewViewController: UIViewController {
 
     @IBOutlet private weak var titleLabel: UILabel!
@@ -15,6 +19,8 @@ final class SectionOverviewViewController: UIViewController {
     
     private let sectionModel: Section
     private let cellReuseID: String = "SectionID"
+    
+    weak var delegate: SectionDelegate?
     
     init(section: Section) {
         self.sectionModel = section
@@ -56,6 +62,6 @@ extension SectionOverviewViewController: UITableViewDataSource {
 
 extension SectionOverviewViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // call coordinator
+        delegate?.didSelectRow(self, row: indexPath)
     }
 }
