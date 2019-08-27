@@ -35,6 +35,8 @@
 		7E5A918F22BAC20A00963ABB /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A918D22BAC20A00963ABB /* MainScreenViewController.swift */; };
 		7E5A919022BAC20A00963ABB /* MainScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5A918E22BAC20A00963ABB /* MainScreenViewController.xib */; };
 		7E5A919222BAC28800963ABB /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A919122BAC28800963ABB /* AppCoordinator.swift */; };
+		7E63E66C2315C3EB00F2999E /* SectionOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E63E66A2315C3EB00F2999E /* SectionOverviewViewController.swift */; };
+		7E63E66D2315C3EB00F2999E /* SectionOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E63E66B2315C3EB00F2999E /* SectionOverviewViewController.xib */; };
 		7E936652230F434E00D636DF /* InterviewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E936651230F434E00D636DF /* InterviewSection.swift */; };
 		7EB0923A230ADA010026001C /* QAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB09238230ADA010026001C /* QAViewController.swift */; };
 		7EB0923B230ADA010026001C /* QAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB09239230ADA010026001C /* QAViewController.xib */; };
@@ -74,6 +76,8 @@
 		7E5A918D22BAC20A00963ABB /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		7E5A918E22BAC20A00963ABB /* MainScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainScreenViewController.xib; sourceTree = "<group>"; };
 		7E5A919122BAC28800963ABB /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		7E63E66A2315C3EB00F2999E /* SectionOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionOverviewViewController.swift; sourceTree = "<group>"; };
+		7E63E66B2315C3EB00F2999E /* SectionOverviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionOverviewViewController.xib; sourceTree = "<group>"; };
 		7E936651230F434E00D636DF /* InterviewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewSection.swift; sourceTree = "<group>"; };
 		7EB09238230ADA010026001C /* QAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAViewController.swift; sourceTree = "<group>"; };
 		7EB09239230ADA010026001C /* QAViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QAViewController.xib; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 				7E51B93A22FA2E790091C9A1 /* OverviewViewController.xib */,
 				7EB09238230ADA010026001C /* QAViewController.swift */,
 				7EB09239230ADA010026001C /* QAViewController.xib */,
+				7E63E66A2315C3EB00F2999E /* SectionOverviewViewController.swift */,
+				7E63E66B2315C3EB00F2999E /* SectionOverviewViewController.xib */,
 			);
 			path = Interview;
 			sourceTree = "<group>";
@@ -303,6 +309,7 @@
 				7E5A919022BAC20A00963ABB /* MainScreenViewController.xib in Resources */,
 				7E51B95522FA34940091C9A1 /* SF-Pro-Text-Medium.otf in Resources */,
 				7E51B95322FA34940091C9A1 /* SF-Pro-Text-Heavy.otf in Resources */,
+				7E63E66D2315C3EB00F2999E /* SectionOverviewViewController.xib in Resources */,
 				7E51B95822FA34940091C9A1 /* SF-Pro-Text-Bold.otf in Resources */,
 				7E3C4D3E22BAB9E400490D16 /* Assets.xcassets in Resources */,
 				7E51B95122FA34940091C9A1 /* SF-Pro-Display-Regular.otf in Resources */,
@@ -364,6 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EB4B52D22F39329005410EF /* InterviewViewModel.swift in Sources */,
+				7E63E66C2315C3EB00F2999E /* SectionOverviewViewController.swift in Sources */,
 				7E5A919222BAC28800963ABB /* AppCoordinator.swift in Sources */,
 				7EB0923A230ADA010026001C /* QAViewController.swift in Sources */,
 				7E5A918F22BAC20A00963ABB /* MainScreenViewController.swift in Sources */,
