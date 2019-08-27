@@ -45,6 +45,10 @@ final class InterviewViewModel {
         return pairs
     }
     
+    var sections: [Section] {
+        return interview.parts.flatMap { $0.sections }
+    }
+    
     // Methods
     init(interview: Interview) {
         self.interview = interview

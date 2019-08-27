@@ -35,6 +35,8 @@ final class SectionOverviewViewController: UIViewController {
         super.viewDidLoad()
         titleLabel.text = sectionModel.title
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseID)
+        tableView.dataSource = self
+        tableView.delegate = self
         
         configureUI()
     }
