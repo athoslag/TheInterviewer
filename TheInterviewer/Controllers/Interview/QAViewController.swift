@@ -40,8 +40,10 @@ final class QAViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard(_:)), name: UIWindow.keyboardDidShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard(_:)), name: UIWindow.keyboardDidHideNotification, object: nil)
+        textView.delegate = self
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard(_:)), name: UIWindow.keyboardDidShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard(_:)), name: UIWindow.keyboardDidHideNotification, object: nil)
         
         if let prog = progress {
             progressView.progress = prog
@@ -56,6 +58,8 @@ final class QAViewController: UIViewController {
     }
     
     private func configureUI() {
+        hideKeyboardWhenTappedAround()
+        
         // Progress
         progressView.progressTintColor = AppConfiguration.mainColor
         progressLabel.textColor = AppConfiguration.mainColor
@@ -73,18 +77,35 @@ final class QAViewController: UIViewController {
     }
     
     @objc
-    func showKeyboard(_ notification: NSNotification) {
+    private func showKeyboard(_ notification: NSNotification) {
         // code
     }
     
     @objc
-    func hideKeyboard(_ notification: NSNotification) {
+    private func hideKeyboard(_ notification: NSNotification) {
         // code
+    }
+    
+    @objc
+    private func nextTapped() {
+        delegate?.didFinishAnswer(self, index: questionIndex, answer: textView.text)
+    }
+    
+    @IBAction private func didTapNext(_ sender: UIButton) {
+        delegate?.didFinishAnswer(self, index: questionIndex, answer: textView.text)
     }
 }
 
-extension QAViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        delegate?.didFinishAnswer(self, index: questionIndex, answer: textField.text)
+extension QAViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        // updateConstraints
+        
+        let bar = UIToolbar()
+        let reset = UIBarButtonItem(title: "Próximo", style: .plain, target: self, action: #selector(nextTapped))
+        
+        bar.items = [reset]
+        bar.sizeToFit()
+        
+        textView.inputAccessoryView = bar
     }
 }

@@ -32,6 +32,7 @@
 		7E51B95822FA34940091C9A1 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E51B94C22FA34940091C9A1 /* SF-Pro-Text-Bold.otf */; };
 		7E51B95922FA34940091C9A1 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E51B94D22FA34940091C9A1 /* SF-Pro-Display-Semibold.otf */; };
 		7E51B95A22FA34940091C9A1 /* SF-Pro-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E51B94E22FA34940091C9A1 /* SF-Pro-Display-Heavy.otf */; };
+		7E570DE6231731470092D538 /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E570DE5231731470092D538 /* ViewControllerExtensions.swift */; };
 		7E5A918F22BAC20A00963ABB /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A918D22BAC20A00963ABB /* MainScreenViewController.swift */; };
 		7E5A919022BAC20A00963ABB /* MainScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5A918E22BAC20A00963ABB /* MainScreenViewController.xib */; };
 		7E5A919222BAC28800963ABB /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A919122BAC28800963ABB /* AppCoordinator.swift */; };
@@ -73,6 +74,7 @@
 		7E51B94C22FA34940091C9A1 /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
 		7E51B94D22FA34940091C9A1 /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
 		7E51B94E22FA34940091C9A1 /* SF-Pro-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Heavy.otf"; sourceTree = "<group>"; };
+		7E570DE5231731470092D538 /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
 		7E5A918D22BAC20A00963ABB /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		7E5A918E22BAC20A00963ABB /* MainScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainScreenViewController.xib; sourceTree = "<group>"; };
 		7E5A919122BAC28800963ABB /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				7E39420522CC0A0F00579F29 /* ViewModels */,
 				7E39420422CC09F700579F29 /* Controllers */,
 				7E51B94222FA34850091C9A1 /* Fonts */,
+				7E570DE4231731340092D538 /* Extensions */,
 				7E3C4D3D22BAB9E400490D16 /* Assets.xcassets */,
 				7E3C4D3F22BAB9E400490D16 /* LaunchScreen.storyboard */,
 				7E3C4D4222BAB9E400490D16 /* Info.plist */,
@@ -220,6 +223,14 @@
 			);
 			name = Fonts;
 			path = Controllers/Fonts;
+			sourceTree = "<group>";
+		};
+		7E570DE4231731340092D538 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7E570DE5231731470092D538 /* ViewControllerExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		7EF19E1422C442D700E95AAF /* Coordinators */ = {
@@ -385,6 +396,7 @@
 				7E51B93B22FA2E790091C9A1 /* OverviewViewController.swift in Sources */,
 				7E39420722CC0A2800579F29 /* MainViewModel.swift in Sources */,
 				7E42034522EF91C400DFA490 /* QuestionPair.swift in Sources */,
+				7E570DE6231731470092D538 /* ViewControllerExtensions.swift in Sources */,
 				7E42034322EF918400DFA490 /* Interview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
