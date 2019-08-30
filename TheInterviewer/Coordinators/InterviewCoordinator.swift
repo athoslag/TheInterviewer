@@ -24,6 +24,9 @@ final class InterviewCoordinator: Coordinator<Void> {
     private var currentStep: Step = .overview
     private var currentIndex: Int = 0
     
+    // experimental flow usage
+    private var sectionProgress: [QuestionPair] = []
+    
     init(context: UIViewController, interviewVM: InterviewViewModel) {
         self.context = context
         self.viewModel = interviewVM
@@ -61,6 +64,22 @@ extension InterviewCoordinator {
         currentStep = next
         navigationController.pushViewController(nextViewController, animated: true)
     }
+    
+    func initHandleSectionNavigation(_ section: Section) {
+        sectionProgress = section.questionPairs
+        sectionNextStep()
+    }
+    
+    func sectionNextStep() {
+        if sectionProgress.isEmpty {
+            // TODO: End of section
+            navigationController.popToRootViewController(animated: true)
+        } else {
+            let questionPair = sectionProgress.removeFirst()
+            let controller = makeQAViewController(questionPair: questionPair, index: 0)
+            navigationController.pushViewController(controller, animated: true)
+        }
+    }
 }
 
 // MARK: ViewController Factory
@@ -80,6 +99,7 @@ extension InterviewCoordinator {
     
     func makeQAViewController(questionPair: QuestionPair, index: Int) -> UIViewController {
         let controller = QAViewController(pair: questionPair, index: index)
+        controller.delegate = self
         return controller
     }
 }
@@ -88,22 +108,22 @@ extension InterviewCoordinator {
 extension InterviewCoordinator: OverviewDelegate {
     func didSelect(_ viewController: OverviewViewController, itemIndex: IndexPath) {
         // TODO: implement flow
-        currentIndex = itemIndex.row
-        nextStep()
+//        currentIndex = itemIndex.row
+//        nextStep()
+        initHandleSectionNavigation(viewModel.sections.first!)
     }
 }
 
 extension InterviewCoordinator: SectionDelegate {
     func didSelectRow(_ viewController: SectionOverviewViewController, row: IndexPath) {
         // TODO: present selected QA
-        nextStep() // remove this later
+        sectionNextStep()
     }
 }
 
 extension InterviewCoordinator: QAViewControllerDelegate {
     func didFinishAnswer(_ viewController: QAViewController, index: Int, answer: String?) {
-        // TODO: implement flow
-        currentIndex = index
-        nextStep()
+        // TODO: save answer
+        sectionNextStep()
     }
 }
