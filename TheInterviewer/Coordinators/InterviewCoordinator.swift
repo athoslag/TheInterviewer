@@ -25,6 +25,7 @@ final class InterviewCoordinator: Coordinator<Void> {
     private var currentIndex: Int = 0
     
     // experimental flow usage
+    private var partProgress: [Section] = []
     private var sectionProgress: [QuestionPair] = []
     
     init(context: UIViewController, interviewVM: InterviewViewModel) {
@@ -65,20 +66,40 @@ extension InterviewCoordinator {
         navigationController.pushViewController(nextViewController, animated: true)
     }
     
+    // Part init
+    func initHandlePartNavigation(_ part: Part) {
+        partProgress = part.sections
+        partNextStep()
+    }
+    
+    // Part progression
+    func partNextStep() {
+        guard !partProgress.isEmpty else {
+            // TODO: End of part
+            navigationController.popToRootViewController(animated: true)
+            return
+        }
+        
+        let section = partProgress.removeFirst()
+        initHandleSectionNavigation(section)
+    }
+    
+    // Section init
     func initHandleSectionNavigation(_ section: Section) {
         sectionProgress = section.questionPairs
         sectionNextStep()
     }
     
+    // Section progression
     func sectionNextStep() {
-        if sectionProgress.isEmpty {
-            // TODO: End of section
-            navigationController.popToRootViewController(animated: true)
-        } else {
-            let questionPair = sectionProgress.removeFirst()
-            let controller = makeQAViewController(questionPair: questionPair, index: 0)
-            navigationController.pushViewController(controller, animated: true)
+        guard !sectionProgress.isEmpty else {
+            partNextStep()
+            return
         }
+        
+        let questionPair = sectionProgress.removeFirst()
+        let controller = makeQAViewController(questionPair: questionPair, index: 0)
+        navigationController.pushViewController(controller, animated: true)
     }
 }
 
@@ -107,10 +128,8 @@ extension InterviewCoordinator {
 // MARK: Delegates
 extension InterviewCoordinator: OverviewDelegate {
     func didSelect(_ viewController: OverviewViewController, itemIndex: IndexPath) {
-        // TODO: implement flow
-//        currentIndex = itemIndex.row
-//        nextStep()
-        initHandleSectionNavigation(viewModel.sections.first!)
+        // TODO: fix flow
+        initHandlePartNavigation(viewModel.parts.first!)
     }
 }
 

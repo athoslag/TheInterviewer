@@ -45,6 +45,10 @@ final class InterviewViewModel {
         return pairs
     }
     
+    var parts: [Part] {
+        return interview.parts
+    }
+    
     var sections: [Section] {
         return interview.parts.flatMap { $0.sections }
     }
