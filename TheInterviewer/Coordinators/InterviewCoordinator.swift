@@ -25,6 +25,7 @@ final class InterviewCoordinator: Coordinator<Void> {
     private var currentIndex: Int = 0
     
     // experimental flow usage
+    private var interviewProgress: [Part] = []
     private var partProgress: [Section] = []
     private var sectionProgress: [QuestionPair] = []
     
@@ -45,29 +46,26 @@ final class InterviewCoordinator: Coordinator<Void> {
 
 // MARK: Navigation
 extension InterviewCoordinator {
-    func nextStep() {
-        let next: Step
-        let nextViewController: UIViewController
-        
-        switch currentStep {
-        case .interstep:
-            next = .finish
-            nextViewController = makeOverviewController(viewModel: viewModel)
-        case .overview:
-            next = .interstep
-            // FIXME: Count inter-steps
-            nextViewController = makeQAViewController(questionPair: viewModel.questionPairs[currentIndex], index: currentIndex)
-        case .finish:
-            next = .finish
-            nextViewController = makeOverviewController(viewModel: viewModel)
+    // Interview init
+    func initInterviewNavigation() {
+        interviewProgress = viewModel.parts
+        interviewNextStep()
+    }
+    
+    // Interview progression
+    func interviewNextStep() {
+        guard !interviewProgress.isEmpty else {
+            // TODO: End of part
+            navigationController.popToRootViewController(animated: true)
+            return
         }
         
-        currentStep = next
-        navigationController.pushViewController(nextViewController, animated: true)
+        let part = interviewProgress.removeFirst()
+        initPartNavigation(part)
     }
     
     // Part init
-    func initHandlePartNavigation(_ part: Part) {
+    func initPartNavigation(_ part: Part) {
         partProgress = part.sections
         partNextStep()
     }
@@ -75,17 +73,16 @@ extension InterviewCoordinator {
     // Part progression
     func partNextStep() {
         guard !partProgress.isEmpty else {
-            // TODO: End of part
-            navigationController.popToRootViewController(animated: true)
+            interviewNextStep()
             return
         }
         
         let section = partProgress.removeFirst()
-        initHandleSectionNavigation(section)
+        initSectionNavigation(section)
     }
     
     // Section init
-    func initHandleSectionNavigation(_ section: Section) {
+    func initSectionNavigation(_ section: Section) {
         sectionProgress = section.questionPairs
         sectionNextStep()
     }
@@ -129,7 +126,7 @@ extension InterviewCoordinator {
 extension InterviewCoordinator: OverviewDelegate {
     func didSelect(_ viewController: OverviewViewController, itemIndex: IndexPath) {
         // TODO: fix flow
-        initHandlePartNavigation(viewModel.parts.first!)
+        initInterviewNavigation()
     }
 }
 
