@@ -8,12 +8,19 @@
 
 import Foundation
 
-struct Section {
+struct QuestionPair: Codable {
+    let question: String
+    var answer: String?
+    
+    // TODO: Add recorded answer option
+}
+
+struct Section: Codable {
     let title: String
     var questionPairs: [QuestionPair]
 }
 
-struct Part {
+struct Part: Codable {
     let title: String
     var sections: [Section]
 }

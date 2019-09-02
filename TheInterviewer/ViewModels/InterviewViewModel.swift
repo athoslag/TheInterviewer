@@ -56,10 +56,27 @@ final class InterviewViewModel {
         self.interview = interview
     }
     
+    init?(from encoded: Data) {
+        do {
+            let decoder = JSONDecoder()
+            self.interview = try decoder.decode(Interview.self, from: encoded)
+        } catch {
+            return nil
+        }
+    }
+    
     private func validateIndex(_ index: Index) -> Bool {
         return interview.parts.count > index.part &&
             interview.parts[index.part].sections.count > index.section &&
             interview.parts[index.part].sections[index.section].questionPairs.count > index.row
+    }
+    
+    func encodeInterview() -> Data? {
+        do {
+            return try interview.encode()
+        } catch {
+            return nil
+        }
     }
 }
 

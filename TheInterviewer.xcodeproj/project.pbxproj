@@ -15,7 +15,6 @@
 		7E3C4D4122BAB9E400490D16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E3C4D3F22BAB9E400490D16 /* LaunchScreen.storyboard */; };
 		7E42034022EF8C7800DFA490 /* InterviewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E42033F22EF8C7800DFA490 /* InterviewCoordinator.swift */; };
 		7E42034322EF918400DFA490 /* Interview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E42034222EF918400DFA490 /* Interview.swift */; };
-		7E42034522EF91C400DFA490 /* QuestionPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E42034422EF91C400DFA490 /* QuestionPair.swift */; };
 		7E51B93B22FA2E790091C9A1 /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E51B93922FA2E790091C9A1 /* OverviewViewController.swift */; };
 		7E51B93C22FA2E790091C9A1 /* OverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E51B93A22FA2E790091C9A1 /* OverviewViewController.xib */; };
 		7E51B93F22FA32370091C9A1 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E51B93E22FA32370091C9A1 /* AppConfiguration.swift */; };
@@ -57,7 +56,6 @@
 		7E3C4D4222BAB9E400490D16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E42033F22EF8C7800DFA490 /* InterviewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewCoordinator.swift; sourceTree = "<group>"; };
 		7E42034222EF918400DFA490 /* Interview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interview.swift; sourceTree = "<group>"; };
-		7E42034422EF91C400DFA490 /* QuestionPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPair.swift; sourceTree = "<group>"; };
 		7E51B93922FA2E790091C9A1 /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
 		7E51B93A22FA2E790091C9A1 /* OverviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverviewViewController.xib; sourceTree = "<group>"; };
 		7E51B93E22FA32370091C9A1 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
@@ -191,7 +189,6 @@
 			children = (
 				7E42034222EF918400DFA490 /* Interview.swift */,
 				7E936651230F434E00D636DF /* InterviewSection.swift */,
-				7E42034422EF91C400DFA490 /* QuestionPair.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -395,7 +392,6 @@
 				7E936652230F434E00D636DF /* InterviewSection.swift in Sources */,
 				7E51B93B22FA2E790091C9A1 /* OverviewViewController.swift in Sources */,
 				7E39420722CC0A2800579F29 /* MainViewModel.swift in Sources */,
-				7E42034522EF91C400DFA490 /* QuestionPair.swift in Sources */,
 				7E570DE6231731470092D538 /* ViewControllerExtensions.swift in Sources */,
 				7E42034322EF918400DFA490 /* Interview.swift in Sources */,
 			);

@@ -8,7 +8,12 @@
 
 import Foundation
 
-final class Interview {
+final class Interview: Codable {
+    
+    private enum CodingKeys: String, CodingKey {
+        case title
+        case parts
+    }
     
     let title: String
     var parts: [Part]
@@ -90,5 +95,15 @@ final class Interview {
                     ]
                 )
         ]
+    }
+    
+    static func decode(from data: Data) throws -> Interview {
+        let decoder = JSONDecoder()
+        return try decoder.decode(Interview.self, from: data)
+    }
+    
+    func encode() throws -> Data {
+        let encoder = JSONEncoder()
+        return try encoder.encode(self)
     }
 }
