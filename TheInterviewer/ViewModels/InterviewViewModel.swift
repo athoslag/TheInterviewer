@@ -10,8 +10,6 @@ import Foundation
 
 final class InterviewViewModel {
     
-    // Data
-    typealias Index = (part: Int, section: Int, row: Int)
     private var interview: Interview
     
     var completionRate: Float {
@@ -104,7 +102,7 @@ extension InterviewViewModel {
 
 // MARK: Setters
 extension InterviewViewModel {
-    func updateAnswer(_ newAnswer: String, index: Index) {
+    func updateAnswer(_ newAnswer: String?, index: Index) {
         guard validateIndex(index) else { return }
         interview.parts[index.part].sections[index.section].questionPairs[index.row].answer = newAnswer
     }

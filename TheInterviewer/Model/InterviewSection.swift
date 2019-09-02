@@ -17,3 +17,9 @@ struct Part {
     let title: String
     var sections: [Section]
 }
+
+struct Index {
+    let part: Int
+    let section: Int
+    let row: Int
+}

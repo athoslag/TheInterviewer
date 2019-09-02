@@ -9,7 +9,7 @@
 import UIKit
 
 protocol QAViewControllerDelegate: class {
-    func didFinishAnswer(_ viewController: QAViewController, index: Int, answer: String?)
+    func didFinishAnswer(_ viewController: QAViewController, index: Index, answer: String?)
 }
 
 final class QAViewController: UIViewController {
@@ -19,13 +19,13 @@ final class QAViewController: UIViewController {
     @IBOutlet private weak var questionLabel: UILabel!
     @IBOutlet private weak var textView: UITextView!
     
-    private let questionIndex: Int
+    private let questionIndex: Index
     private let pair: QuestionPair
     private let progress: Float?
     
     weak var delegate: QAViewControllerDelegate?
     
-    init(pair: QuestionPair, index: Int, progress: Float? = nil) {
+    init(pair: QuestionPair, index: Index, progress: Float? = nil) {
         self.pair = pair
         self.questionIndex = index
         self.progress = progress
@@ -41,9 +41,6 @@ final class QAViewController: UIViewController {
         configureUI()
         
         textView.delegate = self
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard(_:)), name: UIWindow.keyboardDidShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard(_:)), name: UIWindow.keyboardDidHideNotification, object: nil)
         
         if let prog = progress {
             progressView.progress = prog

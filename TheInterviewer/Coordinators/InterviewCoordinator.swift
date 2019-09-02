@@ -95,7 +95,7 @@ extension InterviewCoordinator {
         }
         
         let questionPair = sectionProgress.removeFirst()
-        let controller = makeQAViewController(questionPair: questionPair, index: 0)
+        let controller = makeQAViewController(questionPair: questionPair, index: Index(part: 0, section: 0, row: 0)) // FIXME: track and use correct Index
         navigationController.pushViewController(controller, animated: true)
     }
 }
@@ -115,7 +115,7 @@ extension InterviewCoordinator {
         return sectionOverview
     }
     
-    func makeQAViewController(questionPair: QuestionPair, index: Int) -> UIViewController {
+    func makeQAViewController(questionPair: QuestionPair, index: Index) -> UIViewController {
         let controller = QAViewController(pair: questionPair, index: index)
         controller.delegate = self
         return controller
@@ -138,8 +138,8 @@ extension InterviewCoordinator: SectionDelegate {
 }
 
 extension InterviewCoordinator: QAViewControllerDelegate {
-    func didFinishAnswer(_ viewController: QAViewController, index: Int, answer: String?) {
-        // TODO: save answer
+    func didFinishAnswer(_ viewController: QAViewController, index: Index, answer: String?) {
+        viewModel.updateAnswer(answer, index: index)
         sectionNextStep()
     }
 }
