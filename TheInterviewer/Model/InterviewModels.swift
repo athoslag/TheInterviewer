@@ -1,5 +1,5 @@
 //
-//  InterviewSection.swift
+//  InterviewModels.swift
 //  TheInterviewer
 //
 //  Created by Athos Lagemann on 22/08/19.
