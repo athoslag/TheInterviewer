@@ -171,18 +171,14 @@
 		7E3C4D3222BAB9E200490D16 /* TheInterviewer */ = {
 			isa = PBXGroup;
 			children = (
-				7E3C4D3322BAB9E200490D16 /* AppDelegate.swift */,
-				7E51B93D22FA32260091C9A1 /* Configuration */,
-				7E42034122EF917300DFA490 /* Model */,
-				7EF19E1422C442D700E95AAF /* Coordinators */,
-				7E39420522CC0A0F00579F29 /* ViewModels */,
-				7E39420422CC09F700579F29 /* Controllers */,
-				7E51B94222FA34850091C9A1 /* Fonts */,
-				7E570DE4231731340092D538 /* Extensions */,
 				7E3C4D3D22BAB9E400490D16 /* Assets.xcassets */,
-				7E3C4D3F22BAB9E400490D16 /* LaunchScreen.storyboard */,
-				7E3C4D4222BAB9E400490D16 /* Info.plist */,
-				7E3C4D3A22BAB9E200490D16 /* TheInterviewer.xcdatamodeld */,
+				7E51B93D22FA32260091C9A1 /* Configuration */,
+				7E39420422CC09F700579F29 /* Controllers */,
+				7EF19E1422C442D700E95AAF /* Coordinators */,
+				7E570DE4231731340092D538 /* Extensions */,
+				7E51B94222FA34850091C9A1 /* Fonts */,
+				7E42034122EF917300DFA490 /* Model */,
+				7E39420522CC0A0F00579F29 /* ViewModels */,
 			);
 			path = TheInterviewer;
 			sourceTree = "<group>";
@@ -199,8 +195,12 @@
 		7E51B93D22FA32260091C9A1 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				7E3C4D3322BAB9E200490D16 /* AppDelegate.swift */,
 				7E51B93E22FA32370091C9A1 /* AppConfiguration.swift */,
 				7E51B94022FA32E10091C9A1 /* Extensions.swift */,
+				7E3C4D4222BAB9E400490D16 /* Info.plist */,
+				7E3C4D3F22BAB9E400490D16 /* LaunchScreen.storyboard */,
+				7E3C4D3A22BAB9E200490D16 /* TheInterviewer.xcdatamodeld */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -550,7 +550,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T72F5RH9V5;
-				INFOPLIST_FILE = TheInterviewer/Info.plist;
+				INFOPLIST_FILE = TheInterviewer/Configuration/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -569,7 +569,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T72F5RH9V5;
-				INFOPLIST_FILE = TheInterviewer/Info.plist;
+				INFOPLIST_FILE = TheInterviewer/Configuration/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
