@@ -1,18 +1,18 @@
 //
-//  QAViewController.swift
+//  QALongViewController.swift
 //  TheInterviewer
 //
-//  Created by Athos Lagemann on 19/08/19.
+//  Created by Athos Lagemann on 03/09/19.
 //  Copyright © 2019 Athos Lagemann. All rights reserved.
 //
 
 import UIKit
 
-protocol QAViewControllerDelegate: class {
-    func didFinishAnswer(_ viewController: QAViewController, index: Index, answer: String?)
+protocol QALongViewControllerDelegate: class {
+    func didFinishAnswer(_ viewController: QALongViewController, index: Index, answer: String?)
 }
 
-final class QAViewController: UIViewController {
+final class QALongViewController: UIViewController {
     
     @IBOutlet private weak var progressView: UIProgressView!
     @IBOutlet private weak var progressLabel: UILabel!
@@ -23,7 +23,7 @@ final class QAViewController: UIViewController {
     private let pair: QuestionPair
     private let progress: Float?
     
-    weak var delegate: QAViewControllerDelegate?
+    weak var delegate: QALongViewControllerDelegate?
     
     init(pair: QuestionPair, index: Index, progress: Float? = nil) {
         self.pair = pair
@@ -93,7 +93,7 @@ final class QAViewController: UIViewController {
     }
 }
 
-extension QAViewController: UITextViewDelegate {
+extension QALongViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         // updateConstraints
         

@@ -8,9 +8,16 @@
 
 import Foundation
 
+enum AnswerType: String, Codable {
+    case short
+    case long
+    case number
+}
+
 struct QuestionPair: Codable {
     let question: String
     var answer: String?
+    let type: AnswerType
     
     // TODO: Add recorded answer option
 }

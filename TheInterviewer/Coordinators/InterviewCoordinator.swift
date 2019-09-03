@@ -116,9 +116,20 @@ extension InterviewCoordinator {
     }
     
     func makeQAViewController(questionPair: QuestionPair, index: Index) -> UIViewController {
-        let controller = QAViewController(pair: questionPair, index: index)
-        controller.delegate = self
-        return controller
+        switch questionPair.type {
+        case .number:
+            let controller = QAViewController(pair: questionPair, index: index)
+            controller.delegate = self
+            return controller
+        case .short:
+            let controller = QAViewController(pair: questionPair, index: index)
+            controller.delegate = self
+            return controller
+        case .long:
+            let longController = QALongViewController(pair: questionPair, index: index)
+            longController.delegate = self
+            return longController
+        }
     }
 }
 
@@ -139,6 +150,13 @@ extension InterviewCoordinator: SectionDelegate {
 
 extension InterviewCoordinator: QAViewControllerDelegate {
     func didFinishAnswer(_ viewController: QAViewController, index: Index, answer: String?) {
+        viewModel.updateAnswer(answer, index: index)
+        sectionNextStep()
+    }
+}
+
+extension InterviewCoordinator: QALongViewControllerDelegate {
+    func didFinishAnswer(_ viewController: QALongViewController, index: Index, answer: String?) {
         viewModel.updateAnswer(answer, index: index)
         sectionNextStep()
     }

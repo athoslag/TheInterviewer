@@ -15,7 +15,7 @@
                 <outlet property="progressLabel" destination="Mez-hY-lgV" id="Ald-Sy-e1H"/>
                 <outlet property="progressView" destination="9sU-Zk-Dc8" id="el4-Bc-1hh"/>
                 <outlet property="questionLabel" destination="1Kd-Yq-gXf" id="cHW-Bc-Txu"/>
-                <outlet property="textView" destination="wYV-3g-keh" id="bk9-56-rUO"/>
+                <outlet property="textField" destination="Grr-cr-0kw" id="IrD-0p-Fnu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,7 +24,7 @@
             <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Kd-Yq-gXf">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Kd-Yq-gXf">
                     <rect key="frame" x="20" y="177.5" width="42" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
@@ -47,13 +47,6 @@
                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="35" id="Vbx-lJ-FQO"/>
                     </constraints>
                 </stackView>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wYV-3g-keh">
-                    <rect key="frame" x="20" y="248" width="728" height="706"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3P-pN-lpZ">
                     <rect key="frame" x="692" y="974" width="56" height="30"/>
                     <state key="normal" title="Próximo"/>
@@ -61,21 +54,26 @@
                         <action selector="didTapNext:" destination="-1" eventType="touchUpInside" id="ebc-FG-cwt"/>
                     </connections>
                 </button>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Grr-cr-0kw">
+                    <rect key="frame" x="20" y="248" width="728" height="21"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="1Kd-Yq-gXf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="1kh-gs-1Tk"/>
-                <constraint firstItem="wYV-3g-keh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="2ll-Be-L4x"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="l3P-pN-lpZ" secondAttribute="trailing" constant="20" id="4sN-th-KEg"/>
                 <constraint firstItem="1Kd-Yq-gXf" firstAttribute="top" secondItem="A1h-x0-xTN" secondAttribute="bottom" constant="75" id="WVY-DX-CmG"/>
-                <constraint firstItem="wYV-3g-keh" firstAttribute="top" secondItem="1Kd-Yq-gXf" secondAttribute="bottom" constant="50" id="XhO-z0-Ush"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1Kd-Yq-gXf" secondAttribute="trailing" constant="20" id="aOT-q2-caP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Grr-cr-0kw" secondAttribute="trailing" constant="20" id="c4O-np-vPh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="l3P-pN-lpZ" secondAttribute="bottom" constant="20" id="ex0-Zf-IcQ"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wYV-3g-keh" secondAttribute="trailing" constant="20" id="gXY-ln-uMU"/>
                 <constraint firstItem="A1h-x0-xTN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="gou-Qc-SLZ"/>
-                <constraint firstItem="l3P-pN-lpZ" firstAttribute="top" secondItem="wYV-3g-keh" secondAttribute="bottom" constant="20" id="phh-I5-v2r"/>
+                <constraint firstItem="Grr-cr-0kw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="onZ-T8-N6s"/>
                 <constraint firstItem="A1h-x0-xTN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="150" id="shb-yh-EYQ"/>
                 <constraint firstItem="A1h-x0-xTN" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="waD-0c-ZmN"/>
+                <constraint firstItem="Grr-cr-0kw" firstAttribute="top" secondItem="1Kd-Yq-gXf" secondAttribute="bottom" constant="50" id="wjW-WK-MQy"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.5" y="153.515625"/>
