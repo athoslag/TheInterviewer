@@ -1,4 +1,9 @@
 PODS:
+  - Realm (3.17.3):
+    - Realm/Headers (= 3.17.3)
+  - Realm/Headers (3.17.3)
+  - RealmSwift (3.17.3):
+    - Realm (= 3.17.3)
   - Reusable (4.1.0):
     - Reusable/Storyboard (= 4.1.0)
     - Reusable/View (= 4.1.0)
@@ -6,15 +11,20 @@ PODS:
   - Reusable/View (4.1.0)
 
 DEPENDENCIES:
+  - RealmSwift
   - Reusable
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Realm
+    - RealmSwift
     - Reusable
 
 SPEC CHECKSUMS:
+  Realm: 5a1d9d47bfc101dd597668b1a8af4288a2557f6d
+  RealmSwift: b7fdc2d18616621c31df5c7a398a45a2163f8eb0
   Reusable: 82be188f29d96dc5eff0db7b2393bcc08d2cdd5b
 
-PODFILE CHECKSUM: db5458b4c8c6767581de71520d6625490388d085
+PODFILE CHECKSUM: e03e71494d69538441fefadb9bd90c6a9ab39536
 
 COCOAPODS: 1.7.3

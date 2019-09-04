@@ -49,7 +49,7 @@ extension AppCoordinator {
 
 // MARK: Main Screen Delegate
 extension AppCoordinator: MainScreenDelegate {
-    func didTapNew(_ mainScreen: MainScreenViewController) {
+    func didTapNew(_ mainScreen: MainScreenViewController) {        
         let viewModel = InterviewViewModel(interview: Interview())
         let interviewFlow = InterviewCoordinator(context: rootViewController, interviewVM: viewModel)
         coordinate(to: interviewFlow)
