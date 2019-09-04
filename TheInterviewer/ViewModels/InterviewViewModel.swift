@@ -119,7 +119,7 @@ extension InterviewViewModel {
 
 // MARK: Setters
 extension InterviewViewModel {
-    func updateAnswer(_ newAnswer: String?, index: Index) {
+    func updateAnswer(_ newAnswer: String?, for index: Index) {
         guard validateIndex(index) else { return }
         interview.parts[index.part].sections[index.section].questionPairs[index.row].answer = newAnswer
     }

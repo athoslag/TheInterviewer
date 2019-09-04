@@ -9,7 +9,7 @@
 import UIKit
 
 protocol QALongViewControllerDelegate: class {
-    func didFinishAnswer(_ viewController: QALongViewController, index: Index, answer: String?)
+    func didFinishAnswer(_ viewController: QALongViewController, viewModel: InterviewViewModel, index: Index)
 }
 
 final class QALongViewController: UIViewController {
@@ -70,34 +70,27 @@ final class QALongViewController: UIViewController {
         // Answer
         textView.font = UIFont(SFPro: .text, variant: .regular, size: 20)
         textView.textAlignment = .justified
+        textView.autocapitalizationType = .sentences
         textView.layer.borderWidth = 1.0
         textView.layer.borderColor = UIColor.lightGray.cgColor
         textView.layer.cornerRadius = 6.0
     }
     
     @objc
-    private func showKeyboard(_ notification: NSNotification) {
-        // code
-    }
-    
-    @objc
-    private func hideKeyboard(_ notification: NSNotification) {
-        // code
-    }
-    
-    @objc
     private func nextTapped() {
-        delegate?.didFinishAnswer(self, index: questionIndex, answer: textView.text)
+        viewModel.updateAnswer(textView.text, for: questionIndex)
+        delegate?.didFinishAnswer(self, viewModel: viewModel, index: questionIndex)
     }
     
     @IBAction private func didTapNext(_ sender: UIButton) {
-        delegate?.didFinishAnswer(self, index: questionIndex, answer: textView.text)
+        viewModel.updateAnswer(textView.text, for: questionIndex)
+        delegate?.didFinishAnswer(self, viewModel: viewModel, index: questionIndex)
     }
 }
 
 extension QALongViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        // updateConstraints
+        // FIXME: Add keyboard toolbar properly (not working)
         
         let bar = UIToolbar()
         let reset = UIBarButtonItem(title: "Próximo", style: .plain, target: self, action: #selector(nextTapped))

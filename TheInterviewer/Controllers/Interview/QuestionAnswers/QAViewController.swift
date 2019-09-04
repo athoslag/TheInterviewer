@@ -9,26 +9,26 @@
 import UIKit
 
 protocol QAViewControllerDelegate: class {
-    func didFinishAnswer(_ viewController: QAViewController, index: Index, answer: String?)
+    func didFinishAnswer(_ viewController: QAViewController, viewModel: InterviewViewModel, index: Index)
 }
 
 final class QAViewController: UIViewController {
-    
     @IBOutlet private weak var progressView: UIProgressView!
     @IBOutlet private weak var progressLabel: UILabel!
     @IBOutlet private weak var questionLabel: UILabel!
     @IBOutlet private weak var textField: UITextField!
     
+    private let answerType: AnswerType
     private let questionIndex: Index
     private let viewModel: InterviewViewModel
-    private let progress: Float?
+    private let progress: Float? = nil // FIXME: Fix or remove later
     
     weak var delegate: QAViewControllerDelegate?
     
-    init(viewModel: InterviewViewModel, index: Index, progress: Float? = nil) {
+    init(viewModel: InterviewViewModel, index: Index, answerType: AnswerType) {
         self.viewModel = viewModel
         self.questionIndex = index
-        self.progress = progress
+        self.answerType = answerType
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -39,8 +39,6 @@ final class QAViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        
-        textField.delegate = self
         
         if let prog = progress {
             progressView.progress = prog
@@ -69,35 +67,24 @@ final class QAViewController: UIViewController {
         
         // Answer
         textField.font = UIFont(SFPro: .text, variant: .regular, size: 20)
+        textField.keyboardType = answerType == .number ? .decimalPad : .default
         textField.textAlignment = .justified
         textField.layer.borderWidth = 1.0
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.cornerRadius = 6.0
     }
     
-    @objc
-    private func showKeyboard(_ notification: NSNotification) {
-        // code
+    private func finishAnswer() {
+        viewModel.updateAnswer(textField.text, for: questionIndex)
+        delegate?.didFinishAnswer(self, viewModel: viewModel, index: questionIndex)
     }
-    
-    @objc
-    private func hideKeyboard(_ notification: NSNotification) {
-        // code
-    }
-    
-    @objc
-    private func nextTapped() {
-        delegate?.didFinishAnswer(self, index: questionIndex, answer: textField.text)
-    }
-    
+        
     @IBAction private func didTapNext(_ sender: UIButton) {
-        delegate?.didFinishAnswer(self, index: questionIndex, answer: textField.text)
+        finishAnswer()
     }
-}
-
-extension QAViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    
+    @IBAction func textFieldDidEnd(_ sender: UITextField) {
         textField.resignFirstResponder()
-        delegate?.didFinishAnswer(self, index: questionIndex, answer: textField.text)
+        finishAnswer()
     }
 }
