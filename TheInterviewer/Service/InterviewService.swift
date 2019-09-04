@@ -14,6 +14,10 @@ final class InterviewService {
     // Private to avoid instantiation
     private init() { }
     
+    /// Saves an interview object into the local database.
+    ///
+    /// - Parameter interview: The interview object to be saved
+    /// - Throws: Database-related or encoding-related errors can be thrown
     static func saveInterview(_ interview: Interview) throws {
         let realm = try Realm()
         let encoded = try interview.encode()
@@ -25,6 +29,10 @@ final class InterviewService {
         }
     }
     
+    /// Load the interviews from the local database.
+    ///
+    /// - Returns: All locally stored interviews.
+    /// - Throws: Database-related or encoding-related errors can be thrown
     static func loadInterviews() throws -> [Interview] {
         let realm = try Realm()
         let wrappers = realm.objects(Wrapper.self)
@@ -34,6 +42,10 @@ final class InterviewService {
         return result
     }
     
+    /// Deletes a specific object from the local database.
+    ///
+    /// - Parameter interview: The interview reference to be deleted.
+    /// - Throws: Database-releated or encoding-related errors can be thrown
     static func deleteInterview(_ interview: Interview) throws {
         let realm = try Realm()
         let encoded = try interview.encode()
@@ -48,6 +60,9 @@ final class InterviewService {
         }
     }
     
+    /// Deletes all interviews from the local database.
+    ///
+    /// - Throws: Database-related errors can be thrown
     static func deleteAllInterviews() throws {
         let realm = try Realm()
         
