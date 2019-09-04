@@ -17,17 +17,17 @@ final class InterviewService {
     static func saveInterview(_ interview: Interview) throws {
         let realm = try Realm()
         let encoded = try interview.encode()
-        let wrapp = RealmWrapper()
-        wrapp.data = encoded
+        let wrapper = Wrapper()
+        wrapper.wrap(encoded, id: encoded.base64EncodedString())
         
         try realm.write {
-            realm.add(wrapp)
+            realm.add(wrapper)
         }
     }
     
     static func loadInterviews() throws -> [Interview] {
         let realm = try Realm()
-        let wrappers = realm.objects(RealmWrapper.self)
+        let wrappers = realm.objects(Wrapper.self)
         let decoder = JSONDecoder()
         
         let result: [Interview] = try wrappers.compactMap { try decoder.decode(Interview.self, from: $0.data!) }
@@ -37,11 +37,14 @@ final class InterviewService {
     static func deleteInterview(_ interview: Interview) throws {
         let realm = try Realm()
         let encoded = try interview.encode()
-        let wrapp = RealmWrapper()
-        wrapp.data = encoded
+
+        guard let wrapper = realm.object(ofType: Wrapper.self, forPrimaryKey: encoded.base64EncodedString()) else {
+            print("Object not found!")
+            return
+        }
         
         try realm.write {
-            realm.delete(wrapp)
+            realm.delete(wrapper)
         }
     }
     
