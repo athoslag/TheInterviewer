@@ -33,4 +33,23 @@ final class InterviewService {
         let result: [Interview] = try wrappers.compactMap { try decoder.decode(Interview.self, from: $0.data!) }
         return result
     }
+    
+    static func deleteInterview(_ interview: Interview) throws {
+        let realm = try Realm()
+        let encoded = try interview.encode()
+        let wrapp = RealmWrapper()
+        wrapp.data = encoded
+        
+        try realm.write {
+            realm.delete(wrapp)
+        }
+    }
+    
+    static func deleteAllInterviews() throws {
+        let realm = try Realm()
+        
+        try realm.write {
+            realm.deleteAll()
+        }
+    }
 }
