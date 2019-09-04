@@ -111,9 +111,9 @@ extension InterviewViewModel {
         return interview.parts[part].sections[section].questionPairs.count
     }
     
-    func question(on index: Index) -> String? {
+    func questionPair(for index: Index) -> QuestionPair? {
         guard validateIndex(index) else { return nil }
-        return interview.parts[index.part].sections[index.section].questionPairs[index.row].question
+        return interview.parts[index.part].sections[index.section].questionPairs[index.row]
     }
 }
 

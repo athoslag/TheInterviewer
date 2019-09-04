@@ -111,15 +111,15 @@ extension InterviewCoordinator {
     func makeQAViewController(questionPair: QuestionPair, index: Index) -> UIViewController {
         switch questionPair.type {
         case .number:
-            let controller = QAViewController(pair: questionPair, index: index)
+            let controller = QAViewController(viewModel: viewModel, index: index)
             controller.delegate = self
             return controller
         case .short:
-            let controller = QAViewController(pair: questionPair, index: index)
+            let controller = QAViewController(viewModel: viewModel, index: index)
             controller.delegate = self
             return controller
         case .long:
-            let longController = QALongViewController(pair: questionPair, index: index)
+            let longController = QALongViewController(viewModel: viewModel, index: index)
             longController.delegate = self
             return longController
         }

@@ -20,13 +20,13 @@ final class QAViewController: UIViewController {
     @IBOutlet private weak var textField: UITextField!
     
     private let questionIndex: Index
-    private let pair: QuestionPair
+    private let viewModel: InterviewViewModel
     private let progress: Float?
     
     weak var delegate: QAViewControllerDelegate?
     
-    init(pair: QuestionPair, index: Index, progress: Float? = nil) {
-        self.pair = pair
+    init(viewModel: InterviewViewModel, index: Index, progress: Float? = nil) {
+        self.viewModel = viewModel
         self.questionIndex = index
         self.progress = progress
         super.init(nibName: nil, bundle: nil)
@@ -50,8 +50,10 @@ final class QAViewController: UIViewController {
             progressLabel.isHidden = true
         }
         
-        questionLabel.text = pair.question
-        textField.text = pair.answer
+        if let pair = viewModel.questionPair(for: questionIndex) {
+            questionLabel.text = pair.question
+            textField.text = pair.answer
+        }
     }
     
     private func configureUI() {
