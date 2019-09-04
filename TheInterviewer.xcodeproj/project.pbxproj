@@ -136,22 +136,22 @@
 			path = Interview;
 			sourceTree = "<group>";
 		};
-		7E39420422CC09F700579F29 /* Controllers */ = {
+		7E39420422CC09F700579F29 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				7E2ECEAE231405AC000E19C7 /* Menus */,
 				7E2ECEAF231405C3000E19C7 /* Interview */,
 			);
-			path = Controllers;
+			path = Controller;
 			sourceTree = "<group>";
 		};
-		7E39420522CC0A0F00579F29 /* ViewModels */ = {
+		7E39420522CC0A0F00579F29 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				7E39420622CC0A2800579F29 /* MainViewModel.swift */,
 				7EB4B52C22F39329005410EF /* InterviewViewModel.swift */,
 			);
-			path = ViewModels;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		7E3C4D2722BAB9E200490D16 = {
@@ -177,8 +177,8 @@
 			children = (
 				7E3C4D3D22BAB9E400490D16 /* Assets.xcassets */,
 				7E51B93D22FA32260091C9A1 /* Configuration */,
-				7E39420422CC09F700579F29 /* Controllers */,
-				7EF19E1422C442D700E95AAF /* Coordinators */,
+				7E39420422CC09F700579F29 /* Controller */,
+				7EF19E1422C442D700E95AAF /* Coordinator */,
 				7E570DE4231731340092D538 /* Extensions */,
 				7E51B94222FA34850091C9A1 /* Fonts */,
 				7E42034122EF917300DFA490 /* Model */,
@@ -265,7 +265,7 @@
 				7E5A919122BAC28800963ABB /* AppCoordinator.swift */,
 				7E42033F22EF8C7800DFA490 /* InterviewCoordinator.swift */,
 			);
-			path = Coordinators;
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		AE9A879BE07BA023D3C3C753 /* Frameworks */ = {
