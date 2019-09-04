@@ -11,17 +11,10 @@ import UIKit
 
 final class InterviewCoordinator: Coordinator<Void> {
     
-    private enum Step: Int, CaseIterable {
-        case overview = 1
-        case interstep
-        case finish
-    }
-    
     private let context: UIViewController
     private var navigationController: UINavigationController!
     private var viewModel: InterviewViewModel
     
-    private var currentStep: Step = .overview
     private var currentIndex: Int = 0
     
     // experimental flow usage
