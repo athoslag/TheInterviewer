@@ -44,6 +44,7 @@
 		7EB56694231F27AF0020E077 /* QALongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB56692231F27AF0020E077 /* QALongViewController.swift */; };
 		7EB56695231F27AF0020E077 /* QALongViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB56693231F27AF0020E077 /* QALongViewController.xib */; };
 		7EB5669C231F58F80020E077 /* InterviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5669B231F58F80020E077 /* InterviewService.swift */; };
+		7ED28713232052F500C005E7 /* RealmWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED28712232052F500C005E7 /* RealmWrapper.swift */; };
 		7EF19E1322C4415000E95AAF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF19E1222C4415000E95AAF /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		7EB56692231F27AF0020E077 /* QALongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QALongViewController.swift; sourceTree = "<group>"; };
 		7EB56693231F27AF0020E077 /* QALongViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QALongViewController.xib; sourceTree = "<group>"; };
 		7EB5669B231F58F80020E077 /* InterviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewService.swift; sourceTree = "<group>"; };
+		7ED28712232052F500C005E7 /* RealmWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmWrapper.swift; sourceTree = "<group>"; };
 		7EF19E1222C4415000E95AAF /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C4409D55E2C59E1EB80DE33F /* Pods-TheInterviewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheInterviewer.debug.xcconfig"; path = "Target Support Files/Pods-TheInterviewer/Pods-TheInterviewer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -251,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				7EB5669B231F58F80020E077 /* InterviewService.swift */,
+				7ED28712232052F500C005E7 /* RealmWrapper.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				7E5A918F22BAC20A00963ABB /* MainScreenViewController.swift in Sources */,
 				7EF19E1322C4415000E95AAF /* Coordinator.swift in Sources */,
 				7E3C4D3422BAB9E200490D16 /* AppDelegate.swift in Sources */,
+				7ED28713232052F500C005E7 /* RealmWrapper.swift in Sources */,
 				7E3C4D3C22BAB9E200490D16 /* TheInterviewer.xcdatamodeld in Sources */,
 				7EB56694231F27AF0020E077 /* QALongViewController.swift in Sources */,
 				7E51B93F22FA32370091C9A1 /* AppConfiguration.swift in Sources */,

@@ -10,22 +10,27 @@ import Foundation
 import RealmSwift
 
 final class InterviewService {
-    static var shared: InterviewService = InterviewService()
     
     // Private to avoid instantiation
     private init() { }
     
-    func saveInterview(_ interview: Interview) throws {
+    static func saveInterview(_ interview: Interview) throws {
         let realm = try Realm()
         let encoded = try interview.encode()
-        let object = Object(value: encoded)
+        let wrapp = RealmWrapper()
+        wrapp.data = encoded
         
         try realm.write {
-            realm.add(object)
+            realm.add(wrapp)
         }
     }
     
-    func loadInterviews() throws -> [Interview] {
-        fatalError("Not implemented.")
+    static func loadInterviews() throws -> [Interview] {
+        let realm = try Realm()
+        let wrappers = realm.objects(RealmWrapper.self)
+        let decoder = JSONDecoder()
+        
+        let result: [Interview] = try wrappers.compactMap { try decoder.decode(Interview.self, from: $0.data!) }
+        return result
     }
 }
