@@ -7,5 +7,6 @@ target 'TheInterviewer' do
 
   # Pods for TheInterviewer
   pod 'Reusable'
+  pod 'RealmSwift'
 
 end
