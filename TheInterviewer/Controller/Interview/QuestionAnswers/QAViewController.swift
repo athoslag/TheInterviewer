@@ -13,6 +13,7 @@ protocol QAViewControllerDelegate: class {
 }
 
 final class QAViewController: UIViewController {
+    @IBOutlet private weak var progressionIndicationLabel: UILabel!
     @IBOutlet private weak var questionLabel: UILabel!
     @IBOutlet private weak var textField: UITextField!
     
@@ -41,10 +42,16 @@ final class QAViewController: UIViewController {
             questionLabel.text = pair.question
             textField.text = pair.answer
         }
+        
+        // Part & Section indicator
+        let titles = viewModel.titles(for: questionIndex)
+        progressionIndicationLabel.text = "\(titles.part): \(titles.section)"
     }
     
     private func configureUI() {
         hideKeyboardWhenTappedAround()
+        // Progression
+        progressionIndicationLabel.font = UIFont(SFPro: .text, variant: .medium, size: 26)
         
         // Question
         questionLabel.font = UIFont(SFPro: .text, variant: .medium, size: 26)

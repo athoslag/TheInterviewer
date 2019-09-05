@@ -14,6 +14,7 @@ protocol QALongViewControllerDelegate: class {
 
 final class QALongViewController: UIViewController {
     
+    @IBOutlet private weak var progressionIndicationLabel: UILabel!
     @IBOutlet private weak var questionLabel: UILabel!
     @IBOutlet private weak var textView: UITextView!
     
@@ -42,10 +43,16 @@ final class QALongViewController: UIViewController {
             questionLabel.text = pair.question
             textView.text = pair.answer            
         }
+        
+        // Part & Section indicator
+        let titles = viewModel.titles(for: questionIndex)
+        progressionIndicationLabel.text = "\(titles.part): \(titles.section)"
     }
     
     private func configureUI() {
         hideKeyboardWhenTappedAround()
+        // Progression
+        progressionIndicationLabel.font = UIFont(SFPro: .text, variant: .medium, size: 26)
         
         // Question
         questionLabel.font = UIFont(SFPro: .text, variant: .medium, size: 26)

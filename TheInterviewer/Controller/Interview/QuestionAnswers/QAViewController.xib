@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QAViewController" customModule="TheInterviewer" customModuleProvider="target">
             <connections>
+                <outlet property="progressionIndicationLabel" destination="z7D-oc-kvA" id="dVp-vT-qS0"/>
                 <outlet property="questionLabel" destination="1Kd-Yq-gXf" id="cHW-Bc-Txu"/>
                 <outlet property="textField" destination="Grr-cr-0kw" id="IrD-0p-Fnu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -23,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Kd-Yq-gXf">
-                    <rect key="frame" x="20" y="120" width="42" height="20.5"/>
+                    <rect key="frame" x="20" y="141" width="42" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -36,7 +37,7 @@
                     </connections>
                 </button>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Grr-cr-0kw">
-                    <rect key="frame" x="20" y="190.5" width="728" height="21"/>
+                    <rect key="frame" x="20" y="211.5" width="728" height="21"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
@@ -44,17 +45,26 @@
                         <action selector="textFieldDidEnd:" destination="-1" eventType="editingDidEndOnExit" id="Mfh-4Z-cbj"/>
                     </connections>
                 </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7D-oc-kvA">
+                    <rect key="frame" x="20" y="70" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="1Kd-Yq-gXf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="1kh-gs-1Tk"/>
-                <constraint firstItem="1Kd-Yq-gXf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="36N-BM-Rgi"/>
+                <constraint firstItem="z7D-oc-kvA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="1ur-zY-NWe"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="l3P-pN-lpZ" secondAttribute="trailing" constant="20" id="4sN-th-KEg"/>
+                <constraint firstItem="z7D-oc-kvA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="A4v-0e-eC3"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1Kd-Yq-gXf" secondAttribute="trailing" constant="20" id="aOT-q2-caP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Grr-cr-0kw" secondAttribute="trailing" constant="20" id="c4O-np-vPh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="l3P-pN-lpZ" secondAttribute="bottom" constant="20" id="ex0-Zf-IcQ"/>
                 <constraint firstItem="Grr-cr-0kw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="onZ-T8-N6s"/>
+                <constraint firstItem="1Kd-Yq-gXf" firstAttribute="top" secondItem="z7D-oc-kvA" secondAttribute="bottom" constant="50" id="wiE-Wx-lfS"/>
                 <constraint firstItem="Grr-cr-0kw" firstAttribute="top" secondItem="1Kd-Yq-gXf" secondAttribute="bottom" constant="50" id="wjW-WK-MQy"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="z7D-oc-kvA" secondAttribute="trailing" constant="20" id="yPH-b3-y9c"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.5" y="153.515625"/>
