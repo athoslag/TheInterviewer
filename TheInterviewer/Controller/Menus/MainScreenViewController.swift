@@ -35,6 +35,7 @@ final class MainScreenViewController: UIViewController {
     private func configureUI() {
         // Callout
         calloutLabel.font = UIFont(SFPro: .display, variant: .medium, size: 30)
+        calloutLabel.text = "The Interviewer v\(Float(UIApplication.version()))"
         
         // Buttons
         newInterviewButton.titleLabel?.font = UIFont(SFPro: .text, variant: .medium, size: 18)
