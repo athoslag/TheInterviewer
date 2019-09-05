@@ -14,8 +14,6 @@ protocol OverviewDelegate: class {
 
 final class OverviewViewController: UIViewController {
 
-    @IBOutlet private weak var progressBar: UIProgressView!
-    @IBOutlet private weak var progressLabel: UILabel!
     @IBOutlet private weak var informationLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
     
@@ -38,18 +36,10 @@ final class OverviewViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        progressBar.progress = viewModel.completionRate
-        progressLabel.text = "\(Int(viewModel.completionRate * 100))%"
-        
         informationLabel.text = viewModel.title
     }
     
     private func configureUI() {
-        // Progress
-        progressBar.progressTintColor = AppConfiguration.mainColor
-        progressLabel.textColor = AppConfiguration.mainColor
-        progressLabel.font = UIFont(SFPro: .display, variant: .medium, size: 22)
-        
         // Information
         informationLabel.font = UIFont(SFPro: .text, variant: .medium, size: 26)
         
@@ -75,7 +65,7 @@ extension OverviewViewController: UITableViewDataSource {
         let section = indexPath.row
         
         let cell = UITableViewCell(style: .default, reuseIdentifier: "reuseID")
-        cell.textLabel?.text = "\(viewModel.sectionTitle(part: part, section: section)): \(viewModel.numberOfQuestions(section: section, part: part)) questions"
+        cell.textLabel?.text = "\(viewModel.sectionTitle(part: part, section: section)): \(viewModel.numberOfQuestions(section: section, part: part)) itens"
         cell.textLabel?.font = UIFont(SFPro: .text, variant: .medium, size: 20)
         return cell
     }

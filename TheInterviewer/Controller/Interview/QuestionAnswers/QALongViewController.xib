@@ -12,8 +12,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QALongViewController" customModule="TheInterviewer" customModuleProvider="target">
             <connections>
-                <outlet property="progressLabel" destination="ZSv-JC-W6j" id="zZh-Tr-1SE"/>
-                <outlet property="progressView" destination="4ZD-88-8W6" id="FT0-5k-f7T"/>
                 <outlet property="questionLabel" destination="isp-gQ-enl" id="Wor-a6-XVd"/>
                 <outlet property="textView" destination="5cz-Yl-9UZ" id="AeF-OM-Ujg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -25,14 +23,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5cz-Yl-9UZ">
-                    <rect key="frame" x="20" y="248" width="728" height="706"/>
+                    <rect key="frame" x="20" y="190.5" width="728" height="763.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="isp-gQ-enl">
-                    <rect key="frame" x="20" y="177.5" width="42" height="20.5"/>
+                    <rect key="frame" x="20" y="120" width="42" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -44,36 +42,17 @@
                         <action selector="didTapNext:" destination="-1" eventType="touchUpInside" id="Ew3-zR-dI0"/>
                     </connections>
                 </button>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="K8U-bB-zpv">
-                    <rect key="frame" x="150" y="70" width="468" height="32.5"/>
-                    <subviews>
-                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4ZD-88-8W6">
-                            <rect key="frame" x="0.0" y="0.0" width="468" height="2"/>
-                        </progressView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSv-JC-W6j">
-                            <rect key="frame" x="0.0" y="12" width="468" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="35" id="9Em-WB-CHx"/>
-                    </constraints>
-                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="K8U-bB-zpv" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="2fT-nl-I1c"/>
                 <constraint firstItem="5cz-Yl-9UZ" firstAttribute="top" secondItem="isp-gQ-enl" secondAttribute="bottom" constant="50" id="NCa-9g-RtV"/>
                 <constraint firstItem="isp-gQ-enl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Nbm-BD-dhZ"/>
-                <constraint firstItem="isp-gQ-enl" firstAttribute="top" secondItem="K8U-bB-zpv" secondAttribute="bottom" constant="75" id="OD4-BE-edP"/>
                 <constraint firstItem="5Y5-dv-ZYv" firstAttribute="top" secondItem="5cz-Yl-9UZ" secondAttribute="bottom" constant="20" id="QvK-oy-sLr"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="5Y5-dv-ZYv" secondAttribute="bottom" constant="20" id="TM9-Xp-i7M"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5Y5-dv-ZYv" secondAttribute="trailing" constant="20" id="Vk9-wz-emm"/>
                 <constraint firstItem="5cz-Yl-9UZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="htA-Ka-NIp"/>
+                <constraint firstItem="isp-gQ-enl" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="u2n-7h-hU5"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5cz-Yl-9UZ" secondAttribute="trailing" constant="20" id="u5D-9b-v5E"/>
-                <constraint firstItem="K8U-bB-zpv" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="yYv-xV-eiV"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="isp-gQ-enl" secondAttribute="trailing" constant="20" id="zZu-zU-7ck"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

@@ -13,15 +13,12 @@ protocol QAViewControllerDelegate: class {
 }
 
 final class QAViewController: UIViewController {
-    @IBOutlet private weak var progressView: UIProgressView!
-    @IBOutlet private weak var progressLabel: UILabel!
     @IBOutlet private weak var questionLabel: UILabel!
     @IBOutlet private weak var textField: UITextField!
     
     private let answerType: AnswerType
     private let questionIndex: Index
     private let viewModel: InterviewViewModel
-    private let progress: Float? = nil // FIXME: Fix or remove later
     
     weak var delegate: QAViewControllerDelegate?
     
@@ -40,14 +37,6 @@ final class QAViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         
-        if let prog = progress {
-            progressView.progress = prog
-            progressLabel.text = "\(prog * 100)%"
-        } else {
-            progressView.isHidden = true
-            progressLabel.isHidden = true
-        }
-        
         if let pair = viewModel.questionPair(for: questionIndex) {
             questionLabel.text = pair.question
             textField.text = pair.answer
@@ -56,11 +45,6 @@ final class QAViewController: UIViewController {
     
     private func configureUI() {
         hideKeyboardWhenTappedAround()
-        
-        // Progress
-        progressView.progressTintColor = AppConfiguration.mainColor
-        progressLabel.textColor = AppConfiguration.mainColor
-        progressLabel.font = UIFont(SFPro: .display, variant: .medium, size: 22)
         
         // Question
         questionLabel.font = UIFont(SFPro: .text, variant: .medium, size: 26)

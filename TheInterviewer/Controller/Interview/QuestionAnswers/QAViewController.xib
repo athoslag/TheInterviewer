@@ -12,8 +12,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QAViewController" customModule="TheInterviewer" customModuleProvider="target">
             <connections>
-                <outlet property="progressLabel" destination="Mez-hY-lgV" id="Ald-Sy-e1H"/>
-                <outlet property="progressView" destination="9sU-Zk-Dc8" id="el4-Bc-1hh"/>
                 <outlet property="questionLabel" destination="1Kd-Yq-gXf" id="cHW-Bc-Txu"/>
                 <outlet property="textField" destination="Grr-cr-0kw" id="IrD-0p-Fnu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -25,28 +23,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Kd-Yq-gXf">
-                    <rect key="frame" x="20" y="177.5" width="42" height="20.5"/>
+                    <rect key="frame" x="20" y="120" width="42" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="A1h-x0-xTN">
-                    <rect key="frame" x="150" y="70" width="468" height="32.5"/>
-                    <subviews>
-                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9sU-Zk-Dc8">
-                            <rect key="frame" x="0.0" y="0.0" width="468" height="2"/>
-                        </progressView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mez-hY-lgV">
-                            <rect key="frame" x="0.0" y="12" width="468" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="35" id="Vbx-lJ-FQO"/>
-                    </constraints>
-                </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3P-pN-lpZ">
                     <rect key="frame" x="692" y="974" width="56" height="30"/>
                     <state key="normal" title="Próximo"/>
@@ -55,7 +36,7 @@
                     </connections>
                 </button>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Grr-cr-0kw">
-                    <rect key="frame" x="20" y="248" width="728" height="21"/>
+                    <rect key="frame" x="20" y="190.5" width="728" height="21"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
@@ -67,15 +48,12 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="1Kd-Yq-gXf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="1kh-gs-1Tk"/>
+                <constraint firstItem="1Kd-Yq-gXf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="36N-BM-Rgi"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="l3P-pN-lpZ" secondAttribute="trailing" constant="20" id="4sN-th-KEg"/>
-                <constraint firstItem="1Kd-Yq-gXf" firstAttribute="top" secondItem="A1h-x0-xTN" secondAttribute="bottom" constant="75" id="WVY-DX-CmG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1Kd-Yq-gXf" secondAttribute="trailing" constant="20" id="aOT-q2-caP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Grr-cr-0kw" secondAttribute="trailing" constant="20" id="c4O-np-vPh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="l3P-pN-lpZ" secondAttribute="bottom" constant="20" id="ex0-Zf-IcQ"/>
-                <constraint firstItem="A1h-x0-xTN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="gou-Qc-SLZ"/>
                 <constraint firstItem="Grr-cr-0kw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="onZ-T8-N6s"/>
-                <constraint firstItem="A1h-x0-xTN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="150" id="shb-yh-EYQ"/>
-                <constraint firstItem="A1h-x0-xTN" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="waD-0c-ZmN"/>
                 <constraint firstItem="Grr-cr-0kw" firstAttribute="top" secondItem="1Kd-Yq-gXf" secondAttribute="bottom" constant="50" id="wjW-WK-MQy"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

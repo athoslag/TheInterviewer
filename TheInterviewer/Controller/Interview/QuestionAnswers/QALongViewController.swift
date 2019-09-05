@@ -14,21 +14,17 @@ protocol QALongViewControllerDelegate: class {
 
 final class QALongViewController: UIViewController {
     
-    @IBOutlet private weak var progressView: UIProgressView!
-    @IBOutlet private weak var progressLabel: UILabel!
     @IBOutlet private weak var questionLabel: UILabel!
     @IBOutlet private weak var textView: UITextView!
     
     private let questionIndex: Index
     private let viewModel: InterviewViewModel
-    private let progress: Float?
     
     weak var delegate: QALongViewControllerDelegate?
     
-    init(viewModel: InterviewViewModel, index: Index, progress: Float? = nil) {
+    init(viewModel: InterviewViewModel, index: Index) {
         self.viewModel = viewModel
         self.questionIndex = index
-        self.progress = progress
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -42,14 +38,6 @@ final class QALongViewController: UIViewController {
         
         textView.delegate = self
         
-        if let prog = progress {
-            progressView.progress = prog
-            progressLabel.text = "\(prog * 100)%"
-        } else {
-            progressView.isHidden = true
-            progressLabel.isHidden = true
-        }
-        
         if let pair = viewModel.questionPair(for: questionIndex) {
             questionLabel.text = pair.question
             textView.text = pair.answer            
@@ -58,11 +46,6 @@ final class QALongViewController: UIViewController {
     
     private func configureUI() {
         hideKeyboardWhenTappedAround()
-        
-        // Progress
-        progressView.progressTintColor = AppConfiguration.mainColor
-        progressLabel.textColor = AppConfiguration.mainColor
-        progressLabel.font = UIFont(SFPro: .display, variant: .medium, size: 22)
         
         // Question
         questionLabel.font = UIFont(SFPro: .text, variant: .medium, size: 26)
