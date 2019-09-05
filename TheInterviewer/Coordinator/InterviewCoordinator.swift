@@ -15,7 +15,7 @@ final class InterviewCoordinator: Coordinator<Void> {
     private var navigationController: UINavigationController!
     private var viewModel: InterviewViewModel
     
-    private var currentIndex: Int = 0
+    private var currentIndex: Index? = Index(part: 0, section: 0, row: 0)
     
     // experimental flow usage
     private var interviewProgress: [Part] = []
@@ -82,13 +82,13 @@ extension InterviewCoordinator {
     
     // Section progression
     func sectionNextStep() {
-        guard !sectionProgress.isEmpty else {
+        guard !sectionProgress.isEmpty, let index = currentIndex else {
             partNextStep()
             return
         }
         
         let questionPair = sectionProgress.removeFirst()
-        let controller = makeQAViewController(questionPair: questionPair, index: Index(part: 0, section: 0, row: 0)) // FIXME: track and use correct Index
+        let controller = makeQAViewController(questionPair: questionPair, index: index)
         navigationController.pushViewController(controller, animated: true)
     }
 }
@@ -139,6 +139,7 @@ extension InterviewCoordinator: SectionDelegate {
 
 extension InterviewCoordinator: QAViewControllerDelegate {
     func didFinishAnswer(_ viewController: QAViewController, viewModel: InterviewViewModel, index: Index) {
+        self.currentIndex = viewModel.nextIndex(currentIndex: index)
         self.viewModel = viewModel
         sectionNextStep()
     }
@@ -146,6 +147,7 @@ extension InterviewCoordinator: QAViewControllerDelegate {
 
 extension InterviewCoordinator: QALongViewControllerDelegate {
     func didFinishAnswer(_ viewController: QALongViewController, viewModel: InterviewViewModel, index: Index) {
+        self.currentIndex = viewModel.nextIndex(currentIndex: index)
         self.viewModel = viewModel
         sectionNextStep()
     }

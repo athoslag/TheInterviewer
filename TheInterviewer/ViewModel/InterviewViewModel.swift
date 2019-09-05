@@ -12,25 +12,6 @@ final class InterviewViewModel {
     
     private var interview: Interview
     
-    var completionRate: Float {
-        var total = 0
-        var rate = 0
-        
-        for part in interview.parts {
-            for section in part.sections {
-                for question in section.questionPairs {
-                    total += 1
-                    if question.answer != nil {
-                        rate += 1
-                    }
-                }
-            }
-        }
-        
-        guard total != 0 else { return 0 }
-        return Float(rate / total)
-    }
-    
     var questionPairs: [QuestionPair] {
         var pairs: [QuestionPair] = []
         
@@ -50,6 +31,8 @@ final class InterviewViewModel {
     var sections: [Section] {
         return interview.parts.flatMap { $0.sections }
     }
+    
+    lazy var currentIndex: Index = Index(part: 0, section: 0, row: 0)
     
     // Methods
     init(interview: Interview) {
@@ -90,13 +73,13 @@ extension InterviewViewModel {
         return interview.parts.map { $0.title }
     }
     
+    var numberOfParts: Int {
+        return interview.parts.count
+    }
+    
     func sectionTitle(part: Int, section: Int) -> String {
         guard part < interview.parts.count, section < interview.parts[part].sections.count else { return "" }
         return interview.parts[part].sections[section].title
-    }
-    
-    var numberOfParts: Int {
-        return interview.parts.count
     }
     
     func numberOfSections(part: Int) -> Int {
@@ -114,6 +97,26 @@ extension InterviewViewModel {
     func questionPair(for index: Index) -> QuestionPair? {
         guard validateIndex(index) else { return nil }
         return interview.parts[index.part].sections[index.section].questionPairs[index.row]
+    }
+    
+    func nextIndex(currentIndex: Index) -> Index? {
+        let newRow = currentIndex.advancing(.row)
+        if validateIndex(newRow) {
+            return newRow
+        } else {
+            let newSection = currentIndex.advancing(.section)
+            if validateIndex(newSection) {
+                return newSection
+            } else {
+                let newPart = currentIndex.advancing(.part)
+                if validateIndex(newPart) {
+                    return newPart
+                } else {
+                    // Reached end of interview
+                    return nil
+                }
+            }
+        }
     }
 }
 

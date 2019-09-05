@@ -36,4 +36,21 @@ struct Index {
     let part: Int
     let section: Int
     let row: Int
+    
+    func advancing(_ component: IndexComponent) -> Index {
+        switch component {
+        case .row:
+            return Index(part: self.part, section: self.section, row: self.row + 1)
+        case .section:
+            return Index(part: self.part, section: self.section + 1, row: 0)
+        case .part:
+            return Index(part: self.part + 1, section: 0, row: 0)
+        }
+    }
+}
+
+enum IndexComponent {
+    case row
+    case section
+    case part
 }
