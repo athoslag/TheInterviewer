@@ -9,21 +9,26 @@
 import UIKit
 
 protocol SectionDelegate: class {
-    func didSelectRow(_ viewController: SectionOverviewViewController, index: Index)
+    func didSelectRow(_ viewController: SectionOverviewViewController, row: Int)
 }
 
 final class SectionOverviewViewController: UIViewController {
 
+    @IBOutlet private weak var partTitleLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var calloutLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var beginButton: UIButton!
     
+    private let partTitle: String
     private let sectionModel: Section
     private let cellReuseID: String = "SectionID"
     
     weak var delegate: SectionDelegate?
     
-    init(section: Section) {
+    init(section: Section, partTitle: String) {
         self.sectionModel = section
+        self.partTitle = partTitle
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -33,7 +38,9 @@ final class SectionOverviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        partTitleLabel.text = partTitle
         titleLabel.text = sectionModel.title
+        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseID)
         tableView.dataSource = self
         tableView.delegate = self
@@ -42,8 +49,23 @@ final class SectionOverviewViewController: UIViewController {
     }
     
     private func configureUI() {
-        // Title
-        titleLabel.font = UIFont(SFPro: .display, variant: .medium, size: 22)
+        // Titles
+        partTitleLabel.font = UIFont(SFPro: .display, variant: .medium, size: 26)
+        titleLabel.font = UIFont(SFPro: .display, variant: .medium, size: 24)
+        calloutLabel.font = UIFont(SFPro: .text, variant: .medium, size: 22)
+        
+        // Tableview
+        tableView.tableFooterView = UIView()
+        
+        // Begin Button
+        beginButton.layer.cornerRadius = beginButton.layer.bounds.height / 2
+        beginButton.backgroundColor = AppConfiguration.mainColor
+        beginButton.setTitleColor(.white, for: .normal)
+        beginButton.titleLabel?.font = UIFont(SFPro: .display, variant: .medium, size: 22)
+    }
+    
+    @IBAction func didTapBegin(_ sender: UIButton) {
+        delegate?.didSelectRow(self, row: 0)
     }
 }
 
@@ -64,6 +86,6 @@ extension SectionOverviewViewController: UITableViewDataSource {
 
 extension SectionOverviewViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.didSelectRow(self, index: Index(part: 0, section: 2, row: 0))
+        delegate?.didSelectRow(self, row: indexPath.row)
     }
 }

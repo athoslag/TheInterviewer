@@ -77,7 +77,7 @@ extension InterviewCoordinator {
     // Section init
     func initSectionNavigation(_ section: Section) {
         sectionProgress = section.questionPairs
-        sectionNextStep()
+        presentSectionIntro(section: section)
     }
     
     // Section progression
@@ -89,6 +89,11 @@ extension InterviewCoordinator {
         
         let questionPair = sectionProgress.removeFirst()
         let controller = makeQAViewController(questionPair: questionPair, index: index)
+        navigationController.pushViewController(controller, animated: true)
+    }
+    
+    func presentSectionIntro(section: Section) {
+        let controller = makeSectionOverview(section: section)
         navigationController.pushViewController(controller, animated: true)
     }
 }
@@ -103,7 +108,8 @@ extension InterviewCoordinator {
     }
     
     func makeSectionOverview(section: Section) -> UIViewController {
-        let sectionOverview = SectionOverviewViewController(section: section)
+        let partTitle = viewModel.titles(for: currentIndex).part
+        let sectionOverview = SectionOverviewViewController(section: section, partTitle: partTitle)
         sectionOverview.delegate = self
         return sectionOverview
     }
@@ -133,9 +139,9 @@ extension InterviewCoordinator: OverviewDelegate {
 }
 
 extension InterviewCoordinator: SectionDelegate {
-    func didSelectRow(_ viewController: SectionOverviewViewController, index: Index) {
+    func didSelectRow(_ viewController: SectionOverviewViewController, row: Int) {
         // TODO: present selected QA
-        self.currentIndex = index
+        self.currentIndex = currentIndex?.withRow(row)
         sectionNextStep()
     }
 }

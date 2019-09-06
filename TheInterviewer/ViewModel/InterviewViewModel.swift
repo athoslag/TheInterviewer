@@ -77,8 +77,9 @@ extension InterviewViewModel {
         return interview.parts.count
     }
     
-    func titles(for index: Index) -> (part: String, section: String) {
-        return (partTitle(part: index.part), sectionTitle(part: index.part, section: index.section))
+    func titles(for index: Index?) -> (part: String, section: String) {
+        guard let validIndex = index else { return ("", "") }
+        return (partTitle(part: validIndex.part), sectionTitle(part: validIndex.part, section: validIndex.section))
     }
     
     func partTitle(part: Int) -> String {

@@ -47,6 +47,10 @@ struct Index {
             return Index(part: self.part + 1, section: 0, row: 0)
         }
     }
+    
+    func withRow(_ row: Int) -> Index {
+        return Index(part: self.part, section: self.section, row: row)
+    }
 }
 
 enum IndexComponent {
