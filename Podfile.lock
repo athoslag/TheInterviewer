@@ -9,22 +9,26 @@ PODS:
     - Reusable/View (= 4.1.0)
   - Reusable/Storyboard (4.1.0)
   - Reusable/View (4.1.0)
+  - SkyFloatingLabelTextField (3.7.0)
 
 DEPENDENCIES:
   - RealmSwift
   - Reusable
+  - SkyFloatingLabelTextField (~> 3.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Realm
     - RealmSwift
     - Reusable
+    - SkyFloatingLabelTextField
 
 SPEC CHECKSUMS:
   Realm: 5a1d9d47bfc101dd597668b1a8af4288a2557f6d
   RealmSwift: b7fdc2d18616621c31df5c7a398a45a2163f8eb0
   Reusable: 82be188f29d96dc5eff0db7b2393bcc08d2cdd5b
+  SkyFloatingLabelTextField: 4b46db0ab1ccde0919cded29c656e6b4805eda04
 
-PODFILE CHECKSUM: e03e71494d69538441fefadb9bd90c6a9ab39536
+PODFILE CHECKSUM: 6025f3b14f75bf0fa3ef5212e90bc6a8eb898e23
 
 COCOAPODS: 1.7.3

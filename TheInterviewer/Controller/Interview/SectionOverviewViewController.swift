@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SectionDelegate: class {
-    func didSelectRow(_ viewController: SectionOverviewViewController, row: IndexPath)
+    func didSelectRow(_ viewController: SectionOverviewViewController, index: Index)
 }
 
 final class SectionOverviewViewController: UIViewController {
@@ -64,6 +64,6 @@ extension SectionOverviewViewController: UITableViewDataSource {
 
 extension SectionOverviewViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.didSelectRow(self, row: indexPath)
+        delegate?.didSelectRow(self, index: Index(part: 0, section: 2, row: 0))
     }
 }

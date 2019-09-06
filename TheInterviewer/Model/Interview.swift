@@ -107,3 +107,20 @@ final class Interview: Codable {
         return try encoder.encode(self)
     }
 }
+
+extension Interview {
+    func description() {
+        print(title)
+        for part in parts {
+            print("  " + part.title)
+            for section in part.sections {
+                print("    " + section.title)
+                for question in section.questionPairs {
+                    print("      " + question.question + ": " + (question.answer ?? ""))
+                }
+            }
+        }
+        
+        print("")
+    }
+}

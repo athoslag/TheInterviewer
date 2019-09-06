@@ -15,7 +15,7 @@ final class InterviewCoordinator: Coordinator<Void> {
     private var navigationController: UINavigationController!
     private var viewModel: InterviewViewModel
     
-    private var currentIndex: Int = 0
+    private var currentIndex: Index? = Index(part: 0, section: 0, row: 0)
     
     // experimental flow usage
     private var interviewProgress: [Part] = []
@@ -82,13 +82,13 @@ extension InterviewCoordinator {
     
     // Section progression
     func sectionNextStep() {
-        guard !sectionProgress.isEmpty else {
+        guard !sectionProgress.isEmpty, let index = currentIndex else {
             partNextStep()
             return
         }
         
         let questionPair = sectionProgress.removeFirst()
-        let controller = makeQAViewController(questionPair: questionPair, index: Index(part: 0, section: 0, row: 0)) // FIXME: track and use correct Index
+        let controller = makeQAViewController(questionPair: questionPair, index: index)
         navigationController.pushViewController(controller, animated: true)
     }
 }
@@ -110,47 +110,48 @@ extension InterviewCoordinator {
     
     func makeQAViewController(questionPair: QuestionPair, index: Index) -> UIViewController {
         switch questionPair.type {
-        case .number:
-            let controller = QAViewController(pair: questionPair, index: index)
-            controller.delegate = self
-            return controller
-        case .short:
-            let controller = QAViewController(pair: questionPair, index: index)
-            controller.delegate = self
-            return controller
         case .long:
-            let longController = QALongViewController(pair: questionPair, index: index)
+            let longController = QALongViewController(viewModel: viewModel, index: index)
             longController.delegate = self
             return longController
+        default:
+            let controller = QAViewController(viewModel: viewModel, index: index, answerType: questionPair.type)
+            controller.delegate = self
+            return controller
         }
     }
 }
 
 // MARK: Delegates
 extension InterviewCoordinator: OverviewDelegate {
-    func didSelect(_ viewController: OverviewViewController, itemIndex: IndexPath) {
+    func didSelect(_ viewController: OverviewViewController, index: Index) {
         // TODO: fix flow
+        self.currentIndex = index
         initInterviewNavigation()
+        
     }
 }
 
 extension InterviewCoordinator: SectionDelegate {
-    func didSelectRow(_ viewController: SectionOverviewViewController, row: IndexPath) {
+    func didSelectRow(_ viewController: SectionOverviewViewController, index: Index) {
         // TODO: present selected QA
+        self.currentIndex = index
         sectionNextStep()
     }
 }
 
 extension InterviewCoordinator: QAViewControllerDelegate {
-    func didFinishAnswer(_ viewController: QAViewController, index: Index, answer: String?) {
-        viewModel.updateAnswer(answer, index: index)
+    func didFinishAnswer(_ viewController: QAViewController, viewModel: InterviewViewModel, index: Index) {
+        self.currentIndex = viewModel.nextIndex(currentIndex: index)
+        self.viewModel = viewModel
         sectionNextStep()
     }
 }
 
 extension InterviewCoordinator: QALongViewControllerDelegate {
-    func didFinishAnswer(_ viewController: QALongViewController, index: Index, answer: String?) {
-        viewModel.updateAnswer(answer, index: index)
+    func didFinishAnswer(_ viewController: QALongViewController, viewModel: InterviewViewModel, index: Index) {
+        self.currentIndex = viewModel.nextIndex(currentIndex: index)
+        self.viewModel = viewModel
         sectionNextStep()
     }
 }
