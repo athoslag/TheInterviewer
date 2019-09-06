@@ -16,6 +16,7 @@ final class QAViewController: UIViewController {
     @IBOutlet private weak var progressionIndicationLabel: UILabel!
     @IBOutlet private weak var questionLabel: UILabel!
     @IBOutlet private weak var textField: UITextField!
+    private var tabAccessoryView: UIToolbar?
     
     private let answerType: AnswerType
     private let questionIndex: Index
@@ -38,6 +39,8 @@ final class QAViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         
+        textField.delegate = self
+        
         if let pair = viewModel.questionPair(for: questionIndex) {
             questionLabel.text = pair.question
             textField.text = pair.answer
@@ -46,6 +49,11 @@ final class QAViewController: UIViewController {
         // Part & Section indicator
         let titles = viewModel.titles(for: questionIndex)
         progressionIndicationLabel.text = "\(titles.part): \(titles.section)"
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        textField.becomeFirstResponder()
     }
     
     private func configureUI() {
@@ -65,6 +73,7 @@ final class QAViewController: UIViewController {
         textField.layer.cornerRadius = 6.0
     }
     
+    @objc
     private func finishAnswer() {
         viewModel.updateAnswer(textField.text, for: questionIndex)
         delegate?.didFinishAnswer(self, viewModel: viewModel, index: questionIndex)
@@ -77,5 +86,21 @@ final class QAViewController: UIViewController {
     @IBAction func textFieldDidEnd(_ sender: UITextField) {
         textField.resignFirstResponder()
         finishAnswer()
+    }
+}
+
+extension QAViewController: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if tabAccessoryView == nil {
+            tabAccessoryView = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
+            
+            let barSpacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let barNext = UIBarButtonItem(title: "Próximo", style: .plain, target: self, action: #selector(finishAnswer))
+            barNext.tintColor = .black
+            
+            tabAccessoryView?.items = [barSpacer, barNext]
+            textField.inputAccessoryView = tabAccessoryView
+        }
+        return true
     }
 }

@@ -17,6 +17,7 @@ final class QALongViewController: UIViewController {
     @IBOutlet private weak var progressionIndicationLabel: UILabel!
     @IBOutlet private weak var questionLabel: UILabel!
     @IBOutlet private weak var textView: UITextView!
+    private var tabAccessoryView: UIToolbar?
     
     private let questionIndex: Index
     private let viewModel: InterviewViewModel
@@ -49,6 +50,11 @@ final class QALongViewController: UIViewController {
         progressionIndicationLabel.text = "\(titles.part): \(titles.section)"
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        textView.becomeFirstResponder()
+    }
+    
     private func configureUI() {
         hideKeyboardWhenTappedAround()
         // Progression
@@ -73,21 +79,22 @@ final class QALongViewController: UIViewController {
     }
     
     @IBAction private func didTapNext(_ sender: UIButton) {
-        viewModel.updateAnswer(textView.text, for: questionIndex)
-        delegate?.didFinishAnswer(self, viewModel: viewModel, index: questionIndex)
+        nextTapped()
     }
 }
 
 extension QALongViewController: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        // FIXME: Add keyboard toolbar properly (not working)
-        
-        let bar = UIToolbar()
-        let reset = UIBarButtonItem(title: "Próximo", style: .plain, target: self, action: #selector(nextTapped))
-        
-        bar.items = [reset]
-        bar.sizeToFit()
-        
-        textView.inputAccessoryView = bar
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        if tabAccessoryView == nil {
+            tabAccessoryView = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
+            
+            let barSpacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let barNext = UIBarButtonItem(title: "Próximo", style: .plain, target: self, action: #selector(nextTapped))
+            barNext.tintColor = .black
+            
+            tabAccessoryView?.items = [barSpacer, barNext]
+            textView.inputAccessoryView = tabAccessoryView
+        }
+        return true
     }
 }
