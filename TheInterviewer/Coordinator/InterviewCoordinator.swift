@@ -134,7 +134,6 @@ extension InterviewCoordinator: OverviewDelegate {
         // TODO: fix flow
         self.currentIndex = index
         initInterviewNavigation()
-        
     }
 }
 

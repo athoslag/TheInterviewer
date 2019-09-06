@@ -16,6 +16,7 @@ final class OverviewViewController: UIViewController {
 
     @IBOutlet private weak var informationLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var actionButton: UIButton!
     
     private let viewModel: InterviewViewModel
     weak var delegate: OverviewDelegate?
@@ -52,6 +53,17 @@ final class OverviewViewController: UIViewController {
         let nibView = UIView()
         nibView.backgroundColor = .white
         tableView.tableFooterView = nibView
+        
+        // Begin Button
+        actionButton.layer.cornerRadius = actionButton.layer.bounds.height / 2
+        actionButton.backgroundColor = AppConfiguration.mainColor
+        actionButton.setTitleColor(.white, for: .normal)
+        actionButton.titleLabel?.font = UIFont(SFPro: .display, variant: .medium, size: 22)
+        // TODO: Apropriate action button title
+    }
+    
+    @IBAction func didTapActionButton(_ sender: UIButton) {
+        delegate?.didSelect(self, index: Index(part: 0, section: 0, row: 0))
     }
 }
 
@@ -82,7 +94,6 @@ extension OverviewViewController: UITableViewDataSource {
 
 extension OverviewViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // FIXME: change IndexPath to (Part, Section, Row) format
-        delegate?.didSelect(self, index: Index(part: 1, section: 0, row: 0))
+        delegate?.didSelect(self, index: Index(part: indexPath.section, section: indexPath.row, row: 0))
     }
 }

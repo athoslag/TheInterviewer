@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OverviewViewController" customModule="TheInterviewer" customModuleProvider="target">
             <connections>
+                <outlet property="actionButton" destination="9X9-4s-wdG" id="Pij-PF-Qnu"/>
                 <outlet property="informationLabel" destination="UAz-qW-Ldj" id="ibE-5T-tms"/>
                 <outlet property="tableView" destination="3D9-gX-U6S" id="ckE-v1-4xP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -29,19 +30,29 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3D9-gX-U6S">
-                    <rect key="frame" x="20" y="184.5" width="794" height="969.5"/>
+                    <rect key="frame" x="20" y="184.5" width="794" height="859.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9X9-4s-wdG">
+                    <rect key="frame" x="20" y="1094" width="794" height="30"/>
+                    <state key="normal" title="Iniciar"/>
+                    <connections>
+                        <action selector="didTapActionButton:" destination="-1" eventType="touchUpInside" id="vKX-Eb-WHG"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="9X9-4s-wdG" firstAttribute="trailing" secondItem="3D9-gX-U6S" secondAttribute="trailing" id="4Mu-Cw-Rxi"/>
                 <constraint firstItem="UAz-qW-Ldj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="QA0-FM-gMg"/>
+                <constraint firstItem="9X9-4s-wdG" firstAttribute="top" secondItem="3D9-gX-U6S" secondAttribute="bottom" constant="50" id="WqA-mw-fIi"/>
                 <constraint firstItem="UAz-qW-Ldj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="bed-GQ-QTZ"/>
                 <constraint firstItem="3D9-gX-U6S" firstAttribute="top" secondItem="UAz-qW-Ldj" secondAttribute="bottom" constant="40" id="lK4-a7-q5x"/>
+                <constraint firstItem="9X9-4s-wdG" firstAttribute="leading" secondItem="3D9-gX-U6S" secondAttribute="leading" id="u3A-ip-FUG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3D9-gX-U6S" secondAttribute="trailing" constant="20" id="uN2-fg-N9N"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UAz-qW-Ldj" secondAttribute="trailing" constant="20" id="uyd-B9-xus"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="3D9-gX-U6S" secondAttribute="bottom" constant="20" id="vfE-xR-uL8"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="9X9-4s-wdG" secondAttribute="bottom" constant="50" id="vX0-m1-smI"/>
                 <constraint firstItem="3D9-gX-U6S" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ycP-eR-fDu"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
