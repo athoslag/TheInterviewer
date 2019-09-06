@@ -127,6 +127,10 @@ extension InterviewViewModel {
             }
         }
     }
+    
+    func describeInterview() {
+        interview.description()
+    }
 }
 
 // MARK: Setters

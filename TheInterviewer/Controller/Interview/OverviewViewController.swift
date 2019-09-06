@@ -39,6 +39,11 @@ final class OverviewViewController: UIViewController {
         informationLabel.text = viewModel.title
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.describeInterview()
+    }
+    
     private func configureUI() {
         // Information
         informationLabel.font = UIFont(SFPro: .text, variant: .medium, size: 26)
