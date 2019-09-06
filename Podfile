@@ -6,6 +6,7 @@ target 'TheInterviewer' do
   use_frameworks!
 
   # Pods for TheInterviewer
+  pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod 'Reusable'
   pod 'RealmSwift'
 

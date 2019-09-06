@@ -9,7 +9,7 @@
 import UIKit
 
 protocol OverviewDelegate: class {
-    func didSelect(_ viewController: OverviewViewController, itemIndex: IndexPath)
+    func didSelect(_ viewController: OverviewViewController, index: Index)
 }
 
 final class OverviewViewController: UIViewController {
@@ -83,6 +83,6 @@ extension OverviewViewController: UITableViewDataSource {
 extension OverviewViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // FIXME: change IndexPath to (Part, Section, Row) format
-        delegate?.didSelect(self, itemIndex: indexPath)
+        delegate?.didSelect(self, index: Index(part: 1, section: 0, row: 0))
     }
 }

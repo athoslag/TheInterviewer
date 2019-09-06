@@ -124,15 +124,18 @@ extension InterviewCoordinator {
 
 // MARK: Delegates
 extension InterviewCoordinator: OverviewDelegate {
-    func didSelect(_ viewController: OverviewViewController, itemIndex: IndexPath) {
+    func didSelect(_ viewController: OverviewViewController, index: Index) {
         // TODO: fix flow
+        self.currentIndex = index
         initInterviewNavigation()
+        
     }
 }
 
 extension InterviewCoordinator: SectionDelegate {
-    func didSelectRow(_ viewController: SectionOverviewViewController, row: IndexPath) {
+    func didSelectRow(_ viewController: SectionOverviewViewController, index: Index) {
         // TODO: present selected QA
+        self.currentIndex = index
         sectionNextStep()
     }
 }
