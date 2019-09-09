@@ -17,6 +17,7 @@ final class Interview: Codable {
     
     let title: String
     var parts: [Part]
+    let date: Date = Date()
     
     init(title: String, parts: [Part] = []) {
         self.title = title
