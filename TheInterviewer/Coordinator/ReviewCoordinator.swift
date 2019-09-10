@@ -24,6 +24,7 @@ final class ReviewCoordinator: Coordinator<Void> {
         navigationController = UINavigationController(rootViewController: makeReviewMenu())
         navigationController.navigationBar.tintColor = .black
         navigationController.modalPresentationStyle = .fullScreen
+        navigationController.navigationBar.prefersLargeTitles = true
         
         context.present(navigationController, animated: true)
     }
@@ -40,6 +41,16 @@ extension ReviewCoordinator {
 extension ReviewCoordinator: ReviewDelegate {
     func didSelectRow(_ viewController: ReviewMenuViewController, viewModel: ReviewViewModel, row: Int) {
         self.viewModel = viewModel
-        // TODO: coordinate to interview
+        
+        let interview = viewModel.interview(row)
+        let interviewViewModel = InterviewViewModel(interview: interview)
+        let coordinator = InterviewCoordinator(context: navigationController.viewControllers.first!, interviewVM: interviewViewModel, mode: .review)
+        coordinate(to: coordinator)
+    }
+    
+    func shouldDismissFlow(_ viewController: ReviewMenuViewController) {
+        navigationController.dismiss(animated: true) {
+            self.parentCoordinator?.release(self)
+        }
     }
 }

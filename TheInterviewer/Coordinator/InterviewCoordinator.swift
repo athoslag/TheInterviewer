@@ -144,6 +144,12 @@ extension InterviewCoordinator: OverviewDelegate {
         self.currentIndex = index
         initInterviewNavigation()
     }
+    
+    func shouldDismiss(_ viewController: OverviewViewController) {
+        navigationController.dismiss(animated: true) {
+            self.parentCoordinator?.release(self)
+        }
+    }
 }
 
 extension InterviewCoordinator: SectionDelegate {

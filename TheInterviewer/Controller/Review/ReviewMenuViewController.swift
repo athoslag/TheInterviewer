@@ -10,6 +10,7 @@ import UIKit
 
 protocol ReviewDelegate: class {
     func didSelectRow(_ viewController: ReviewMenuViewController, viewModel: ReviewViewModel, row: Int)
+    func shouldDismissFlow(_ viewController: ReviewMenuViewController)
 }
 
 final class ReviewMenuViewController: UIViewController {
@@ -53,6 +54,23 @@ final class ReviewMenuViewController: UIViewController {
         // empty state
         emptyStateLabel.text = "Nenhuma entrevista encontrada!"
         emptyStateLabel.font = UIFont(SFPro: .display, variant: .regular, size: 22)
+        
+        // dismiss
+        addBackButton()
+    }
+    
+    private func addBackButton() {
+        let backButton = UIButton(type: .custom)
+        backButton.setTitle("Voltar", for: .normal)
+        backButton.setTitleColor(.black, for: .normal)
+        backButton.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+    }
+    
+    @objc
+    private func backTapped() {
+        delegate?.shouldDismissFlow(self)
     }
 }
 

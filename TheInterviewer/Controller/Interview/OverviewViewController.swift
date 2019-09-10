@@ -11,6 +11,7 @@ import SkyFloatingLabelTextField
 
 protocol OverviewDelegate: class {
     func didSelect(_ viewController: OverviewViewController, index: Index)
+    func shouldDismiss(_ viewController: OverviewViewController)
 }
 
 final class OverviewViewController: UIViewController {
@@ -61,6 +62,22 @@ final class OverviewViewController: UIViewController {
         actionButton.setTitleColor(.white, for: .normal)
         actionButton.titleLabel?.font = UIFont(SFPro: .display, variant: .medium, size: 22)
         // TODO: Apropriate action button title
+        
+        addBackButton()
+    }
+    
+    private func addBackButton() {
+        let backButton = UIButton(type: .custom)
+        backButton.setTitle("Voltar", for: .normal)
+        backButton.setTitleColor(.black, for: .normal)
+        backButton.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+    }
+    
+    @objc
+    private func backTapped() {
+        delegate?.shouldDismiss(self)
     }
     
     @IBAction func didTapActionButton(_ sender: UIButton) {

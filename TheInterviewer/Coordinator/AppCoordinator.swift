@@ -52,12 +52,14 @@ extension AppCoordinator: MainScreenDelegate {
     func didTapNew(_ mainScreen: MainScreenViewController) {        
         let viewModel = InterviewViewModel(interview: Interview())
         let interviewFlow = InterviewCoordinator(context: rootViewController, interviewVM: viewModel, mode: .edition)
+        interviewFlow.parentCoordinator = self
         coordinate(to: interviewFlow)
     }
     
     func didTapReview(_ mainScreen: MainScreenViewController) {
         let reviewViewModel = ReviewViewModel()
         let reviewFlow = ReviewCoordinator(context: rootViewController, viewModel: reviewViewModel)
+        reviewFlow.parentCoordinator = self
         coordinate(to: reviewFlow)
     }
 }
