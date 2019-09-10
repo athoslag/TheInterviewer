@@ -9,11 +9,19 @@
 import Foundation
 import UIKit
 
+enum Mode {
+    case edition
+    case review
+}
+
 final class InterviewCoordinator: Coordinator<Void> {
     
     private let context: UIViewController
     private var navigationController: UINavigationController!
     private var viewModel: InterviewViewModel
+    
+    // Allows coordinator reuse
+    private let mode: Mode
     
     private var currentIndex: Index? = Index(part: 0, section: 0, row: 0)
     
@@ -22,9 +30,10 @@ final class InterviewCoordinator: Coordinator<Void> {
     private var partProgress: [Section] = []
     private var sectionProgress: [QuestionPair] = []
     
-    init(context: UIViewController, interviewVM: InterviewViewModel) {
+    init(context: UIViewController, interviewVM: InterviewViewModel, mode: Mode) {
         self.context = context
         self.viewModel = interviewVM
+        self.mode = mode
     }
     
     override func start() -> Void {

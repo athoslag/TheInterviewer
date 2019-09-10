@@ -13,8 +13,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OverviewViewController" customModule="TheInterviewer" customModuleProvider="target">
             <connections>
                 <outlet property="actionButton" destination="9X9-4s-wdG" id="Pij-PF-Qnu"/>
-                <outlet property="informationLabel" destination="UAz-qW-Ldj" id="ibE-5T-tms"/>
                 <outlet property="tableView" destination="3D9-gX-U6S" id="ckE-v1-4xP"/>
+                <outlet property="titleTextField" destination="JgR-du-Qal" id="wzC-dg-uAP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,14 +23,14 @@
             <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAz-qW-Ldj">
-                    <rect key="frame" x="20" y="124" width="42" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JgR-du-Qal" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                    <rect key="frame" x="20" y="124" width="614" height="39"/>
                     <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3D9-gX-U6S">
-                    <rect key="frame" x="20" y="184.5" width="794" height="859.5"/>
+                    <rect key="frame" x="20" y="203" width="794" height="841"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
@@ -45,14 +45,14 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="9X9-4s-wdG" firstAttribute="trailing" secondItem="3D9-gX-U6S" secondAttribute="trailing" id="4Mu-Cw-Rxi"/>
-                <constraint firstItem="UAz-qW-Ldj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="QA0-FM-gMg"/>
+                <constraint firstItem="3D9-gX-U6S" firstAttribute="top" secondItem="JgR-du-Qal" secondAttribute="bottom" constant="40" id="Pws-VY-beM"/>
+                <constraint firstItem="JgR-du-Qal" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="VWR-qm-dnm"/>
                 <constraint firstItem="9X9-4s-wdG" firstAttribute="top" secondItem="3D9-gX-U6S" secondAttribute="bottom" constant="50" id="WqA-mw-fIi"/>
-                <constraint firstItem="UAz-qW-Ldj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="bed-GQ-QTZ"/>
-                <constraint firstItem="3D9-gX-U6S" firstAttribute="top" secondItem="UAz-qW-Ldj" secondAttribute="bottom" constant="40" id="lK4-a7-q5x"/>
+                <constraint firstItem="JgR-du-Qal" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="ZbD-ek-oIj"/>
                 <constraint firstItem="9X9-4s-wdG" firstAttribute="leading" secondItem="3D9-gX-U6S" secondAttribute="leading" id="u3A-ip-FUG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3D9-gX-U6S" secondAttribute="trailing" constant="20" id="uN2-fg-N9N"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UAz-qW-Ldj" secondAttribute="trailing" constant="20" id="uyd-B9-xus"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="9X9-4s-wdG" secondAttribute="bottom" constant="50" id="vX0-m1-smI"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="JgR-du-Qal" secondAttribute="trailing" constant="200" id="x5I-TI-v6V"/>
                 <constraint firstItem="3D9-gX-U6S" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ycP-eR-fDu"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

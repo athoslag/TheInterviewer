@@ -15,7 +15,7 @@ final class Interview: Codable {
         case parts
     }
     
-    let title: String
+    var title: String
     var parts: [Part]
     let date: Date = Date()
     

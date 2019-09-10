@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="calloutLabel" destination="Emv-Fu-8nz" id="q1c-xj-C9O"/>
                 <outlet property="newInterviewButton" destination="6Ev-ls-C04" id="u1K-Uz-j1R"/>
+                <outlet property="reviewInterviewButton" destination="k2l-Dd-eks" id="w4M-1Z-iQ9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -39,11 +40,25 @@
                         <action selector="didTapNew:" destination="-1" eventType="touchUpInside" id="R6Y-hc-hIb"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2l-Dd-eks">
+                    <rect key="frame" x="175" y="654" width="484" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="x6f-Dn-2wD"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="Revisar entrevistas anteriores"/>
+                    <connections>
+                        <action selector="didTapReview:" destination="-1" eventType="touchUpInside" id="QVj-m7-YyN"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="k2l-Dd-eks" firstAttribute="trailing" secondItem="6Ev-ls-C04" secondAttribute="trailing" id="2eu-Ha-Hb7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Emv-Fu-8nz" secondAttribute="trailing" constant="20" id="3Of-8n-d3g"/>
                 <constraint firstItem="Emv-Fu-8nz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="8f0-Zl-h1e"/>
+                <constraint firstItem="k2l-Dd-eks" firstAttribute="leading" secondItem="6Ev-ls-C04" secondAttribute="leading" id="Xzb-Cp-WWQ"/>
+                <constraint firstItem="k2l-Dd-eks" firstAttribute="top" secondItem="6Ev-ls-C04" secondAttribute="bottom" constant="30" id="j7E-AT-rph"/>
                 <constraint firstItem="6Ev-ls-C04" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="rGw-eI-aCm"/>
                 <constraint firstItem="6Ev-ls-C04" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="sLw-qf-rIA"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6Ev-ls-C04" secondAttribute="trailing" constant="175" id="w6h-cW-vBQ"/>

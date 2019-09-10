@@ -51,7 +51,13 @@ extension AppCoordinator {
 extension AppCoordinator: MainScreenDelegate {
     func didTapNew(_ mainScreen: MainScreenViewController) {        
         let viewModel = InterviewViewModel(interview: Interview())
-        let interviewFlow = InterviewCoordinator(context: rootViewController, interviewVM: viewModel)
+        let interviewFlow = InterviewCoordinator(context: rootViewController, interviewVM: viewModel, mode: .edition)
         coordinate(to: interviewFlow)
+    }
+    
+    func didTapReview(_ mainScreen: MainScreenViewController) {
+        let reviewViewModel = ReviewViewModel()
+        let reviewFlow = ReviewCoordinator(context: rootViewController, viewModel: reviewViewModel)
+        coordinate(to: reviewFlow)
     }
 }

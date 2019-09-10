@@ -10,12 +10,14 @@ import UIKit
 
 protocol MainScreenDelegate: class {
     func didTapNew(_ mainScreen: MainScreenViewController)
+    func didTapReview(_ mainScreen: MainScreenViewController)
 }
 
 final class MainScreenViewController: UIViewController {
     
     @IBOutlet private weak var calloutLabel: UILabel!
     @IBOutlet private weak var newInterviewButton: UIButton!
+    @IBOutlet private weak var reviewInterviewButton: UIButton!
     
     weak var delegate: MainScreenDelegate?
     
@@ -43,6 +45,12 @@ final class MainScreenViewController: UIViewController {
         newInterviewButton.layer.cornerRadius = newInterviewButton.bounds.height / 2
         newInterviewButton.layer.borderWidth = 1.5
         newInterviewButton.layer.borderColor = AppConfiguration.mainColor.cgColor
+        
+        reviewInterviewButton.titleLabel?.font = UIFont(SFPro: .text, variant: .medium, size: 18)
+        reviewInterviewButton.setTitleColor(AppConfiguration.mainColor, for: .normal)
+        reviewInterviewButton.layer.cornerRadius = reviewInterviewButton.bounds.height / 2
+        reviewInterviewButton.layer.borderWidth = 1.5
+        reviewInterviewButton.layer.borderColor = AppConfiguration.mainColor.cgColor
     }
 }
 
@@ -50,5 +58,9 @@ final class MainScreenViewController: UIViewController {
 extension MainScreenViewController {
     @IBAction private func didTapNew(_ sender: UIButton) {
         delegate?.didTapNew(self)
+    }
+    
+    @IBAction private func didTapReview(_ sender: UIButton) {
+        delegate?.didTapReview(self)
     }
 }

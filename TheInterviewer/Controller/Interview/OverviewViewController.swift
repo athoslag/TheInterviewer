@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SkyFloatingLabelTextField
 
 protocol OverviewDelegate: class {
     func didSelect(_ viewController: OverviewViewController, index: Index)
@@ -14,7 +15,7 @@ protocol OverviewDelegate: class {
 
 final class OverviewViewController: UIViewController {
 
-    @IBOutlet private weak var informationLabel: UILabel!
+    @IBOutlet private weak var titleTextField: SkyFloatingLabelTextField!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var actionButton: UIButton!
     
@@ -34,10 +35,11 @@ final class OverviewViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         
-        tableView.dataSource = self
-        tableView.delegate = self
+        titleTextField.delegate = self
+        titleTextField.text = viewModel.title
         
-        informationLabel.text = viewModel.title
+        tableView.dataSource = self
+        tableView.delegate = self        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -47,7 +49,8 @@ final class OverviewViewController: UIViewController {
     
     private func configureUI() {
         // Information
-        informationLabel.font = UIFont(SFPro: .text, variant: .medium, size: 26)
+        titleTextField.font = UIFont(SFPro: .text, variant: .medium, size: 26)
+        titleTextField.selectedLineColor = AppConfiguration.mainColor
         
         // Tableview
         let nibView = UIView()
@@ -95,5 +98,18 @@ extension OverviewViewController: UITableViewDataSource {
 extension OverviewViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.didSelect(self, index: Index(part: indexPath.section, section: indexPath.row, row: 0))
+    }
+}
+
+extension OverviewViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+        
+        guard let newTitle = textField.text, !newTitle.isEmpty else {
+            textField.text = viewModel.title
+            return
+        }
+        
+        viewModel.updateTitle(newTitle)
     }
 }
