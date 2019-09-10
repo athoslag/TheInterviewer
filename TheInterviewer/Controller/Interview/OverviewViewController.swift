@@ -39,7 +39,7 @@ final class OverviewViewController: UIViewController {
         titleTextField.text = viewModel.title
         
         tableView.dataSource = self
-        tableView.delegate = self        
+        tableView.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,9 +53,7 @@ final class OverviewViewController: UIViewController {
         titleTextField.selectedLineColor = AppConfiguration.mainColor
         
         // Tableview
-        let nibView = UIView()
-        nibView.backgroundColor = .white
-        tableView.tableFooterView = nibView
+        tableView.tableFooterView = UIView()
         
         // Begin Button
         actionButton.layer.cornerRadius = actionButton.layer.bounds.height / 2
@@ -102,13 +100,16 @@ extension OverviewViewController: UITableViewDelegate {
 }
 
 extension OverviewViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.resignFirstResponder()
+    @IBAction func textFieldDidEnd(_ sender: SkyFloatingLabelTextField) {
+        titleTextField.resignFirstResponder()
         
-        guard let newTitle = textField.text, !newTitle.isEmpty else {
-            textField.text = viewModel.title
+        guard let newTitle = titleTextField.text, !newTitle.isEmpty else {
+            titleTextField.text = viewModel.title
             return
         }
+        
+        let save = viewModel.saveInterview()
+        print("Tried to save the interview: \(save ? "worked" : "failed")")
         
         viewModel.updateTitle(newTitle)
     }

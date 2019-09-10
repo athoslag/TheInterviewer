@@ -145,3 +145,16 @@ extension InterviewViewModel {
         interview.parts[index.part].sections[index.section].questionPairs[index.row].answer = newAnswer
     }
 }
+
+// MARK: Data
+extension InterviewViewModel {
+    func saveInterview() -> Bool {
+        do {
+            try InterviewService.saveInterview(interview)
+        } catch {
+            return false
+        }
+        
+        return true
+    }
+}

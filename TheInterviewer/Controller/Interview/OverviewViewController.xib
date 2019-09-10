@@ -28,6 +28,9 @@
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="textFieldDidEnd:" destination="-1" eventType="editingDidEndOnExit" id="di6-nu-GEm"/>
+                    </connections>
                 </textField>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3D9-gX-U6S">
                     <rect key="frame" x="20" y="203" width="794" height="841"/>

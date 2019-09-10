@@ -66,7 +66,8 @@ extension ReviewMenuViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let interview = viewModel.interviewInfos(for: indexPath.row)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "review", for: indexPath)
+        
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "review")
         cell.textLabel?.text = interview.title
         cell.detailTextLabel?.text = interview.date
         return cell
