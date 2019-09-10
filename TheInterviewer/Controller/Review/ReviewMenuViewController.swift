@@ -17,6 +17,9 @@ final class ReviewMenuViewController: UIViewController {
     @IBOutlet private weak var calloutLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
     
+    @IBOutlet private weak var emptyStateStackView: UIStackView!
+    @IBOutlet private weak var emptyStateLabel: UILabel!
+    
     private let viewModel: ReviewViewModel
     
     
@@ -43,11 +46,21 @@ final class ReviewMenuViewController: UIViewController {
         // callout label
         calloutLabel.font = UIFont(SFPro: .display, variant: .medium, size: 24)
         calloutLabel.text = "Revise aqui as suas entrevistas passadas"
+        
+        // table view
+        tableView.tableFooterView = UIView()
+        
+        // empty state
+        emptyStateLabel.text = "Nenhuma entrevista encontrada!"
+        emptyStateLabel.font = UIFont(SFPro: .display, variant: .regular, size: 22)
     }
 }
 
 extension ReviewMenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        self.emptyStateStackView.isHidden = viewModel.interviewCount != 0
+        self.tableView.isHidden = viewModel.interviewCount == 0
+        
         return viewModel.interviewCount
     }
     
