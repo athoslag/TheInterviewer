@@ -49,6 +49,9 @@ final class OverviewViewController: UIViewController {
     }
     
     private func configureUI() {
+        // Navigation
+        navigationController?.navigationBar.setupNavigationBar()
+        
         // Information
         titleTextField.font = UIFont(SFPro: .text, variant: .medium, size: 26)
         titleTextField.selectedLineColor = AppConfiguration.mainColor

@@ -25,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Kd-Yq-gXf">
-                    <rect key="frame" x="20" y="177" width="42" height="20.5"/>
+                    <rect key="frame" x="20" y="157" width="42" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -40,7 +40,7 @@
                     </connections>
                 </button>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Grr-cr-0kw" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                    <rect key="frame" x="20" y="247.5" width="728" height="39"/>
+                    <rect key="frame" x="20" y="227.5" width="728" height="39"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
@@ -57,13 +57,13 @@
                     </connections>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7D-oc-kvA">
-                    <rect key="frame" x="20" y="70" width="42" height="21"/>
+                    <rect key="frame" x="20" y="50" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6u5-hR-NHH">
-                    <rect key="frame" x="20" y="106" width="42" height="21"/>
+                    <rect key="frame" x="20" y="86" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -76,7 +76,7 @@
                 <constraint firstItem="6u5-hR-NHH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="2GV-vw-91A"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="l3P-pN-lpZ" secondAttribute="trailing" constant="20" id="4sN-th-KEg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6u5-hR-NHH" secondAttribute="trailing" constant="20" id="8F9-E0-5yv"/>
-                <constraint firstItem="z7D-oc-kvA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="A4v-0e-eC3"/>
+                <constraint firstItem="z7D-oc-kvA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="A4v-0e-eC3"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1Kd-Yq-gXf" secondAttribute="trailing" constant="20" id="aOT-q2-caP"/>
                 <constraint firstItem="1Kd-Yq-gXf" firstAttribute="top" secondItem="6u5-hR-NHH" secondAttribute="bottom" constant="50" id="bsL-Be-ENX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Grr-cr-0kw" secondAttribute="trailing" constant="20" id="c4O-np-vPh"/>

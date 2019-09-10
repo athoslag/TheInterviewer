@@ -26,17 +26,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y1E-zk-qxH">
-                    <rect key="frame" x="20" y="213" width="728" height="661"/>
+                    <rect key="frame" x="20" y="193" width="728" height="681"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FxC-Cc-wM6">
-                    <rect key="frame" x="20" y="70" width="42" height="21"/>
+                    <rect key="frame" x="20" y="50" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O que será coberto nesta seção:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwa-CR-dfS">
-                    <rect key="frame" x="20" y="177" width="249" height="21"/>
+                    <rect key="frame" x="20" y="157" width="249" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -54,7 +54,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMZ-Sb-V0q">
-                    <rect key="frame" x="20" y="106" width="42" height="21"/>
+                    <rect key="frame" x="20" y="86" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -62,7 +62,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="FxC-Cc-wM6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="7i2-H8-gIf"/>
+                <constraint firstItem="FxC-Cc-wM6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="7i2-H8-gIf"/>
                 <constraint firstItem="y1E-zk-qxH" firstAttribute="top" secondItem="Kwa-CR-dfS" secondAttribute="bottom" constant="15" id="8Lq-XI-4wB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FxC-Cc-wM6" secondAttribute="trailing" constant="20" id="8Pj-zz-yhr"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Kwa-CR-dfS" secondAttribute="trailing" constant="20" id="9E6-gN-xuW"/>
