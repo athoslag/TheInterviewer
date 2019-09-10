@@ -90,6 +90,25 @@ extension ReviewMenuViewController: UITableViewDataSource {
         cell.detailTextLabel?.text = interview.date
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let alert = UIAlertController(title: "Deletar entrevista?", message: "Esta ação é irreversível.", preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+            let confirmation = UIAlertAction(title: "Deletar", style: .destructive) { _ in
+                self.viewModel.deleteInterview(at: indexPath.row)
+                tableView.reloadData()
+            }
+            
+            alert.addAction(cancel)
+            alert.addAction(confirmation)
+            present(alert, animated: true)
+        }
+    }
 }
 
 extension ReviewMenuViewController: UITableViewDelegate {

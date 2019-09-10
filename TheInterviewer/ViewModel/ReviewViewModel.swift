@@ -40,6 +40,7 @@ final class ReviewViewModel {
     ///
     /// - Parameter index: The specified index to be deleted
     /// - Returns: An indication wheter the deletion was successful
+    @discardableResult
     func deleteInterview(at index: Int) -> Bool {
         let interview = interviews.remove(at: index)
         
