@@ -10,6 +10,13 @@ import Foundation
 
 final class InterviewViewModel {
     
+    enum IndexPair {
+        case questionPair(Index)
+        case section(Index, Section)
+        case part(Index, Part)
+        case done
+    }
+    
     private var interview: Interview
     
     var questionPairs: [QuestionPair] {
@@ -34,7 +41,6 @@ final class InterviewViewModel {
     
     lazy var currentIndex: Index = Index(part: 0, section: 0, row: 0)
     
-    // Methods
     init(interview: Interview) {
         self.interview = interview
     }
@@ -47,7 +53,10 @@ final class InterviewViewModel {
             return nil
         }
     }
-    
+}
+
+// MARK: Base methods
+extension InterviewViewModel {
     private func validateIndex(_ index: Index) -> Bool {
         return interview.parts.count > index.part &&
             interview.parts[index.part].sections.count > index.section &&
@@ -59,6 +68,22 @@ final class InterviewViewModel {
             return try interview.encode()
         } catch {
             return nil
+        }
+    }
+    
+    func nextIndex(currentIndex current: Index) -> IndexPair {
+        let nextQuestion = current.advancing(.row)
+        let nextSection = current.advancing(.section)
+        let nextPart = current.advancing(.part)
+        
+        if validateIndex(nextQuestion) {
+            return .questionPair(nextQuestion)
+        } else if validateIndex(nextSection) {
+            return .section(nextSection, sections[nextSection.section])
+        } else if validateIndex(nextPart) {
+            return .part(nextPart, parts[nextPart.part])
+        } else {
+            return .done
         }
     }
 }
@@ -109,7 +134,7 @@ extension InterviewViewModel {
         return interview.parts[index.part].sections[index.section].questionPairs[index.row]
     }
     
-    func nextIndex(currentIndex: Index) -> Index? {
+    func nextIndexOLD(currentIndex: Index) -> Index? {
         let newRow = currentIndex.advancing(.row)
         if validateIndex(newRow) {
             return newRow
