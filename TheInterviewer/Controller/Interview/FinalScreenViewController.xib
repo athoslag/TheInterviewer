@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FinalScreenViewController" customModule="TheInterviewer" customModuleProvider="target">
+            <connections>
+                <outlet property="exitButton" destination="NOk-Ei-tLc" id="ehy-R0-mdv"/>
+                <outlet property="saveButton" destination="SDZ-UK-u2g" id="eIV-0w-Gr3"/>
+                <outlet property="shareButton" destination="9BX-cB-Tef" id="hsv-Qp-qcf"/>
+                <outlet property="tableView" destination="rZM-iZ-Kgb" id="Yge-H0-GlM"/>
+                <outlet property="titleLabel" destination="E6c-Ne-rhT" id="z1K-hk-t9D"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6c-Ne-rhT">
+                    <rect key="frame" x="20" y="50" width="728" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rZM-iZ-Kgb">
+                    <rect key="frame" x="20" y="121" width="728" height="693"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9BX-cB-Tef">
+                    <rect key="frame" x="20" y="864" width="728" height="30"/>
+                    <state key="normal" title="Compartilhar"/>
+                    <connections>
+                        <action selector="didTapShare:" destination="-1" eventType="touchUpInside" id="F6G-am-RLG"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDZ-UK-u2g">
+                    <rect key="frame" x="394" y="944" width="354" height="30"/>
+                    <state key="normal" title="Salvar e sair"/>
+                    <connections>
+                        <action selector="didTapSave:" destination="-1" eventType="touchUpInside" id="qyD-gN-fxv"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOk-Ei-tLc">
+                    <rect key="frame" x="20" y="944" width="354" height="30"/>
+                    <state key="normal" title="Descartar e sair"/>
+                    <connections>
+                        <action selector="didTapExit:" destination="-1" eventType="touchUpInside" id="NeG-m6-IUI"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="9BX-cB-Tef" firstAttribute="trailing" secondItem="SDZ-UK-u2g" secondAttribute="trailing" id="5E1-D2-mEo"/>
+                <constraint firstItem="9BX-cB-Tef" firstAttribute="top" secondItem="rZM-iZ-Kgb" secondAttribute="bottom" constant="50" id="5Xa-KB-6Ys"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="E6c-Ne-rhT" secondAttribute="trailing" constant="20" id="6zu-Ns-jWL"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SDZ-UK-u2g" secondAttribute="trailing" constant="20" id="AwT-B6-cv8"/>
+                <constraint firstItem="E6c-Ne-rhT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="D8t-in-NrF"/>
+                <constraint firstItem="SDZ-UK-u2g" firstAttribute="top" secondItem="9BX-cB-Tef" secondAttribute="bottom" constant="50" id="FMb-pT-C99"/>
+                <constraint firstItem="rZM-iZ-Kgb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="LF7-Yq-GcM"/>
+                <constraint firstItem="SDZ-UK-u2g" firstAttribute="leading" secondItem="NOk-Ei-tLc" secondAttribute="trailing" constant="20" id="MWo-kD-wLa"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="NOk-Ei-tLc" secondAttribute="bottom" constant="50" id="UNW-wv-99D"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="SDZ-UK-u2g" secondAttribute="bottom" constant="50" id="YqD-hx-6kY"/>
+                <constraint firstItem="rZM-iZ-Kgb" firstAttribute="top" secondItem="E6c-Ne-rhT" secondAttribute="bottom" constant="50" id="aTN-0t-H7r"/>
+                <constraint firstItem="9BX-cB-Tef" firstAttribute="leading" secondItem="NOk-Ei-tLc" secondAttribute="leading" id="b5b-9f-lA4"/>
+                <constraint firstItem="NOk-Ei-tLc" firstAttribute="width" secondItem="SDZ-UK-u2g" secondAttribute="width" id="bnL-Jp-EhC"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rZM-iZ-Kgb" secondAttribute="trailing" constant="20" id="gw6-7x-7nf"/>
+                <constraint firstItem="E6c-Ne-rhT" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="nxs-dq-RQw"/>
+                <constraint firstItem="NOk-Ei-tLc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="r3i-VX-u2L"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+</document>

@@ -50,6 +50,8 @@
 		7EB8BA992328137500276D1A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB8BA982328137500276D1A /* Date.swift */; };
 		7EB8BA9B2328297500276D1A /* ReviewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB8BA9A2328297500276D1A /* ReviewCoordinator.swift */; };
 		7EB8BA9D232861E900276D1A /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB8BA9C232861E900276D1A /* NavigationBar.swift */; };
+		7ECC273B2329814D00B3D90E /* FinalScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECC27392329814D00B3D90E /* FinalScreenViewController.swift */; };
+		7ECC273C2329814D00B3D90E /* FinalScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ECC273A2329814D00B3D90E /* FinalScreenViewController.xib */; };
 		7ED28713232052F500C005E7 /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED28712232052F500C005E7 /* Wrapper.swift */; };
 		7EF19E1322C4415000E95AAF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF19E1222C4415000E95AAF /* Coordinator.swift */; };
 /* End PBXBuildFile section */
@@ -101,6 +103,8 @@
 		7EB8BA982328137500276D1A /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		7EB8BA9A2328297500276D1A /* ReviewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCoordinator.swift; sourceTree = "<group>"; };
 		7EB8BA9C232861E900276D1A /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		7ECC27392329814D00B3D90E /* FinalScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalScreenViewController.swift; sourceTree = "<group>"; };
+		7ECC273A2329814D00B3D90E /* FinalScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinalScreenViewController.xib; sourceTree = "<group>"; };
 		7ED28712232052F500C005E7 /* Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrapper.swift; sourceTree = "<group>"; };
 		7EF19E1222C4415000E95AAF /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C4409D55E2C59E1EB80DE33F /* Pods-TheInterviewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheInterviewer.debug.xcconfig"; path = "Target Support Files/Pods-TheInterviewer/Pods-TheInterviewer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 				7E51B93A22FA2E790091C9A1 /* OverviewViewController.xib */,
 				7E63E66A2315C3EB00F2999E /* SectionOverviewViewController.swift */,
 				7E63E66B2315C3EB00F2999E /* SectionOverviewViewController.xib */,
+				7ECC27392329814D00B3D90E /* FinalScreenViewController.swift */,
+				7ECC273A2329814D00B3D90E /* FinalScreenViewController.xib */,
 				7EB56696231F27C00020E077 /* QuestionAnswers */,
 			);
 			path = Interview;
@@ -368,6 +374,7 @@
 				7E5A919022BAC20A00963ABB /* MainScreenViewController.xib in Resources */,
 				7E7E633B23219ED1001A8D24 /* SF-Pro-Display-Light.otf in Resources */,
 				7E7E634423219ED1001A8D24 /* SF-Pro-Text-Semibold.otf in Resources */,
+				7ECC273C2329814D00B3D90E /* FinalScreenViewController.xib in Resources */,
 				7EB8BA95232810CF00276D1A /* ReviewMenuViewController.xib in Resources */,
 				7E7E634223219ED1001A8D24 /* SF-Pro-Text-Regular.otf in Resources */,
 				7E63E66D2315C3EB00F2999E /* SectionOverviewViewController.xib in Resources */,
@@ -436,6 +443,7 @@
 				7EB4B52D22F39329005410EF /* InterviewViewModel.swift in Sources */,
 				7E63E66C2315C3EB00F2999E /* SectionOverviewViewController.swift in Sources */,
 				7E5A919222BAC28800963ABB /* AppCoordinator.swift in Sources */,
+				7ECC273B2329814D00B3D90E /* FinalScreenViewController.swift in Sources */,
 				7EB0923A230ADA010026001C /* QAViewController.swift in Sources */,
 				7E5A918F22BAC20A00963ABB /* MainScreenViewController.swift in Sources */,
 				7EF19E1322C4415000E95AAF /* Coordinator.swift in Sources */,
