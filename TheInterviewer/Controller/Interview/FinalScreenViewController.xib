@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FinalScreenViewController" customModule="TheInterviewer" customModuleProvider="target">
             <connections>
-                <outlet property="exitButton" destination="NOk-Ei-tLc" id="ehy-R0-mdv"/>
+                <outlet property="discardButton" destination="NOk-Ei-tLc" id="4Iw-4i-ilM"/>
                 <outlet property="saveButton" destination="SDZ-UK-u2g" id="eIV-0w-Gr3"/>
                 <outlet property="shareButton" destination="9BX-cB-Tef" id="hsv-Qp-qcf"/>
                 <outlet property="tableView" destination="rZM-iZ-Kgb" id="Yge-H0-GlM"/>
@@ -32,28 +32,31 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rZM-iZ-Kgb">
-                    <rect key="frame" x="20" y="121" width="728" height="693"/>
+                    <rect key="frame" x="20" y="121" width="728" height="673"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9BX-cB-Tef">
-                    <rect key="frame" x="20" y="864" width="728" height="30"/>
+                    <rect key="frame" x="20" y="844" width="728" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="f7A-gs-CVf"/>
+                    </constraints>
                     <state key="normal" title="Compartilhar"/>
                     <connections>
                         <action selector="didTapShare:" destination="-1" eventType="touchUpInside" id="F6G-am-RLG"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDZ-UK-u2g">
-                    <rect key="frame" x="394" y="944" width="354" height="30"/>
+                    <rect key="frame" x="394" y="924" width="354" height="50"/>
                     <state key="normal" title="Salvar e sair"/>
                     <connections>
                         <action selector="didTapSave:" destination="-1" eventType="touchUpInside" id="qyD-gN-fxv"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOk-Ei-tLc">
-                    <rect key="frame" x="20" y="944" width="354" height="30"/>
+                    <rect key="frame" x="20" y="924" width="354" height="50"/>
                     <state key="normal" title="Descartar e sair"/>
                     <connections>
-                        <action selector="didTapExit:" destination="-1" eventType="touchUpInside" id="NeG-m6-IUI"/>
+                        <action selector="didTapDiscard:" destination="-1" eventType="touchUpInside" id="Tgu-Su-6hA"/>
                     </connections>
                 </button>
             </subviews>
@@ -64,7 +67,8 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="E6c-Ne-rhT" secondAttribute="trailing" constant="20" id="6zu-Ns-jWL"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SDZ-UK-u2g" secondAttribute="trailing" constant="20" id="AwT-B6-cv8"/>
                 <constraint firstItem="E6c-Ne-rhT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="D8t-in-NrF"/>
-                <constraint firstItem="SDZ-UK-u2g" firstAttribute="top" secondItem="9BX-cB-Tef" secondAttribute="bottom" constant="50" id="FMb-pT-C99"/>
+                <constraint firstItem="SDZ-UK-u2g" firstAttribute="top" secondItem="9BX-cB-Tef" secondAttribute="bottom" constant="30" id="FMb-pT-C99"/>
+                <constraint firstItem="NOk-Ei-tLc" firstAttribute="height" secondItem="SDZ-UK-u2g" secondAttribute="height" id="HJi-2y-VAd"/>
                 <constraint firstItem="rZM-iZ-Kgb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="LF7-Yq-GcM"/>
                 <constraint firstItem="SDZ-UK-u2g" firstAttribute="leading" secondItem="NOk-Ei-tLc" secondAttribute="trailing" constant="20" id="MWo-kD-wLa"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="NOk-Ei-tLc" secondAttribute="bottom" constant="50" id="UNW-wv-99D"/>
@@ -72,6 +76,7 @@
                 <constraint firstItem="rZM-iZ-Kgb" firstAttribute="top" secondItem="E6c-Ne-rhT" secondAttribute="bottom" constant="50" id="aTN-0t-H7r"/>
                 <constraint firstItem="9BX-cB-Tef" firstAttribute="leading" secondItem="NOk-Ei-tLc" secondAttribute="leading" id="b5b-9f-lA4"/>
                 <constraint firstItem="NOk-Ei-tLc" firstAttribute="width" secondItem="SDZ-UK-u2g" secondAttribute="width" id="bnL-Jp-EhC"/>
+                <constraint firstItem="SDZ-UK-u2g" firstAttribute="height" secondItem="9BX-cB-Tef" secondAttribute="height" id="eH1-FP-j19"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rZM-iZ-Kgb" secondAttribute="trailing" constant="20" id="gw6-7x-7nf"/>
                 <constraint firstItem="E6c-Ne-rhT" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="nxs-dq-RQw"/>
                 <constraint firstItem="NOk-Ei-tLc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="r3i-VX-u2L"/>
