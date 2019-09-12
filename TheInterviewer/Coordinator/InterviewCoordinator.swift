@@ -44,6 +44,12 @@ final class InterviewCoordinator: Coordinator<Void> {
         
         context.present(navigationController, animated: true)
     }
+    
+    private func endFlow() {
+        navigationController.dismiss(animated: true) {
+            self.parentCoordinator?.release(self)
+        }
+    }
 }
 
 // MARK: Navigation
@@ -146,9 +152,7 @@ extension InterviewCoordinator: OverviewDelegate {
     }
     
     func shouldDismiss(_ viewController: OverviewViewController) {
-        navigationController.dismiss(animated: true) {
-            self.parentCoordinator?.release(self)
-        }
+        endFlow()
     }
 }
 
@@ -173,5 +177,30 @@ extension InterviewCoordinator: QALongViewControllerDelegate {
         self.currentIndex = viewModel.nextIndex(currentIndex: index)
         self.viewModel = viewModel
         sectionNextStep()
+    }
+}
+
+extension InterviewCoordinator: FinalScreenDelegate {
+    func didTapShare(_ viewController: FinalScreenViewController) {
+        guard let interview = viewModel.shareInterview() else { return }
+        let items: [Any] = [interview]
+        
+        let shareViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        shareViewController.excludedActivityTypes = [.assignToContact]
+        navigationController.present(shareViewController, animated: true)
+    }
+    
+    func didTapSave(_ viewController: FinalScreenViewController) {
+        let status = viewModel.saveInterview()
+        let alert = UIAlertController(title: status ? "Sucesso" : "Erro", message: status ? "A entrevista foi salva com sucesso" : "Houve um erro ao salvar a entrevista", preferredStyle: .alert)
+        navigationController.present(alert, animated: true)
+        endFlow()
+    }
+    
+    func didTapDiscard(_ viewController: FinalScreenViewController) {
+        // TODO: Add options
+        let alert = UIAlertController(title: "Você tem certeza de que deseja deletar a entrevista?", message: "Esta ação é irreversível", preferredStyle: .alert)
+        navigationController.present(alert, animated: true)
+        endFlow()
     }
 }

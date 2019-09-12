@@ -157,4 +157,12 @@ extension InterviewViewModel {
         
         return true
     }
+    
+    func shareInterview() -> Data? {
+        do {
+            return try interview.encode()
+        } catch {
+            return nil
+        }
+    }
 }
