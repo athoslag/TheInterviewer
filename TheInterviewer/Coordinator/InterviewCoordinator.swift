@@ -192,7 +192,9 @@ extension InterviewCoordinator: FinalScreenDelegate {
         let items: [Any] = [interview]
         
         let shareViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
-        shareViewController.excludedActivityTypes = [.assignToContact]
+        shareViewController.popoverPresentationController?.sourceView = viewController.view
+        shareViewController.modalPresentationStyle = .formSheet
+        shareViewController.excludedActivityTypes = [.assignToContact, .addToReadingList, .saveToCameraRoll]
         viewController.present(shareViewController, animated: true)
     }
     
