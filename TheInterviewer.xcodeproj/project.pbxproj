@@ -52,6 +52,7 @@
 		7EB8BA9D232861E900276D1A /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB8BA9C232861E900276D1A /* NavigationBar.swift */; };
 		7ECC273B2329814D00B3D90E /* FinalScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECC27392329814D00B3D90E /* FinalScreenViewController.swift */; };
 		7ECC273C2329814D00B3D90E /* FinalScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ECC273A2329814D00B3D90E /* FinalScreenViewController.xib */; };
+		7ECC273E232BCA8D00B3D90E /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECC273D232BCA8D00B3D90E /* Double.swift */; };
 		7ED28713232052F500C005E7 /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED28712232052F500C005E7 /* Wrapper.swift */; };
 		7EF19E1322C4415000E95AAF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF19E1222C4415000E95AAF /* Coordinator.swift */; };
 /* End PBXBuildFile section */
@@ -105,6 +106,7 @@
 		7EB8BA9C232861E900276D1A /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		7ECC27392329814D00B3D90E /* FinalScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalScreenViewController.swift; sourceTree = "<group>"; };
 		7ECC273A2329814D00B3D90E /* FinalScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinalScreenViewController.xib; sourceTree = "<group>"; };
+		7ECC273D232BCA8D00B3D90E /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		7ED28712232052F500C005E7 /* Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrapper.swift; sourceTree = "<group>"; };
 		7EF19E1222C4415000E95AAF /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C4409D55E2C59E1EB80DE33F /* Pods-TheInterviewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheInterviewer.debug.xcconfig"; path = "Target Support Files/Pods-TheInterviewer/Pods-TheInterviewer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				7E570DE5231731470092D538 /* ViewControllerExtensions.swift */,
 				7EB8BA982328137500276D1A /* Date.swift */,
 				7EB8BA9C232861E900276D1A /* NavigationBar.swift */,
+				7ECC273D232BCA8D00B3D90E /* Double.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				7E63E66C2315C3EB00F2999E /* SectionOverviewViewController.swift in Sources */,
 				7E5A919222BAC28800963ABB /* AppCoordinator.swift in Sources */,
 				7ECC273B2329814D00B3D90E /* FinalScreenViewController.swift in Sources */,
+				7ECC273E232BCA8D00B3D90E /* Double.swift in Sources */,
 				7EB0923A230ADA010026001C /* QAViewController.swift in Sources */,
 				7E5A918F22BAC20A00963ABB /* MainScreenViewController.swift in Sources */,
 				7EF19E1322C4415000E95AAF /* Coordinator.swift in Sources */,

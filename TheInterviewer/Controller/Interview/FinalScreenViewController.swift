@@ -102,9 +102,10 @@ extension FinalScreenViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionTitle = viewModel.sectionTitle(part: indexPath.section, section: indexPath.row)
-        let total = viewModel.sections[indexPath.row].questionPairs.count
-        let answered = viewModel.sections[indexPath.row].questionPairs.filter{ !($0.answer?.isEmpty ?? true) }.count
-        let sectionDetail = "\((answered / total) * 100)% respondida"
+        let total = Double(viewModel.sections[indexPath.row].questionPairs.count)
+        let answered = Double(viewModel.sections[indexPath.row].questionPairs.filter{ !($0.answer?.isEmpty ?? true) }.count)
+        let percentage = Double((answered / total) * 100).format(f: ".0")
+        let sectionDetail = "\(percentage)% respondida"
         
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "FinalScreen")
         cell.textLabel?.text = sectionTitle
