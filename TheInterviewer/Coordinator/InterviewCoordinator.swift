@@ -198,17 +198,22 @@ extension InterviewCoordinator: FinalScreenDelegate {
     
     func didTapSave(_ viewController: FinalScreenViewController) {
         let status = viewModel.saveInterview()
-        let alert = UIAlertController(title: status ? "Sucesso" : "Erro", message: status ? "A entrevista foi salva com sucesso" : "Houve um erro ao salvar a entrevista", preferredStyle: .alert)
-        navigationController.present(alert, animated: true)
-        viewController.present(alert, animated: true) {
-            self.endFlow()
-        }
+        viewController.presentAlert(title: status ? "Sucesso" : "Erro",
+                                    detail: status ? "A entrevista foi salva com sucesso" : "Houve um erro ao salvar a entrevista",
+                                    optionTitle: "Ok",
+                                    optionType: .default, option: {
+                                        self.endFlow()
+        }, showsCancel: false, cancel: {})
     }
     
-    func didTapDiscard(_ viewController: FinalScreenViewController) {
-        // TODO: Add options
-        let alert = UIAlertController(title: "Você tem certeza de que deseja deletar a entrevista?", message: "Esta ação é irreversível", preferredStyle: .alert)
-        navigationController.present(alert, animated: true)
-        endFlow()
+    func didTapDiscard(_ viewController: FinalScreenViewController) {        
+        viewController.presentAlert(title: "Você tem certeza de que deseja deletar a entrevista?",
+                                    detail: "Esta ação é irreversível",
+                                    optionTitle: "Excluir",
+                                    optionType: .destructive,
+                                    option: {
+                                        self.endFlow()
+                                    },
+                                    showsCancel: true, cancel: {})
     }
 }
