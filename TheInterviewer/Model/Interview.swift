@@ -32,7 +32,7 @@ final class Interview: Codable {
                     [
                         Section(title: "Sobre o negócio", questionPairs:
                             [
-                                QuestionPair(question: "Nome da empresa", answer: nil, type: .short),
+                                QuestionPair(question: "Nome da empresa", answer: nil, type: .name),
                                 QuestionPair(question: "Área de atuação", answer: nil, type: .short),
                                 QuestionPair(question: "Quantidade de funcionários", answer: nil, type: .number),
                                 QuestionPair(question: "Contato", answer: nil, type: .short),
@@ -41,7 +41,7 @@ final class Interview: Codable {
                         ),
                         Section(title: "Sobre o interlocutor", questionPairs:
                             [
-                                QuestionPair(question: "Nome do entrevistado", answer: nil, type: .short),
+                                QuestionPair(question: "Nome do entrevistado", answer: nil, type: .name),
                                 QuestionPair(question: "Cargo do entrevistado", answer: nil, type: .short),
                                 QuestionPair(question: "Tempo de empresa", answer: nil, type: .short),
                                 QuestionPair(question: "Contato do entrevistado", answer: nil, type: .short)

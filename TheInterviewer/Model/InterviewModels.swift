@@ -9,6 +9,7 @@
 import Foundation
 
 enum AnswerType: String, Codable {
+    case name
     case short
     case long
     case number

@@ -71,6 +71,7 @@ final class QAViewController: UIViewController {
         // Answer
         textField.font = UIFont(SFPro: .text, variant: .regular, size: 20)
         textField.keyboardType = answerType == .number ? .decimalPad : .default
+        textField.autocapitalizationType = answerType == .name ? .words : .sentences
         textField.textAlignment = .justified
         textField.borderStyle = .none
         textField.selectedLineColor = AppConfiguration.mainColor
