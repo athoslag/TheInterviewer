@@ -43,10 +43,14 @@ final class FinalScreenViewController: UIViewController {
     }
     
     private func setupUI() {
+        // Navigation
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        
         // Title
         titleLabel.font = UIFont(SFPro: .display, variant: .medium, size: 24)
         
         // TableView
+        tableView.allowsSelection = false
         tableView.tableFooterView = UIView()
         
         // Share
@@ -107,9 +111,17 @@ extension FinalScreenViewController: UITableViewDataSource {
         let percentage = Double((answered / total) * 100).format(f: ".0")
         let sectionDetail = "\(percentage)% respondida"
         
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "FinalScreen")
+        let cell: UITableViewCell
+        
+        if let dequeued = tableView.dequeueReusableCell(withIdentifier: "FinalScreen") {
+            cell = dequeued
+        } else {
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "FinalScreen")
+        }
+        
         cell.textLabel?.text = sectionTitle
         cell.detailTextLabel?.text = sectionDetail
+        
         return cell
     }
 }
