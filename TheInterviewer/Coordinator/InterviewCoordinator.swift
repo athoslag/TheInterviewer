@@ -64,7 +64,7 @@ extension InterviewCoordinator {
     func interviewNextStep() {
         guard !interviewProgress.isEmpty else {
             let finalController = makeFinalViewController()
-            navigationController.present(finalController, animated: true)
+            navigationController.pushViewController(finalController, animated: true)
             return
         }
         
