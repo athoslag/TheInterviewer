@@ -63,8 +63,8 @@ extension InterviewCoordinator {
     // Interview progression
     func interviewNextStep() {
         guard !interviewProgress.isEmpty else {
-            // TODO: End of part
-            navigationController.popToRootViewController(animated: true)
+            let finalController = makeFinalViewController()
+            navigationController.present(finalController, animated: true)
             return
         }
         
@@ -141,6 +141,12 @@ extension InterviewCoordinator {
             return controller
         }
     }
+    
+    func makeFinalViewController() -> UIViewController {
+        let controller = FinalScreenViewController(viewModel: viewModel)
+        controller.delegate = self
+        return controller
+    }
 }
 
 // MARK: Delegates
@@ -187,14 +193,16 @@ extension InterviewCoordinator: FinalScreenDelegate {
         
         let shareViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
         shareViewController.excludedActivityTypes = [.assignToContact]
-        navigationController.present(shareViewController, animated: true)
+        viewController.present(shareViewController, animated: true)
     }
     
     func didTapSave(_ viewController: FinalScreenViewController) {
         let status = viewModel.saveInterview()
         let alert = UIAlertController(title: status ? "Sucesso" : "Erro", message: status ? "A entrevista foi salva com sucesso" : "Houve um erro ao salvar a entrevista", preferredStyle: .alert)
         navigationController.present(alert, animated: true)
-        endFlow()
+        viewController.present(alert, animated: true) {
+            self.endFlow()
+        }
     }
     
     func didTapDiscard(_ viewController: FinalScreenViewController) {

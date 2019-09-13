@@ -36,6 +36,7 @@ final class FinalScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        titleLabel.text = viewModel.title
         tableView.dataSource = self
         
         setupUI()
@@ -58,11 +59,15 @@ final class FinalScreenViewController: UIViewController {
         saveButton.setTitleColor(.blue, for: .normal)
         saveButton.layer.cornerRadius = saveButton.layer.bounds.height / 2
         saveButton.titleLabel?.font = UIFont(SFPro: .text, variant: .regular, size: 18)
+        saveButton.layer.borderColor = UIColor.darkGray.cgColor
+        saveButton.layer.borderWidth = 0.5
         
         // Exit
         discardButton.setTitleColor(.red, for: .normal)
         discardButton.layer.cornerRadius = discardButton.layer.bounds.height / 2
         discardButton.titleLabel?.font = UIFont(SFPro: .text, variant: .regular, size: 18)
+        discardButton.layer.borderColor = UIColor.darkGray.cgColor
+        discardButton.layer.borderWidth = 0.5
     }
 }
 
@@ -98,12 +103,12 @@ extension FinalScreenViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionTitle = viewModel.sectionTitle(part: indexPath.section, section: indexPath.row)
         let total = viewModel.sections[indexPath.row].questionPairs.count
-        let answered = viewModel.sections[indexPath.row].questionPairs.filter{ $0.answer != nil }.count
+        let answered = viewModel.sections[indexPath.row].questionPairs.filter{ !($0.answer?.isEmpty ?? true) }.count
         let sectionDetail = "\((answered / total) * 100)% respondida"
         
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "FinalScreen")
         cell.textLabel?.text = sectionTitle
         cell.detailTextLabel?.text = sectionDetail
-        return UITableViewCell()
+        return cell
     }
 }
