@@ -8,6 +8,18 @@
 
 import UIKit
 
+struct AlertBundle {
+    let title: String
+    let details: String?
+    let options: [AlertOption]
+}
+
+struct AlertOption {
+    let title: String
+    let style: UIAlertAction.Style
+    let completion: (UIAlertAction) -> ()
+}
+
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
@@ -19,22 +31,15 @@ extension UIViewController {
         view.endEditing(true)
     }
     
-    func presentAlert(title: String, detail: String?, optionTitle: String, optionType: UIAlertAction.Style, option: @escaping ()-> ()?, showsCancel: Bool, cancel: @escaping () -> ()?) {
-        let alertController = UIAlertController(title: title, message: detail, preferredStyle: .alert)
-        
-        let defaultAction = UIAlertAction(title: optionTitle, style: optionType) { _ in
-            option()
+    func presentAlert(_ bundle: AlertBundle) {
+        let alertController = UIAlertController(title: bundle.title, message: bundle.details, preferredStyle: .alert)
+        bundle.options.forEach { option in
+            let action = UIAlertAction(title: option.title,
+                                       style: option.style,
+                                       handler: option.completion)
+            alertController.addAction(action)
         }
         
-        if showsCancel {
-            let cancel = UIAlertAction(title: "Cancelar", style: .cancel) { _ in
-                cancel()
-            }
-            
-            alertController.addAction(cancel)
-        }
-        
-        alertController.addAction(defaultAction)
         present(alertController, animated: true)
     }
 }

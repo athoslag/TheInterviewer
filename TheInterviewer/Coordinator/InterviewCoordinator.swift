@@ -198,22 +198,31 @@ extension InterviewCoordinator: FinalScreenDelegate {
     
     func didTapSave(_ viewController: FinalScreenViewController) {
         let status = viewModel.saveInterview()
-        viewController.presentAlert(title: status ? "Sucesso" : "Erro",
-                                    detail: status ? "A entrevista foi salva com sucesso" : "Houve um erro ao salvar a entrevista",
-                                    optionTitle: "Ok",
-                                    optionType: .default, option: {
-                                        self.endFlow()
-        }, showsCancel: false, cancel: {})
+        
+        let errorOption = [AlertOption(title: "Ok", style: .default, completion: { _ in })]
+        let successOption = [AlertOption(title: "Ok", style: .default, completion: { _ in
+            self.endFlow()
+        })]
+        
+        let title = status ? "Sucesso" : "Erro"
+        let message = status ? "A entrevista foi salva com sucesso" : "Houve um erro ao salvar a entrevista"
+        
+        let bundle = AlertBundle(title: title, details: message, options: status ? successOption : errorOption)
+        viewController.presentAlert(bundle)
     }
     
-    func didTapDiscard(_ viewController: FinalScreenViewController) {        
-        viewController.presentAlert(title: "Você tem certeza de que deseja deletar a entrevista?",
-                                    detail: "Esta ação é irreversível",
-                                    optionTitle: "Excluir",
-                                    optionType: .destructive,
-                                    option: {
-                                        self.endFlow()
-                                    },
-                                    showsCancel: true, cancel: {})
+    func didTapDiscard(_ viewController: FinalScreenViewController) {
+        let options: [AlertOption] = [
+            AlertOption(title: "Excluir", style: .destructive, completion: { _ in
+                self.endFlow()
+            }),
+            AlertOption(title: "Cancelar", style: .cancel, completion: { _ in })
+        ]
+        
+        let bundle = AlertBundle(title: "Você tem certeza de que deseja deletar a entrevista?",
+                                 details: "Esta ação é irreversível",
+                                 options: options)
+        
+        viewController.presentAlert(bundle)
     }
 }

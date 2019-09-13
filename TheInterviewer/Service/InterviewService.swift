@@ -11,18 +11,26 @@ import RealmSwift
 
 final class InterviewService {
     
+    enum ServiceError: Error {
+        case alreadyExists
+    }
+    
     // Private to avoid instantiation
     private init() { }
     
     /// Saves an interview object into the local database.
     ///
     /// - Parameter interview: The interview object to be saved
-    /// - Throws: Database-related or encoding-related errors can be thrown
+    /// - Throws: Database-related or encoding-related errors, or already-exists object error
     static func saveInterview(_ interview: Interview) throws {
         let realm = try Realm()
         let encoded = try interview.encode()
         let wrapper = Wrapper()
         wrapper.wrap(encoded, id: encoded.base64EncodedString())
+        
+        if realm.object(ofType: Wrapper.self, forPrimaryKey: wrapper.identifier) != nil {
+            throw ServiceError.alreadyExists
+        }
         
         try realm.write {
             realm.add(wrapper)
