@@ -14,6 +14,11 @@ protocol QAViewControllerDelegate: class {
     func didFinishAnswer(_ viewController: QAViewController, viewModel: InterviewViewModel, index: Index)
 }
 
+struct QAConfiguration {
+    let answerType: AnswerType
+    let presentationMode: Mode
+}
+
 final class QAViewController: UIViewController {
     @IBOutlet private weak var partProgressionLabel: UILabel!
     @IBOutlet private weak var sectionProgressionLabel: UILabel!
@@ -21,16 +26,16 @@ final class QAViewController: UIViewController {
     @IBOutlet private weak var textField: SkyFloatingLabelTextField!
     private var tabAccessoryView: UIToolbar?
     
-    private let answerType: AnswerType
     private let questionIndex: Index
     private let viewModel: InterviewViewModel
+    private let configuration: QAConfiguration
     
     weak var delegate: QAViewControllerDelegate?
     
-    init(viewModel: InterviewViewModel, index: Index, answerType: AnswerType) {
+    init(viewModel: InterviewViewModel, index: Index, configuration: QAConfiguration) {
         self.viewModel = viewModel
         self.questionIndex = index
-        self.answerType = answerType
+        self.configuration = configuration
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -57,7 +62,9 @@ final class QAViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        textField.becomeFirstResponder()
+        if configuration.presentationMode == .edition {
+            textField.becomeFirstResponder()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -76,11 +83,12 @@ final class QAViewController: UIViewController {
         
         // Answer
         textField.font = UIFont(SFPro: .text, variant: .regular, size: 20)
-        textField.keyboardType = answerType == .number ? .decimalPad : .default
-        textField.autocapitalizationType = answerType == .name ? .words : .sentences
+        textField.keyboardType = configuration.answerType == .number ? .decimalPad : .default
+        textField.autocapitalizationType = configuration.answerType == .name ? .words : .sentences
         textField.textAlignment = .justified
         textField.borderStyle = .none
         textField.selectedLineColor = AppConfiguration.mainColor
+        textField.isUserInteractionEnabled = configuration.presentationMode == .edition
     }
     
 }

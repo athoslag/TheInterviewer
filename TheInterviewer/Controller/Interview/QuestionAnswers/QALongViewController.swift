@@ -22,12 +22,14 @@ final class QALongViewController: UIViewController {
     
     private let questionIndex: Index
     private let viewModel: InterviewViewModel
+    private let presentationMode: Mode
     
     weak var delegate: QALongViewControllerDelegate?
     
-    init(viewModel: InterviewViewModel, index: Index) {
+    init(viewModel: InterviewViewModel, index: Index, presentationMode: Mode) {
         self.viewModel = viewModel
         self.questionIndex = index
+        self.presentationMode = presentationMode
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -54,7 +56,9 @@ final class QALongViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        textView.becomeFirstResponder()
+        if presentationMode == .edition {
+            textView.becomeFirstResponder()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -78,6 +82,7 @@ final class QALongViewController: UIViewController {
         textView.layer.borderWidth = 1.0
         textView.layer.borderColor = UIColor.lightGray.cgColor
         textView.layer.cornerRadius = 6.0
+        textView.isUserInteractionEnabled = presentationMode == .edition
     }
 }
 
