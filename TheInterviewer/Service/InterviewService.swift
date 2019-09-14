@@ -10,9 +10,14 @@ import Foundation
 import RealmSwift
 
 final class InterviewService {
-    
     enum ServiceError: Error {
         case alreadyExists
+        case decode
+        case encode
+        case realmUnavailable
+        case realmWrite
+        case notFound
+        case unknown
     }
     
     // Private to avoid instantiation
@@ -21,10 +26,22 @@ final class InterviewService {
     /// Saves an interview object into the local database.
     ///
     /// - Parameter interview: The interview object to be saved
-    /// - Throws: Database-related or encoding-related errors, or already-exists object error
+    /// - Throws: Throws a ServiceError, according to the unsuccessful operation
     static func saveInterview(_ interview: Interview) throws {
-        let realm = try Realm()
-        let encoded = try interview.encode()
+        let realm: Realm
+        do {
+            realm = try Realm()
+        } catch {
+            throw ServiceError.realmUnavailable
+        }
+        
+        let encoded: Data
+        do {
+            encoded = try interview.encode()
+        } catch {
+            throw ServiceError.encode
+        }
+        
         let wrapper = Wrapper()
         wrapper.wrap(encoded, id: encoded.base64EncodedString())
         
@@ -32,50 +49,88 @@ final class InterviewService {
             throw ServiceError.alreadyExists
         }
         
-        try realm.write {
-            realm.add(wrapper)
+        do {
+            try realm.write {
+                realm.add(wrapper)
+            }
+        } catch {
+            throw ServiceError.realmWrite
         }
     }
     
     /// Load the interviews from the local database.
     ///
     /// - Returns: All locally stored interviews.
-    /// - Throws: Database-related or encoding-related errors can be thrown
+    /// - Throws: Throws a ServiceError, according to the unsuccessful operation
     static func loadInterviews() throws -> [Interview] {
-        let realm = try Realm()
+        let realm: Realm
+        do {
+            realm = try Realm()
+        } catch {
+            throw ServiceError.realmUnavailable
+        }
+        
         let wrappers = realm.objects(Wrapper.self)
         let decoder = JSONDecoder()
         
-        let result: [Interview] = try wrappers.compactMap { try decoder.decode(Interview.self, from: $0.data!) }
-        return result
+        do {
+            let result: [Interview] = try wrappers.compactMap { try decoder.decode(Interview.self, from: $0.data!) }
+            return result
+        } catch {
+            throw ServiceError.decode
+        }
     }
     
     /// Deletes a specific object from the local database.
     ///
     /// - Parameter interview: The interview reference to be deleted.
-    /// - Throws: Database-releated or encoding-related errors can be thrown
+    /// - Throws: Throws a ServiceError, according to the unsuccessful operation
     static func deleteInterview(_ interview: Interview) throws {
-        let realm = try Realm()
-        let encoded = try interview.encode()
-
-        guard let wrapper = realm.object(ofType: Wrapper.self, forPrimaryKey: encoded.base64EncodedString()) else {
-            print("Object not found!")
-            return
+        let realm: Realm
+        do {
+            realm = try Realm()
+        } catch {
+            throw ServiceError.realmUnavailable
         }
         
-        try realm.write {
-            realm.delete(wrapper)
+        let encoded: Data
+        do {
+            encoded = try interview.encode()
+        } catch {
+            throw ServiceError.encode
+        }
+        
+        guard let wrapper = realm.object(ofType: Wrapper.self, forPrimaryKey: encoded.base64EncodedString()) else {
+            // Object not found!
+            throw ServiceError.notFound
+        }
+        
+        do {
+            try realm.write {
+                realm.delete(wrapper)
+            }
+        } catch {
+            throw ServiceError.realmWrite
         }
     }
     
     /// Deletes all interviews from the local database.
     ///
-    /// - Throws: Database-related errors can be thrown
+    /// - Throws: Throws a ServiceError, according to the unsuccessful operation
     static func deleteAllInterviews() throws {
-        let realm = try Realm()
+        let realm: Realm
+        do {
+            realm = try Realm()
+        } catch {
+            throw ServiceError.realmUnavailable
+        }
         
-        try realm.write {
-            realm.deleteAll()
+        do {
+            try realm.write {
+                realm.deleteAll()
+            }
+        } catch {
+            throw ServiceError.realmWrite
         }
     }
 }
