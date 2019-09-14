@@ -171,6 +171,10 @@ extension InterviewCoordinator: SectionDelegate {
 }
 
 extension InterviewCoordinator: QAViewControllerDelegate {
+    func didTapBack(_ viewController: QAViewController, viewModel: InterviewViewModel) {
+        self.viewModel = viewModel
+    }
+    
     func didFinishAnswer(_ viewController: QAViewController, viewModel: InterviewViewModel, index: Index) {
         self.currentIndex = viewModel.nextIndex(currentIndex: index)
         self.viewModel = viewModel
@@ -179,6 +183,10 @@ extension InterviewCoordinator: QAViewControllerDelegate {
 }
 
 extension InterviewCoordinator: QALongViewControllerDelegate {
+    func didTapBack(_ viewController: QALongViewController, viewModel: InterviewViewModel) {
+        self.viewModel = viewModel
+    }
+    
     func didFinishAnswer(_ viewController: QALongViewController, viewModel: InterviewViewModel, index: Index) {
         self.currentIndex = viewModel.nextIndex(currentIndex: index)
         self.viewModel = viewModel

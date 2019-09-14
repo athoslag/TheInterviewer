@@ -10,6 +10,7 @@ import UIKit
 import SkyFloatingLabelTextField
 
 protocol QAViewControllerDelegate: class {
+    func didTapBack(_ viewController: QAViewController, viewModel: InterviewViewModel)
     func didFinishAnswer(_ viewController: QAViewController, viewModel: InterviewViewModel, index: Index)
 }
 
@@ -59,6 +60,11 @@ final class QAViewController: UIViewController {
         textField.becomeFirstResponder()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.didTapBack(self, viewModel: viewModel)
+    }
+    
     private func configureUI() {
         hideKeyboardWhenTappedAround()
         // Progression
@@ -77,6 +83,10 @@ final class QAViewController: UIViewController {
         textField.selectedLineColor = AppConfiguration.mainColor
     }
     
+}
+
+// MARK: - Actions
+extension QAViewController {
     @objc
     private func finishAnswer() {
         viewModel.updateAnswer(textField.text, for: questionIndex)
@@ -93,6 +103,7 @@ final class QAViewController: UIViewController {
     }
 }
 
+// MARK: - TextField Delegate
 extension QAViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if tabAccessoryView == nil {

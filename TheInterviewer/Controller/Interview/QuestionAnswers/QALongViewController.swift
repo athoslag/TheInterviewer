@@ -9,11 +9,11 @@
 import UIKit
 
 protocol QALongViewControllerDelegate: class {
+    func didTapBack(_ viewController: QALongViewController, viewModel: InterviewViewModel)
     func didFinishAnswer(_ viewController: QALongViewController, viewModel: InterviewViewModel, index: Index)
 }
 
 final class QALongViewController: UIViewController {
-    
     @IBOutlet private weak var partProgressionLabel: UILabel!
     @IBOutlet private weak var sectionProgressionLabel: UILabel!
     @IBOutlet private weak var questionLabel: UILabel!
@@ -57,6 +57,11 @@ final class QALongViewController: UIViewController {
         textView.becomeFirstResponder()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.didTapBack(self, viewModel: viewModel)
+    }
+    
     private func configureUI() {
         hideKeyboardWhenTappedAround()
         // Progression
@@ -74,7 +79,10 @@ final class QALongViewController: UIViewController {
         textView.layer.borderColor = UIColor.lightGray.cgColor
         textView.layer.cornerRadius = 6.0
     }
-    
+}
+
+// MARK: - Actions
+extension QALongViewController {
     @objc
     private func nextTapped() {
         viewModel.updateAnswer(textView.text, for: questionIndex)
@@ -86,6 +94,7 @@ final class QALongViewController: UIViewController {
     }
 }
 
+// MARK: - TextView Delegate
 extension QALongViewController: UITextViewDelegate {
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         if tabAccessoryView == nil {
