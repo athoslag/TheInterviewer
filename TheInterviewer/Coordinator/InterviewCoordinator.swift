@@ -144,7 +144,7 @@ extension InterviewCoordinator {
     }
     
     func makeFinalViewController() -> UIViewController {
-        let controller = FinalScreenViewController(viewModel: viewModel)
+        let controller = FinalScreenViewController(viewModel: viewModel, displayMode: mode)
         controller.delegate = self
         return controller
     }
@@ -223,6 +223,11 @@ extension InterviewCoordinator: FinalScreenDelegate {
     }
     
     func didTapDiscard(_ viewController: FinalScreenViewController) {
+        guard mode == .edition else {
+            self.endFlow()
+            return
+        }
+        
         let options: [AlertOption] = [
             AlertOption(title: "Excluir", style: .destructive, completion: { _ in
                 self.endFlow()

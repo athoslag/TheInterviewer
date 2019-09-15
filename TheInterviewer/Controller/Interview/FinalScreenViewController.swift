@@ -21,11 +21,13 @@ final class FinalScreenViewController: UIViewController {
     @IBOutlet private weak var saveButton: UIButton!
     @IBOutlet private weak var discardButton: UIButton!
     
+    private let displayMode: Mode
     private let viewModel: InterviewViewModel
     weak var delegate: FinalScreenDelegate?
     
-    init(viewModel: InterviewViewModel) {
+    init(viewModel: InterviewViewModel, displayMode: Mode) {
         self.viewModel = viewModel
+        self.displayMode = displayMode
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -66,12 +68,18 @@ final class FinalScreenViewController: UIViewController {
         saveButton.layer.borderColor = UIColor.darkGray.cgColor
         saveButton.layer.borderWidth = 0.5
         
-        // Exit
+        // Discard
         discardButton.setTitleColor(.red, for: .normal)
         discardButton.layer.cornerRadius = discardButton.layer.bounds.height / 2
         discardButton.titleLabel?.font = UIFont(SFPro: .text, variant: .regular, size: 18)
         discardButton.layer.borderColor = UIColor.darkGray.cgColor
         discardButton.layer.borderWidth = 0.5
+        
+        // Exit
+        if displayMode == .review {
+            discardButton.setTitle("Sair", for: .normal)
+            saveButton.isHidden = true
+        }
     }
 }
 
