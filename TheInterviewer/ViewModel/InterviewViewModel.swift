@@ -71,6 +71,10 @@ extension InterviewViewModel {
         }
     }
     
+    func currentIndexPair(_ index: Index) -> IndexPair {
+        return .questionPair(index)
+    }
+    
     func nextIndex(currentIndex current: Index) -> IndexPair {
         let nextQuestion = current.advancing(.row)
         let nextSection = current.advancing(.section)
@@ -115,6 +119,10 @@ extension InterviewViewModel {
     func sectionTitle(part: Int, section: Int) -> String {
         guard part < interview.parts.count, section < interview.parts[part].sections.count else { return "" }
         return interview.parts[part].sections[section].title
+    }
+    
+    func section(for index: Index) -> Section {
+        return sections[index.section]
     }
     
     func numberOfSections(part: Int) -> Int {

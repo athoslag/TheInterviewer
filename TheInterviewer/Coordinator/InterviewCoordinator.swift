@@ -15,7 +15,6 @@ enum Mode {
 }
 
 final class InterviewCoordinator: Coordinator<Void> {
-    
     private let context: UIViewController
     private var navigationController: UINavigationController!
     private var viewModel: InterviewViewModel
@@ -24,11 +23,6 @@ final class InterviewCoordinator: Coordinator<Void> {
     private let mode: Mode
     
     private var currentIndex: Index? = Index(part: 0, section: 0, row: 0)
-    
-    // experimental flow usage
-    private var interviewProgress: [Part] = []
-    private var partProgress: [Section] = []
-    private var sectionProgress: [QuestionPair] = []
     
     init(context: UIViewController, interviewVM: InterviewViewModel, mode: Mode) {
         self.context = context
@@ -44,25 +38,24 @@ final class InterviewCoordinator: Coordinator<Void> {
         
         context.present(navigationController, animated: true)
     }
-    
-    private func endFlow() {
-        navigationController.dismiss(animated: true) {
-            self.parentCoordinator?.release(self)
-        }
-    }
 }
 
 // MARK: Navigation
 extension InterviewCoordinator {
-    
-    func nextStep() {
+    func nextStep(advance: Bool) {
         guard let index = currentIndex else {
             let finalController = makeFinalViewController()
             navigationController.pushViewController(finalController, animated: true)
             return
         }
         
-        let nextMove = viewModel.nextIndex(currentIndex: index)
+        let nextMove: InterviewViewModel.IndexPair
+        
+        if advance {
+            nextMove = viewModel.nextIndex(currentIndex: index)
+        } else {
+            nextMove = viewModel.currentIndexPair(index)
+        }
         
         switch nextMove {
         case .done:
@@ -75,14 +68,18 @@ extension InterviewCoordinator {
             currentIndex = newIndex
             let controller = makeSectionOverview(section: section)
             navigationController.pushViewController(controller, animated: true)
-        case .part(let newIndex, let part):
+        case .part(let newIndex, _):
             currentIndex = newIndex
-            // ???
+            let section = viewModel.section(for: newIndex)
+            let controller = makeSectionOverview(section: section)
+            navigationController.pushViewController(controller, animated: true)
         }
     }
     
-    func endFlow() {
-        
+    private func endFlow() {
+        navigationController.dismiss(animated: true) {
+            self.parentCoordinator?.release(self)
+        }
     }
 }
 
@@ -96,7 +93,7 @@ extension InterviewCoordinator {
     
     func makeSectionOverview(section: Section) -> UIViewController {
         let partTitle = viewModel.titles(for: currentIndex).part
-        let sectionOverview = SectionOverviewViewController(section: section, partTitle: partTitle)
+        let sectionOverview = SectionOverviewViewController(section: section, partTitle: partTitle, index: currentIndex!)
         sectionOverview.delegate = self
         return sectionOverview
     }
@@ -124,9 +121,8 @@ extension InterviewCoordinator {
 // MARK: Delegates
 extension InterviewCoordinator: OverviewDelegate {
     func didSelect(_ viewController: OverviewViewController, index: Index) {
-        // TODO: fix flow
         self.currentIndex = index
-//        initInterviewNavigation()
+        nextStep(advance: false)
     }
     
     func shouldDismiss(_ viewController: OverviewViewController) {
@@ -135,26 +131,25 @@ extension InterviewCoordinator: OverviewDelegate {
 }
 
 extension InterviewCoordinator: SectionDelegate {
-    func didSelectRow(_ viewController: SectionOverviewViewController, row: Int) {
-        // TODO: present selected QA
-        self.currentIndex = currentIndex?.withRow(row)
-//        sectionNextStep()
+    func didSelectRow(_ viewController: SectionOverviewViewController, index: Index) {
+        self.currentIndex = index
+        nextStep(advance: false)
     }
 }
 
 extension InterviewCoordinator: QAViewControllerDelegate {
     func didFinishAnswer(_ viewController: QAViewController, viewModel: InterviewViewModel, index: Index) {
-        self.currentIndex = viewModel.nextIndexOLD(currentIndex: index)
+        self.currentIndex = index
         self.viewModel = viewModel
-        nextStep()
+        nextStep(advance: true)
     }
 }
 
 extension InterviewCoordinator: QALongViewControllerDelegate {
     func didFinishAnswer(_ viewController: QALongViewController, viewModel: InterviewViewModel, index: Index) {
-        self.currentIndex = viewModel.nextIndexOLD(currentIndex: index)
+        self.currentIndex = index
         self.viewModel = viewModel
-        nextStep()
+        nextStep(advance: true)
     }
 }
 
