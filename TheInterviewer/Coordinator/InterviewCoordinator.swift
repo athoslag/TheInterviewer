@@ -59,7 +59,8 @@ extension InterviewCoordinator {
         
         switch nextMove {
         case .done:
-            endFlow()
+            let finalController = makeFinalViewController()
+            navigationController.pushViewController(finalController, animated: true)
         case .questionPair(let newIndex):
             let questionPair = viewModel.questionPair(for: newIndex)
             let controller = makeQAViewController(questionPair: questionPair!, index: newIndex)
