@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SectionDelegate: class {
-    func didSelectRow(_ viewController: SectionOverviewViewController, row: Int)
+    func didSelectRow(_ viewController: SectionOverviewViewController, index: Index)
 }
 
 final class SectionOverviewViewController: UIViewController {
@@ -20,13 +20,15 @@ final class SectionOverviewViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var beginButton: UIButton!
     
+    private let index: Index
     private let partTitle: String
     private let sectionModel: Section
     private let cellReuseID: String = "SectionID"
     
     weak var delegate: SectionDelegate?
     
-    init(section: Section, partTitle: String) {
+    init(section: Section, partTitle: String, index: Index) {
+        self.index = index
         self.sectionModel = section
         self.partTitle = partTitle
         super.init(nibName: nil, bundle: nil)
@@ -65,7 +67,7 @@ final class SectionOverviewViewController: UIViewController {
     }
     
     @IBAction func didTapBegin(_ sender: UIButton) {
-        delegate?.didSelectRow(self, row: 0)
+        delegate?.didSelectRow(self, index: index.withRow(0))
     }
 }
 
@@ -86,6 +88,6 @@ extension SectionOverviewViewController: UITableViewDataSource {
 
 extension SectionOverviewViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.didSelectRow(self, row: indexPath.row)
+        delegate?.didSelectRow(self, index: index.withRow(indexPath.row))
     }
 }
