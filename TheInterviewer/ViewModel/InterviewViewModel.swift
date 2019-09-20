@@ -83,7 +83,7 @@ extension InterviewViewModel {
         if validateIndex(nextQuestion) {
             return .questionPair(nextQuestion)
         } else if validateIndex(nextSection) {
-            return .section(nextSection, sections[nextSection.section])
+            return .section(nextSection, interview.parts[nextSection.part].sections[nextSection.section])
         } else if validateIndex(nextPart) {
             return .part(nextPart, parts[nextPart.part])
         } else {
@@ -122,7 +122,7 @@ extension InterviewViewModel {
     }
     
     func section(for index: Index) -> Section {
-        return sections[index.section]
+        return interview.parts[index.part].sections[index.section]
     }
     
     func numberOfSections(part: Int) -> Int {
