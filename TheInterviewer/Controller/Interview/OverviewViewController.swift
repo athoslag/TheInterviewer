@@ -43,11 +43,6 @@ final class OverviewViewController: UIViewController {
         tableView.delegate = self
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        viewModel.describeInterview()
-    }
-    
     private func configureUI() {
         // Navigation
         navigationController?.navigationBar.setupNavigationBar()
