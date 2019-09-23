@@ -6,6 +6,7 @@
 //  Copyright © 2019 Athos Lagemann. All rights reserved.
 //
 
+import AVFoundation
 import UIKit
 
 protocol QALongViewControllerDelegate: class {
@@ -18,12 +19,13 @@ final class QALongViewController: UIViewController {
     @IBOutlet private weak var sectionProgressionLabel: UILabel!
     @IBOutlet private weak var questionLabel: UILabel!
     @IBOutlet private weak var textView: UITextView!
+    @IBOutlet private weak var recordButton: UIButton!
     private var tabAccessoryView: UIToolbar?
-    
+
     private let questionIndex: Index
     private let viewModel: InterviewViewModel
     private let presentationMode: Mode
-    
+
     weak var delegate: QALongViewControllerDelegate?
     
     init(viewModel: InterviewViewModel, index: Index, presentationMode: Mode) {
@@ -83,6 +85,16 @@ final class QALongViewController: UIViewController {
         textView.layer.borderColor = UIColor.lightGray.cgColor
         textView.layer.cornerRadius = 6.0
         textView.isUserInteractionEnabled = presentationMode == .edition
+        
+        // Record
+        recordButton.tintColor = .white
+        recordButton.setTitle(nil, for: .normal)
+        recordButton.setImage(UIImage.record, for: .normal)
+        
+        let edge = recordButton.layer.bounds.height / 5
+        recordButton.imageEdgeInsets = UIEdgeInsets(top: edge, left: edge, bottom: edge, right: edge)
+        recordButton.backgroundColor = AppConfiguration.mainColor
+        recordButton.layer.cornerRadius = recordButton.layer.bounds.height / 2
     }
 }
 
@@ -92,6 +104,10 @@ extension QALongViewController {
     private func nextTapped() {
         viewModel.updateAnswer(textView.text, for: questionIndex)
         delegate?.didFinishAnswer(self, viewModel: viewModel, index: questionIndex)
+    }
+    
+    @IBAction func didTapRecord(_ sender: UIButton) {
+        
     }
     
     @IBAction private func didTapNext(_ sender: UIButton) {
