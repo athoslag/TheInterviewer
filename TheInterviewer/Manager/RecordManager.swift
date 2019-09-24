@@ -18,7 +18,8 @@ final class RecordManager: NSObject {
     private let url: URL
     private let settings: [String: Int]
     private var recordingSession: AVAudioSession
-    private var audioRecorder: AVAudioRecorder!
+    private var audioRecorder: AVAudioRecorder?
+    private(set) var isRecording: Bool = false
     
     weak var delegate: RecordManagerDelegate?
     
@@ -51,17 +52,20 @@ final class RecordManager: NSObject {
         
         do {
             audioRecorder = try AVAudioRecorder(url: url, settings: settings)
-            audioRecorder.delegate = self
-            audioRecorder.record()
+            audioRecorder?.delegate = self
+            audioRecorder?.record()
+            isRecording = true
             return true
         } catch {
+            isRecording = false
             return false
         }
     }
     
     func stopRecording() {
-        audioRecorder.stop()
+        audioRecorder?.stop()
         audioRecorder = nil
+        isRecording = false
     }
 }
 

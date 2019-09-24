@@ -25,13 +25,20 @@ final class QALongViewController: UIViewController {
     private let questionIndex: Index
     private let viewModel: InterviewViewModel
     private let presentationMode: Mode
-
+    private let recorder: RecordManager?
+    
     weak var delegate: QALongViewControllerDelegate?
     
     init(viewModel: InterviewViewModel, index: Index, presentationMode: Mode) {
         self.viewModel = viewModel
         self.questionIndex = index
         self.presentationMode = presentationMode
+        
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
+        let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] // TODO: Manage directory
+        self.recorder = RecordManager(filename: "\(index.part).\(index.section).\(index.row)", url: url)
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -44,6 +51,7 @@ final class QALongViewController: UIViewController {
         configureUI()
         
         textView.delegate = self
+        recorder?.delegate = self
         
         if let pair = viewModel.questionPair(for: questionIndex) {
             questionLabel.text = pair.question
@@ -107,7 +115,17 @@ extension QALongViewController {
     }
     
     @IBAction func didTapRecord(_ sender: UIButton) {
+        guard let recorder = recorder else {
+            return
+        }
         
+        if !recorder.isRecording {
+            let status = recorder.startRecording()
+            recordButton.layer.borderWidth = 1.0
+            recordButton.layer.borderColor = status ? UIColor.green.cgColor : UIColor.red.cgColor
+        } else {
+            recorder.stopRecording()
+        }
     }
     
     @IBAction private func didTapNext(_ sender: UIButton) {
@@ -129,5 +147,12 @@ extension QALongViewController: UITextViewDelegate {
             textView.inputAccessoryView = tabAccessoryView
         }
         return true
+    }
+}
+
+// MARK: - RecordManager Delegate
+extension QALongViewController: RecordManagerDelegate {
+    func didFinishRecording(_ success: Bool) {
+        recordButton.layer.borderColor = UIColor.red.cgColor
     }
 }
