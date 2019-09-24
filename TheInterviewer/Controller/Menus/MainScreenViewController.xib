@@ -61,7 +61,9 @@
                 <constraint firstItem="k2l-Dd-eks" firstAttribute="top" secondItem="6Ev-ls-C04" secondAttribute="bottom" constant="30" id="j7E-AT-rph"/>
                 <constraint firstItem="6Ev-ls-C04" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="rGw-eI-aCm"/>
                 <constraint firstItem="6Ev-ls-C04" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="sLw-qf-rIA"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6Ev-ls-C04" secondAttribute="trailing" constant="175" id="w6h-cW-vBQ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6Ev-ls-C04" secondAttribute="trailing" constant="175" id="w6h-cW-vBQ">
+                    <variation key="widthClass=compact" constant="20"/>
+                </constraint>
                 <constraint firstItem="Emv-Fu-8nz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="230" id="wnm-9b-b62"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
