@@ -15,6 +15,13 @@ protocol QALongViewControllerDelegate: class {
 }
 
 final class QALongViewController: UIViewController {
+    private enum RecordState {
+        case disabled
+        case ready
+        case recording
+        case hide
+    }
+    
     @IBOutlet private weak var partProgressionLabel: UILabel!
     @IBOutlet private weak var sectionProgressionLabel: UILabel!
     @IBOutlet private weak var questionLabel: UILabel!
@@ -105,18 +112,15 @@ final class QALongViewController: UIViewController {
         
         // Record
         guard presentationMode == .edition else {
-            recordButton.isHidden = true
+            loadRecordingUI(state: .hide)
             return
         }
         
-        recordButton.tintColor = .white
-        recordButton.setTitle(nil, for: .normal)
-        recordButton.setImage(UIImage.record, for: .normal)
-        
-        let edge = recordButton.layer.bounds.height / 5
-        recordButton.imageEdgeInsets = UIEdgeInsets(top: edge, left: edge, bottom: edge, right: edge)
+        recordButton.titleLabel?.textColor = .white
+        recordButton.titleLabel?.font = UIFont(SFPro: .text, variant: .regular, size: 17)
         recordButton.backgroundColor = AppConfiguration.mainColor
-        recordButton.layer.cornerRadius = recordButton.layer.bounds.height / 2
+        recordButton.layer.cornerRadius = 5.0
+        recordButton.titleLabel?.numberOfLines = 1
     }
 }
 
@@ -130,16 +134,32 @@ extension QALongViewController {
             try recordingSession.setActive(true)
             recordingSession.requestRecordPermission { [weak self] allowed in
                 DispatchQueue.main.async {
-                    self?.loadRecordingUI(show: allowed)
+                    self?.loadRecordingUI(state: .ready)
                 }
             }
         } catch {
-            self.loadRecordingUI(show: false)
+            self.loadRecordingUI(state: .disabled)
         }
     }
     
-    private func loadRecordingUI(show: Bool) {
-        self.recordButton.isHidden = !show && presentationMode == .edition
+    private func loadRecordingUI(state: RecordState) {
+        recordButton.isHidden = false
+        recordButton.isEnabled = true
+        
+        switch state {
+        case .hide:
+            recordButton.isHidden = true
+        case .recording:
+            recordButton.setTitle("Gravando...", for: .normal)
+        case .ready:
+            recordButton.setTitle("Gravar", for: .normal)
+        case .disabled:
+            recordButton.isEnabled = false
+            recordButton.setTitle("Gravar", for: .disabled)
+            recordButton.backgroundColor = .lightGray
+        }
+        
+        recordButton.sizeToFit()
     }
     
     private func createRecordingsDirectory() -> URL {
@@ -202,7 +222,7 @@ extension QALongViewController {
         print("Finished recording. Status:", success)
         printContentsOfDirectory()
         
-        loadRecordingUI(show: success) // TODO: refactor this
+        loadRecordingUI(state: .ready)
     }
     
     private func printContentsOfDirectory() {
@@ -223,6 +243,7 @@ extension QALongViewController {
     
     @IBAction func didTapRecord(_ sender: UIButton) {
         if audioRecorder == nil {
+            loadRecordingUI(state: .recording)
             startRecording()
         } else {
             finishRecording(success: true)
