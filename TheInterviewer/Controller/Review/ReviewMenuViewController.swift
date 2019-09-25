@@ -43,12 +43,6 @@ final class ReviewMenuViewController: UIViewController {
         tableView.delegate = self
     }
     
-    // TODO: Remove later
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        readDirectory()
-    }
-    
     private func configureUI() {
         // navigation bar
         navigationController?.navigationBar.setupNavigationBar()
@@ -123,24 +117,5 @@ extension ReviewMenuViewController: UITableViewDataSource {
 extension ReviewMenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.didSelectRow(self, viewModel: viewModel, row: indexPath.row)
-    }
-}
-
-// TODO: Remove later
-extension ReviewMenuViewController {
-    func readDirectory() {
-        let fileManager = FileManager.default
-        let url = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        
-        do {
-            let URLs = try fileManager.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-            let strings = URLs.map({ $0.relativeString })
-            print("Directory contains:")
-            strings.forEach { print("->", $0) }
-            
-        } catch {
-            print("FileManager read directory error!")
-            return
-        }
     }
 }
