@@ -25,7 +25,21 @@ final class QALongViewController: UIViewController {
     private let questionIndex: Index
     private let viewModel: InterviewViewModel
     private let presentationMode: Mode
-    private let recordManager: RecordManager?
+    
+    // Recording
+    private var recordingSession: AVAudioSession!
+    private var audioRecorder: AVAudioRecorder!
+    
+    private var recordingsPath: URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let recordings = paths[0].appendingPathComponent("recordings", isDirectory: true)
+        return recordings
+    }
+    
+    private var dirPath: URL {
+        let newPath = recordingsPath.appendingPathComponent(viewModel.title.replacingOccurrences(of: " ", with: "_"), isDirectory: true)
+        return newPath
+    }
     
     weak var delegate: QALongViewControllerDelegate?
     
@@ -33,8 +47,6 @@ final class QALongViewController: UIViewController {
         self.viewModel = viewModel
         self.questionIndex = index
         self.presentationMode = presentationMode
-        
-        self.recordManager = RecordManager(folder: viewModel.title, filename: index.filename)
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -46,9 +58,9 @@ final class QALongViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        configureAudioRecording()
         
         textView.delegate = self
-        recordManager?.delegate = self
         
         if let pair = viewModel.questionPair(for: questionIndex) {
             questionLabel.text = pair.question
@@ -108,6 +120,99 @@ final class QALongViewController: UIViewController {
     }
 }
 
+// MARK: - Recording
+extension QALongViewController {
+    private func configureAudioRecording() {
+        recordingSession = AVAudioSession.sharedInstance()
+        
+        do {
+            try recordingSession.setCategory(.playAndRecord, mode: .spokenAudio)
+            try recordingSession.setActive(true)
+            recordingSession.requestRecordPermission { [weak self] allowed in
+                DispatchQueue.main.async {
+                    self?.loadRecordingUI(show: allowed)
+                }
+            }
+        } catch {
+            self.loadRecordingUI(show: false)
+        }
+    }
+    
+    private func loadRecordingUI(show: Bool) {
+        self.recordButton.isHidden = !show && presentationMode == .edition
+    }
+    
+    private func createRecordingsDirectory() -> URL {
+        
+        var isDir: ObjCBool = true
+        if !FileManager.default.fileExists(atPath: recordingsPath.path, isDirectory: &isDir) {
+            do {
+                try FileManager.default.createDirectory(at: recordingsPath, withIntermediateDirectories: false)
+                print("Created directory:", recordingsPath.path)
+            } catch {
+                fatalError("Could not createDirectory")
+            }
+        } else {
+            print("Recordings dir already exists.")
+        }
+        
+        if !FileManager.default.fileExists(atPath: dirPath.path, isDirectory: &isDir) {
+            do {
+                try FileManager.default.createDirectory(at: dirPath, withIntermediateDirectories: true)
+                print("Created directory:", dirPath.path)
+            } catch {
+                fatalError("Could not createDirectory")
+            }
+        } else {
+            print("\(viewModel.title) dir already exists.")
+        }
+        
+        return dirPath
+    }
+    
+    private func startRecording() {
+        let path = createRecordingsDirectory()
+        let audioFilename = path.appendingPathComponent("\(questionIndex.filename).m4a")
+        print("audioFilename:", audioFilename.path)
+        
+        let settings =
+            [
+                AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+                AVSampleRateKey: 12000,
+                AVNumberOfChannelsKey: 1,
+                AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+            ]
+        
+        do {
+            audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
+            audioRecorder.delegate = self
+            let status = audioRecorder.record()
+            recordButton.isEnabled = status
+            // TODO: show recording indicator
+        } catch {
+            finishRecording(success: false)
+            recordButton.isEnabled = false
+        }
+        
+    }
+    
+    private func finishRecording(success: Bool) {
+        audioRecorder.stop()
+        audioRecorder = nil
+        print("Finished recording. Status:", success)
+        printContentsOfDirectory()
+        
+        loadRecordingUI(show: success) // TODO: refactor this
+    }
+    
+    private func printContentsOfDirectory() {
+        let contents = try! FileManager.default.contentsOfDirectory(atPath: dirPath.path)
+        
+        print("Contents of folder \(dirPath.path)")
+        print(contents)
+    }
+}
+
 // MARK: - Actions
 extension QALongViewController {
     @objc
@@ -117,16 +222,10 @@ extension QALongViewController {
     }
     
     @IBAction func didTapRecord(_ sender: UIButton) {
-        guard let recorder = recordManager else {
-            return
-        }
-        
-        if !recorder.isRecording {
-            let status = recorder.startRecording()
-            recordButton.layer.borderWidth = 1.0
-            recordButton.layer.borderColor = status ? UIColor.green.cgColor : UIColor.red.cgColor
+        if audioRecorder == nil {
+            startRecording()
         } else {
-            recorder.stopRecording()
+            finishRecording(success: true)
         }
     }
     
@@ -156,5 +255,14 @@ extension QALongViewController: UITextViewDelegate {
 extension QALongViewController: RecordManagerDelegate {
     func didFinishRecording(_ success: Bool) {
         recordButton.layer.borderColor = UIColor.red.cgColor
+    }
+}
+
+// MARK: - AudioRecorder Delegate
+extension QALongViewController: AVAudioRecorderDelegate {
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        if !flag {
+            finishRecording(success: false)
+        }
     }
 }
