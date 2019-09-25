@@ -25,7 +25,7 @@ final class QALongViewController: UIViewController {
     private let questionIndex: Index
     private let viewModel: InterviewViewModel
     private let presentationMode: Mode
-    private let recorder: RecordManager?
+    private let recordManager: RecordManager?
     
     weak var delegate: QALongViewControllerDelegate?
     
@@ -34,10 +34,7 @@ final class QALongViewController: UIViewController {
         self.questionIndex = index
         self.presentationMode = presentationMode
         
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        
-        let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] // TODO: Manage directory
-        self.recorder = RecordManager(filename: "\(index.part).\(index.section).\(index.row)", url: url)
+        self.recordManager = RecordManager(folder: viewModel.title, filename: index.filename)
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -51,7 +48,7 @@ final class QALongViewController: UIViewController {
         configureUI()
         
         textView.delegate = self
-        recorder?.delegate = self
+        recordManager?.delegate = self
         
         if let pair = viewModel.questionPair(for: questionIndex) {
             questionLabel.text = pair.question
@@ -95,6 +92,11 @@ final class QALongViewController: UIViewController {
         textView.isUserInteractionEnabled = presentationMode == .edition
         
         // Record
+        guard presentationMode == .edition else {
+            recordButton.isHidden = true
+            return
+        }
+        
         recordButton.tintColor = .white
         recordButton.setTitle(nil, for: .normal)
         recordButton.setImage(UIImage.record, for: .normal)
@@ -115,7 +117,7 @@ extension QALongViewController {
     }
     
     @IBAction func didTapRecord(_ sender: UIButton) {
-        guard let recorder = recorder else {
+        guard let recorder = recordManager else {
             return
         }
         

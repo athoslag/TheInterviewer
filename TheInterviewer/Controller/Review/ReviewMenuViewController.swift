@@ -135,10 +135,11 @@ extension ReviewMenuViewController {
         do {
             let URLs = try fileManager.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
             let strings = URLs.map({ $0.relativeString })
-            print(strings)
+            print("Directory contains:")
+            strings.forEach { print("->", $0) }
             
         } catch {
-            print("Catch error!")
+            print("FileManager read directory error!")
             return
         }
     }
