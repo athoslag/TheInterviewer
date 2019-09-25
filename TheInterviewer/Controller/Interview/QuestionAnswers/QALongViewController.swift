@@ -48,6 +48,9 @@ final class QALongViewController: UIViewController {
         return newPath
     }
     
+    // Debug
+    private let debug: Bool = true
+    
     weak var delegate: QALongViewControllerDelegate?
     
     init(viewModel: InterviewViewModel, index: Index, presentationMode: Mode) {
@@ -168,23 +171,25 @@ extension QALongViewController {
         if !FileManager.default.fileExists(atPath: recordingsPath.path, isDirectory: &isDir) {
             do {
                 try FileManager.default.createDirectory(at: recordingsPath, withIntermediateDirectories: false)
-                print("Created directory:", recordingsPath.path)
+                self.debugPrint("Created directory: \(recordingsPath.path)")
             } catch {
                 fatalError("Could not createDirectory")
             }
         } else {
-            print("Recordings dir already exists.")
+            debugPrint("Recordings dir already exists.")
         }
         
         if !FileManager.default.fileExists(atPath: dirPath.path, isDirectory: &isDir) {
             do {
                 try FileManager.default.createDirectory(at: dirPath, withIntermediateDirectories: true)
-                print("Created directory:", dirPath.path)
+                self.debugPrint("Created directory: \(dirPath.path)")
             } catch {
                 fatalError("Could not createDirectory")
             }
         } else {
-            print("\(viewModel.title) dir already exists.")
+            if debug {
+                debugPrint("\(viewModel.title) dir already exists.")
+            }
         }
         
         return dirPath
@@ -219,8 +224,10 @@ extension QALongViewController {
     private func finishRecording(success: Bool) {
         audioRecorder.stop()
         audioRecorder = nil
-        print("Finished recording. Status:", success)
-        printContentsOfDirectory()
+        self.debugPrint("Finished recording. Status: \(success)")
+        if debug {
+            printContentsOfDirectory()
+        }
         
         loadRecordingUI(state: .ready)
     }
@@ -230,6 +237,15 @@ extension QALongViewController {
         
         print("Contents of folder \(dirPath.path)")
         print(contents)
+    }
+}
+
+// MARK: - Debug
+extension QALongViewController {
+    private func debugPrint(_ content: Any) {
+        if debug {
+            print(content)
+        }
     }
 }
 
