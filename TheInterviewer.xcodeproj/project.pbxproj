@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		63FF8A25B944172A567B4448 /* Pods_TheInterviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B1EC06222285251E9D29B7 /* Pods_TheInterviewer.framework */; };
-		7E39420722CC0A2800579F29 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39420622CC0A2800579F29 /* MainViewModel.swift */; };
 		7E3C4D3422BAB9E200490D16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3C4D3322BAB9E200490D16 /* AppDelegate.swift */; };
 		7E3C4D3C22BAB9E200490D16 /* TheInterviewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E3C4D3A22BAB9E200490D16 /* TheInterviewer.xcdatamodeld */; };
 		7E3C4D3E22BAB9E400490D16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E3C4D3D22BAB9E400490D16 /* Assets.xcassets */; };
@@ -61,7 +60,6 @@
 /* Begin PBXFileReference section */
 		30C94D8515AA94388E3110B0 /* Pods-TheInterviewer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheInterviewer.release.xcconfig"; path = "Target Support Files/Pods-TheInterviewer/Pods-TheInterviewer.release.xcconfig"; sourceTree = "<group>"; };
 		71B1EC06222285251E9D29B7 /* Pods_TheInterviewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheInterviewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E39420622CC0A2800579F29 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		7E3C4D3022BAB9E200490D16 /* TheInterviewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheInterviewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E3C4D3322BAB9E200490D16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E3C4D3B22BAB9E200490D16 /* TheInterviewer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TheInterviewer.xcdatamodel; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 		7E39420522CC0A0F00579F29 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				7E39420622CC0A2800579F29 /* MainViewModel.swift */,
 				7EB4B52C22F39329005410EF /* InterviewViewModel.swift */,
 				7EB8BA96232811DE00276D1A /* ReviewViewModel.swift */,
 			);
@@ -478,7 +475,6 @@
 				7EB8BA992328137500276D1A /* Date.swift in Sources */,
 				7EB8BA97232811DE00276D1A /* ReviewViewModel.swift in Sources */,
 				7E51B93B22FA2E790091C9A1 /* OverviewViewController.swift in Sources */,
-				7E39420722CC0A2800579F29 /* MainViewModel.swift in Sources */,
 				7E570DE6231731470092D538 /* ViewControllerExtensions.swift in Sources */,
 				7E42034322EF918400DFA490 /* Interview.swift in Sources */,
 			);
