@@ -15,7 +15,7 @@ protocol RecordManagerDelegate: class {
 
 final class RecordManager: NSObject {
     private let filename: String
-    private let url: URL
+    private let path: URL
     private let settings: [String: Int]
     private var recordingSession: AVAudioSession
     private var audioRecorder: AVAudioRecorder?
@@ -23,10 +23,13 @@ final class RecordManager: NSObject {
     
     weak var delegate: RecordManagerDelegate?
     
-    init?(filename: String, url: URL) {
+    init?(folder: String, filename: String) {
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        
         self.filename = filename
-        self.url = url
+        self.path = documentsURL.appendingPathComponent("Recordings", isDirectory: true).appendingPathComponent(folder, isDirectory: true)
         self.recordingSession = AVAudioSession.sharedInstance()
+        
         self.settings =
             [
                 AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -51,7 +54,7 @@ final class RecordManager: NSObject {
         }
         
         do {
-            audioRecorder = try AVAudioRecorder(url: url, settings: settings)
+            audioRecorder = try AVAudioRecorder(url: path, settings: settings)
             audioRecorder?.delegate = self
             audioRecorder?.record()
             isRecording = true
