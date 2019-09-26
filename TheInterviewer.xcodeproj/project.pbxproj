@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		63FF8A25B944172A567B4448 /* Pods_TheInterviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B1EC06222285251E9D29B7 /* Pods_TheInterviewer.framework */; };
-		7E39420722CC0A2800579F29 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39420622CC0A2800579F29 /* MainViewModel.swift */; };
 		7E3C4D3422BAB9E200490D16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3C4D3322BAB9E200490D16 /* AppDelegate.swift */; };
 		7E3C4D3C22BAB9E200490D16 /* TheInterviewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E3C4D3A22BAB9E200490D16 /* TheInterviewer.xcdatamodeld */; };
 		7E3C4D3E22BAB9E400490D16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E3C4D3D22BAB9E400490D16 /* Assets.xcassets */; };
@@ -54,13 +53,13 @@
 		7ECC273C2329814D00B3D90E /* FinalScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ECC273A2329814D00B3D90E /* FinalScreenViewController.xib */; };
 		7ECC273E232BCA8D00B3D90E /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECC273D232BCA8D00B3D90E /* Double.swift */; };
 		7ED28713232052F500C005E7 /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED28712232052F500C005E7 /* Wrapper.swift */; };
+		7EED1F65233902850043C2A9 /* RecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EED1F64233902850043C2A9 /* RecordManager.swift */; };
 		7EF19E1322C4415000E95AAF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF19E1222C4415000E95AAF /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		30C94D8515AA94388E3110B0 /* Pods-TheInterviewer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheInterviewer.release.xcconfig"; path = "Target Support Files/Pods-TheInterviewer/Pods-TheInterviewer.release.xcconfig"; sourceTree = "<group>"; };
 		71B1EC06222285251E9D29B7 /* Pods_TheInterviewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheInterviewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E39420622CC0A2800579F29 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		7E3C4D3022BAB9E200490D16 /* TheInterviewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheInterviewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E3C4D3322BAB9E200490D16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E3C4D3B22BAB9E200490D16 /* TheInterviewer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TheInterviewer.xcdatamodel; sourceTree = "<group>"; };
@@ -108,6 +107,7 @@
 		7ECC273A2329814D00B3D90E /* FinalScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinalScreenViewController.xib; sourceTree = "<group>"; };
 		7ECC273D232BCA8D00B3D90E /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		7ED28712232052F500C005E7 /* Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrapper.swift; sourceTree = "<group>"; };
+		7EED1F64233902850043C2A9 /* RecordManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordManager.swift; sourceTree = "<group>"; };
 		7EF19E1222C4415000E95AAF /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C4409D55E2C59E1EB80DE33F /* Pods-TheInterviewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheInterviewer.debug.xcconfig"; path = "Target Support Files/Pods-TheInterviewer/Pods-TheInterviewer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -169,7 +169,6 @@
 		7E39420522CC0A0F00579F29 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				7E39420622CC0A2800579F29 /* MainViewModel.swift */,
 				7EB4B52C22F39329005410EF /* InterviewViewModel.swift */,
 				7EB8BA96232811DE00276D1A /* ReviewViewModel.swift */,
 			);
@@ -203,6 +202,7 @@
 				7EF19E1422C442D700E95AAF /* Coordinator */,
 				7E570DE4231731340092D538 /* Extensions */,
 				7E7E632D23219ED1001A8D24 /* Fonts */,
+				7EED1F63233902850043C2A9 /* Manager */,
 				7E42034122EF917300DFA490 /* Model */,
 				7EB56698231F55510020E077 /* Service */,
 				7E39420522CC0A0F00579F29 /* ViewModel */,
@@ -289,6 +289,14 @@
 				7EB8BA93232810CF00276D1A /* ReviewMenuViewController.xib */,
 			);
 			path = Review;
+			sourceTree = "<group>";
+		};
+		7EED1F63233902850043C2A9 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7EED1F64233902850043C2A9 /* RecordManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		7EF19E1422C442D700E95AAF /* Coordinator */ = {
@@ -461,12 +469,12 @@
 				7E42034022EF8C7800DFA490 /* InterviewCoordinator.swift in Sources */,
 				7EB5669C231F58F80020E077 /* InterviewService.swift in Sources */,
 				7EB8BA9B2328297500276D1A /* ReviewCoordinator.swift in Sources */,
+				7EED1F65233902850043C2A9 /* RecordManager.swift in Sources */,
 				7E51B94122FA32E10091C9A1 /* Extensions.swift in Sources */,
 				7E936652230F434E00D636DF /* InterviewModels.swift in Sources */,
 				7EB8BA992328137500276D1A /* Date.swift in Sources */,
 				7EB8BA97232811DE00276D1A /* ReviewViewModel.swift in Sources */,
 				7E51B93B22FA2E790091C9A1 /* OverviewViewController.swift in Sources */,
-				7E39420722CC0A2800579F29 /* MainViewModel.swift in Sources */,
 				7E570DE6231731470092D538 /* ViewControllerExtensions.swift in Sources */,
 				7E42034322EF918400DFA490 /* Interview.swift in Sources */,
 			);

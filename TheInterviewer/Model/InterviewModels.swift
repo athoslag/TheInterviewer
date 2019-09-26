@@ -19,8 +19,6 @@ struct QuestionPair: Codable {
     let question: String
     var answer: String?
     let type: AnswerType
-    
-    // TODO: Add recorded answer option
 }
 
 struct Section: Codable {
@@ -51,6 +49,10 @@ struct Index {
     
     func withRow(_ row: Int) -> Index {
         return Index(part: self.part, section: self.section, row: row)
+    }
+    
+    var filename: String {
+        return "\(part).\(section).\(row)"
     }
 }
 

@@ -22,3 +22,7 @@ final class AppConfiguration {
     // Colors
     static var mainColor: UIColor = UIColor(hex: 0x7851A9)
 }
+
+extension UIImage {
+    static let record = UIImage(named: "record")
+}

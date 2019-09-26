@@ -181,6 +181,7 @@ extension InterviewViewModel {
 
 // MARK: Data
 extension InterviewViewModel {
+    @discardableResult
     func saveInterview() -> Bool {
         do {
             try InterviewService.saveInterview(interview)

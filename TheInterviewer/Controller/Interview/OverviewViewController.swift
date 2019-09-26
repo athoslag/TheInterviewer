@@ -123,9 +123,7 @@ extension OverviewViewController: UITextFieldDelegate {
             return
         }
         
-        let save = viewModel.saveInterview()
-        print("Tried to save the interview: \(save ? "worked" : "failed")")
-        
+        viewModel.saveInterview()
         viewModel.updateTitle(newTitle)
     }
 }
