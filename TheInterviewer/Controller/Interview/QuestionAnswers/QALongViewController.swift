@@ -39,13 +39,17 @@ final class QALongViewController: UIViewController {
     
     private var recordingsPath: URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let recordings = paths[0].appendingPathComponent("recordings", isDirectory: true)
-        return recordings
+        return paths[0].appendingPathComponent("recordings", isDirectory: true)
     }
     
     private var dirPath: URL {
-        let newPath = recordingsPath.appendingPathComponent(viewModel.title.replacingOccurrences(of: " ", with: "_"), isDirectory: true)
-        return newPath
+        return recordingsPath.appendingPathComponent(viewModel.title.replacingOccurrences(of: " ", with: "_"), isDirectory: true)
+    }
+    
+    private var filenameURL: URL {
+        let filename = dirPath.appendingPathComponent("\(questionIndex.filename).m4a")
+        debugPrint("audioFilename: \(filename.path)")
+        return filename
     }
     
     // Debug
@@ -91,7 +95,10 @@ final class QALongViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        finishRecording(success: true)
+        if presentationMode == .edition {
+            finishRecording(success: true)
+        }
+        
         delegate?.didTapBack(self, viewModel: viewModel)
         super.viewWillDisappear(animated)
     }
@@ -113,12 +120,6 @@ final class QALongViewController: UIViewController {
         textView.layer.borderColor = UIColor.lightGray.cgColor
         textView.layer.cornerRadius = 6.0
         textView.isUserInteractionEnabled = presentationMode == .edition
-        
-        // Record
-        guard presentationMode == .edition else {
-            loadRecordingUI(state: .hide)
-            return
-        }
         
         recordButton.titleLabel?.textColor = .white
         recordButton.titleLabel?.font = UIFont(SFPro: .text, variant: .regular, size: 17)
@@ -166,8 +167,7 @@ extension QALongViewController {
         recordButton.sizeToFit()
     }
     
-    private func createRecordingsDirectory() -> URL {
-        
+    private func createRecordingsDirectory() {
         var isDir: ObjCBool = true
         if !FileManager.default.fileExists(atPath: recordingsPath.path, isDirectory: &isDir) {
             do {
@@ -192,15 +192,9 @@ extension QALongViewController {
                 debugPrint("\(viewModel.title) dir already exists.")
             }
         }
-        
-        return dirPath
     }
     
     private func startRecording() {
-        let path = createRecordingsDirectory()
-        let audioFilename = path.appendingPathComponent("\(questionIndex.filename).m4a")
-        print("audioFilename:", audioFilename.path)
-        
         let settings =
             [
                 AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -210,7 +204,7 @@ extension QALongViewController {
             ]
         
         do {
-            audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
+            audioRecorder = try AVAudioRecorder(url: filenameURL, settings: settings)
             // audioRecorder can be unwrapped since was just attributed
             audioRecorder!.delegate = self
             
@@ -224,6 +218,10 @@ extension QALongViewController {
     }
     
     private func finishRecording(success: Bool) {
+        guard audioRecorder != nil else {
+            return
+        }
+        
         audioRecorder?.stop()
         audioRecorder = nil
         
@@ -288,13 +286,6 @@ extension QALongViewController: UITextViewDelegate {
             textView.inputAccessoryView = tabAccessoryView
         }
         return true
-    }
-}
-
-// MARK: - RecordManager Delegate
-extension QALongViewController: RecordManagerDelegate {
-    func didFinishRecording(_ success: Bool) {
-        recordButton.layer.borderColor = UIColor.red.cgColor
     }
 }
 
