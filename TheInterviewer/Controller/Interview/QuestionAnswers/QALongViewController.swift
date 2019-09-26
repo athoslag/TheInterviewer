@@ -35,7 +35,7 @@ final class QALongViewController: UIViewController {
     
     // Recording
     private var recordingSession: AVAudioSession!
-    private var audioRecorder: AVAudioRecorder!
+    private var audioRecorder: AVAudioRecorder?
     
     private var recordingsPath: URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -91,8 +91,9 @@ final class QALongViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        finishRecording(success: true)
         delegate?.didTapBack(self, viewModel: viewModel)
+        super.viewWillDisappear(animated)
     }
     
     private func configureUI() {
@@ -210,10 +211,11 @@ extension QALongViewController {
         
         do {
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
-            audioRecorder.delegate = self
-            let status = audioRecorder.record()
+            // audioRecorder can be unwrapped since was just attributed
+            audioRecorder!.delegate = self
+            
+            let status = audioRecorder!.record()
             recordButton.isEnabled = status
-            // TODO: show recording indicator
         } catch {
             finishRecording(success: false)
             recordButton.isEnabled = false
@@ -222,8 +224,9 @@ extension QALongViewController {
     }
     
     private func finishRecording(success: Bool) {
-        audioRecorder.stop()
+        audioRecorder?.stop()
         audioRecorder = nil
+        
         self.debugPrint("Finished recording. Status: \(success)")
         if debug {
             printContentsOfDirectory()
