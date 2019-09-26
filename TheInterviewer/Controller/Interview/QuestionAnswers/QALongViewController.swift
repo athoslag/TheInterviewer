@@ -22,6 +22,13 @@ final class QALongViewController: UIViewController {
         case hide
     }
     
+    private enum PlaybackState {
+        case ready
+        case playing
+        case unavailable
+        case hide
+    }
+    
     @IBOutlet private weak var partProgressionLabel: UILabel!
     @IBOutlet private weak var sectionProgressionLabel: UILabel!
     @IBOutlet private weak var questionLabel: UILabel!
@@ -52,6 +59,9 @@ final class QALongViewController: UIViewController {
         return filename
     }
     
+    // Playback
+    private var audioPlayer: AVAudioPlayer?
+    
     // Debug
     private let debug: Bool = true
     
@@ -72,7 +82,14 @@ final class QALongViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        configureAudioRecording()
+        
+        switch presentationMode {
+        case .edition:
+            createRecordingsDirectory()
+            configureAudioRecording()
+        case .review:
+            configureAudioPlayback()
+        }
         
         textView.delegate = self
         
@@ -241,6 +258,64 @@ extension QALongViewController {
     }
 }
 
+// MARK: - Playback
+extension QALongViewController {
+    private func configureAudioPlayback() {
+        // verifies the existance of file
+        let fileManager = FileManager.default
+        let exists = fileManager.fileExists(atPath: filenameURL.path)
+        
+        if exists {
+            loadPlaybackUI(state: .ready)
+            debugPrint("File found at \(filenameURL.path)")
+        } else {
+            loadPlaybackUI(state: .unavailable)
+            debugPrint("File not found at \(filenameURL.path)")
+        }
+    }
+    
+    private func loadPlaybackUI(state: PlaybackState) {
+        recordButton.isHidden = false
+        recordButton.isEnabled = true
+        
+        switch state {
+        case .hide:
+            recordButton.isHidden = true
+        case .ready:
+            recordButton.setTitle("Reproduzir", for: .normal)
+        case .playing:
+            recordButton.setTitle("Parar", for: .normal)
+        case .unavailable:
+            recordButton.isEnabled = false
+            recordButton.setTitle("Reproduzir", for: .disabled)
+            recordButton.backgroundColor = .lightGray
+        }
+        
+        recordButton.sizeToFit()
+    }
+    
+    private func togglePlayback() {
+        if audioPlayer != nil, audioPlayer!.isPlaying {
+            audioPlayer?.stop()
+            loadPlaybackUI(state: .ready)
+            debugPrint("Audioplayer stopped.")
+        } else {
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: filenameURL)
+                audioPlayer?.prepareToPlay()
+                audioPlayer?.delegate = self
+                audioPlayer?.volume = 1.0
+                audioPlayer?.play()
+                loadPlaybackUI(state: .playing)
+                debugPrint("Audioplayer is now playing: \(filenameURL.absoluteString)")
+            } catch {
+                loadPlaybackUI(state: .unavailable)
+                debugPrint("Audioplayer failed to play: \(filenameURL.absoluteString)")
+            }
+        }
+    }
+}
+
 // MARK: - Debug
 extension QALongViewController {
     private func debugPrint(_ content: Any) {
@@ -259,11 +334,16 @@ extension QALongViewController {
     }
     
     @IBAction func didTapRecord(_ sender: UIButton) {
-        if audioRecorder == nil {
-            loadRecordingUI(state: .recording)
-            startRecording()
-        } else {
-            finishRecording(success: true)
+        switch presentationMode {
+        case .edition:
+            if audioRecorder == nil {
+                loadRecordingUI(state: .recording)
+                startRecording()
+            } else {
+                finishRecording(success: true)
+            }
+        case .review:
+            togglePlayback()
         }
     }
     
@@ -295,5 +375,12 @@ extension QALongViewController: AVAudioRecorderDelegate {
         if !flag {
             finishRecording(success: false)
         }
+    }
+}
+
+// MARK: - AudioPlayer Delegate
+extension QALongViewController: AVAudioPlayerDelegate {
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        loadPlaybackUI(state: .ready)
     }
 }
