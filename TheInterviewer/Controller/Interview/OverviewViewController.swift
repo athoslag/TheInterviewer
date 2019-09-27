@@ -21,10 +21,12 @@ final class OverviewViewController: UIViewController {
     @IBOutlet private weak var actionButton: UIButton!
     
     private let viewModel: InterviewViewModel
+    private let canEditTitle: Bool
     weak var delegate: OverviewDelegate?
     
-    init(interviewVM: InterviewViewModel) {
+    init(interviewVM: InterviewViewModel, canEditTitle: Bool) {
         self.viewModel = interviewVM
+        self.canEditTitle = canEditTitle
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -34,43 +36,51 @@ final class OverviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
         
         titleTextField.delegate = self
         titleTextField.text = viewModel.title
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        configureUI()
     }
     
     private func configureUI() {
         // Navigation
         navigationController?.navigationBar.setupNavigationBar()
+        navigationItem.title = titleTextField.text
         
         // Information
         titleTextField.font = UIFont(SFPro: .text, variant: .medium, size: 26)
         titleTextField.selectedLineColor = AppConfiguration.mainColor
+        titleTextField.isHidden = !canEditTitle
         
         // Tableview
         tableView.tableFooterView = UIView()
         
         // Begin Button
         actionButton.layer.cornerRadius = actionButton.layer.bounds.height / 2
-        actionButton.backgroundColor = AppConfiguration.mainColor
         actionButton.setTitleColor(.white, for: .normal)
+        actionButton.setTitleColor(.white, for: .disabled)
         actionButton.titleLabel?.font = UIFont(SFPro: .display, variant: .medium, size: 22)
-        // TODO: Apropriate action button title
         
         addBackButton()
+        updateButtonState(titleTextField.text?.isEmpty)
     }
     
     private func addBackButton() {
         let backButton = UIButton(type: .custom)
-        backButton.setTitle("Voltar", for: .normal)
+        backButton.setTitle("Sair", for: .normal)
         backButton.setTitleColor(.black, for: .normal)
         backButton.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+    }
+    
+    private func updateButtonState(_ disabled: Bool?) {
+        actionButton.isEnabled = !(disabled ?? true)
+        actionButton.backgroundColor = !(disabled ?? true) ? AppConfiguration.mainColor : .lightGray
     }
     
     @objc
@@ -115,11 +125,24 @@ extension OverviewViewController: UITableViewDelegate {
 }
 
 extension OverviewViewController: UITextFieldDelegate {
-    @IBAction func textFieldDidEnd(_ sender: SkyFloatingLabelTextField) {
-        titleTextField.resignFirstResponder()
+    @IBAction func editingDidChange(_ sender: SkyFloatingLabelTextField) {
+        navigationItem.title = titleTextField.text
+        updateButtonState(titleTextField.text?.isEmpty)
         
         guard let newTitle = titleTextField.text, !newTitle.isEmpty else {
-            titleTextField.text = viewModel.title
+            return
+        }
+        
+        viewModel.saveInterview()
+        viewModel.updateTitle(newTitle)
+    }
+    
+    @IBAction func textFieldDidEnd(_ sender: SkyFloatingLabelTextField) {
+        navigationItem.title = titleTextField.text
+        titleTextField.resignFirstResponder()
+        updateButtonState(titleTextField.text?.isEmpty)
+        
+        guard let newTitle = titleTextField.text, !newTitle.isEmpty else {
             return
         }
         
