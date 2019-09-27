@@ -152,7 +152,7 @@ extension QALongViewController {
         recordingSession = AVAudioSession.sharedInstance()
         
         do {
-            try recordingSession.setCategory(.playAndRecord, mode: .spokenAudio)
+            try recordingSession.setCategory(.playAndRecord, mode: .default)
             try recordingSession.setActive(true)
             recordingSession.requestRecordPermission { [weak self] allowed in
                 DispatchQueue.main.async {
