@@ -63,7 +63,7 @@ final class QALongViewController: UIViewController {
     private var audioPlayer: AVAudioPlayer?
     
     // Debug
-    private let debug: Bool = true
+    private let debug: Bool = false
     
     weak var delegate: QALongViewControllerDelegate?
     
