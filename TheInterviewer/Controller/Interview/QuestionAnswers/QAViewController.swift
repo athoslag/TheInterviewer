@@ -11,6 +11,7 @@ import SkyFloatingLabelTextField
 
 protocol QAViewControllerDelegate: class {
     func didTapBack(_ viewController: QAViewController, viewModel: InterviewViewModel)
+    func didTapOverview(_ viewController: QAViewController, viewModel: InterviewViewModel)
     func didFinishAnswer(_ viewController: QAViewController, viewModel: InterviewViewModel, index: Index)
 }
 
@@ -74,6 +75,11 @@ final class QAViewController: UIViewController {
     
     private func configureUI() {
         hideKeyboardWhenTappedAround()
+        
+        // Navigation
+        let item = UIBarButtonItem(title: "Overview", style: .plain, target: self, action: #selector(tapOverview(sender:)))
+        navigationItem.setRightBarButton(item, animated: false)
+        
         // Progression
         partProgressionLabel.font = UIFont(SFPro: .display, variant: .medium, size: 26)
         sectionProgressionLabel.font = UIFont(SFPro: .display, variant: .medium, size: 24)
@@ -95,6 +101,11 @@ final class QAViewController: UIViewController {
 
 // MARK: - Actions
 extension QAViewController {
+    @objc
+    private func tapOverview(sender: Any) {
+        delegate?.didTapOverview(self, viewModel: viewModel)
+    }
+    
     @objc
     private func finishAnswer() {
         viewModel.updateAnswer(textField.text, for: questionIndex)

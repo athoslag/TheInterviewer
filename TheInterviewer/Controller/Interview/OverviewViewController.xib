@@ -27,8 +27,9 @@
                     <rect key="frame" x="20" y="24" width="614" height="39"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                     <connections>
+                        <action selector="editingDidChange:" destination="-1" eventType="editingChanged" id="snY-xG-841"/>
                         <action selector="textFieldDidEnd:" destination="-1" eventType="editingDidEndOnExit" id="di6-nu-GEm"/>
                     </connections>
                 </textField>
@@ -58,7 +59,9 @@
                 <constraint firstItem="9X9-4s-wdG" firstAttribute="leading" secondItem="3D9-gX-U6S" secondAttribute="leading" id="u3A-ip-FUG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3D9-gX-U6S" secondAttribute="trailing" constant="20" id="uN2-fg-N9N"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="9X9-4s-wdG" secondAttribute="bottom" constant="50" id="vX0-m1-smI"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="JgR-du-Qal" secondAttribute="trailing" constant="200" id="x5I-TI-v6V"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="JgR-du-Qal" secondAttribute="trailing" constant="200" id="x5I-TI-v6V">
+                    <variation key="widthClass=compact" constant="20"/>
+                </constraint>
                 <constraint firstItem="3D9-gX-U6S" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ycP-eR-fDu"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

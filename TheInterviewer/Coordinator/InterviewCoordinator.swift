@@ -31,8 +31,7 @@ final class InterviewCoordinator: Coordinator<Void> {
     }
     
     override func start() -> Void {
-        // TODO: - startup code
-        navigationController = UINavigationController(rootViewController: makeOverviewController(viewModel: viewModel))
+        navigationController = UINavigationController(rootViewController: makeOverviewController(viewModel: viewModel, canEditTitle: true))
         navigationController.navigationBar.tintColor = .black
         navigationController.modalPresentationStyle = .fullScreen
         
@@ -42,7 +41,7 @@ final class InterviewCoordinator: Coordinator<Void> {
 
 // MARK: Navigation
 extension InterviewCoordinator {
-    func nextStep(advance: Bool) {
+    private func nextStep(advance: Bool) {
         guard let index = currentIndex else {
             let finalController = makeFinalViewController()
             navigationController.pushViewController(finalController, animated: true)
@@ -77,6 +76,11 @@ extension InterviewCoordinator {
         }
     }
     
+    private func requestOverview() {
+        let overview = makeOverviewController(viewModel: viewModel, canEditTitle: false)
+        navigationController.pushViewController(overview, animated: true)
+    }
+    
     private func endFlow() {
         navigationController.dismiss(animated: true) {
             self.parentCoordinator?.release(self)
@@ -86,8 +90,8 @@ extension InterviewCoordinator {
 
 // MARK: ViewController Factory
 extension InterviewCoordinator {
-    func makeOverviewController(viewModel: InterviewViewModel) -> UIViewController {
-        let overview = OverviewViewController(interviewVM: viewModel)
+    func makeOverviewController(viewModel: InterviewViewModel, canEditTitle: Bool) -> UIViewController {
+        let overview = OverviewViewController(interviewVM: viewModel, canEditTitle: canEditTitle)
         overview.delegate = self
         return overview
     }
@@ -142,6 +146,11 @@ extension InterviewCoordinator: SectionDelegate {
 extension InterviewCoordinator: QAViewControllerDelegate {
     func didTapBack(_ viewController: QAViewController, viewModel: InterviewViewModel) {
         self.viewModel = viewModel
+    }
+    
+    func didTapOverview(_ viewController: QAViewController, viewModel: InterviewViewModel) {
+        self.viewModel = viewModel
+        requestOverview()
     }
     
     func didFinishAnswer(_ viewController: QAViewController, viewModel: InterviewViewModel, index: Index) {
