@@ -52,4 +52,20 @@ final class ReviewViewModel {
         
         return true
     }
+    
+    /// Deletes all interviews on local database, including their audios
+    ///
+    /// - Returns: An indication wheter the deletion was successful
+    @discardableResult
+    func deleteAll() -> Bool {
+        interviews.removeAll()
+        
+        do {
+            try InterviewService.deleteAllInterviews()
+        } catch {
+            return false
+        }
+        
+        return true
+    }
 }

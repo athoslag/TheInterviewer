@@ -60,6 +60,9 @@ final class ReviewMenuViewController: UIViewController {
         
         // dismiss
         addBackButton()
+        
+        // delete all
+        addDeleteAll()
     }
     
     private func addBackButton() {
@@ -74,6 +77,21 @@ final class ReviewMenuViewController: UIViewController {
     @objc
     private func backTapped() {
         delegate?.shouldDismissFlow(self)
+    }
+    
+    private func addDeleteAll() {
+        let deleteAll = UIButton(type: .custom)
+        deleteAll.setTitle("Deletar todas", for: .normal)
+        deleteAll.setTitleColor(.red, for: .normal)
+        deleteAll.addTarget(self, action: #selector(deleteAllTapped), for: .touchUpInside)
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: deleteAll)
+    }
+    
+    @objc
+    private func deleteAllTapped() {
+        viewModel.deleteAll()
+        tableView.reloadData()
     }
 }
 
