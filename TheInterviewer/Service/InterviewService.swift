@@ -17,7 +17,13 @@ final class InterviewService {
         case realmUnavailable
         case realmWrite
         case notFound
+        case fileManager
         case unknown
+    }
+    
+    private static var recordingsPath: URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0].appendingPathComponent("recordings", isDirectory: true)
     }
     
     // Private to avoid instantiation
@@ -111,6 +117,21 @@ final class InterviewService {
             }
         } catch {
             throw ServiceError.realmWrite
+        }
+        
+        // Delete associated audios folder
+        let fileManager = FileManager.default
+        var isDir: ObjCBool = true
+        
+        guard fileManager.fileExists(atPath: recordingsPath.path, isDirectory: &isDir) else { throw ServiceError.fileManager }
+        let path: URL = recordingsPath.appendingPathComponent(encoded.base64EncodedString(), isDirectory: true)
+        
+        if fileManager.fileExists(atPath: path.path, isDirectory: &isDir) {
+            do {
+                try fileManager.removeItem(at: path)
+            } catch {
+                throw ServiceError.fileManager
+            }
         }
     }
     

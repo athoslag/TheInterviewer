@@ -38,6 +38,10 @@ final class InterviewViewModel {
     var sections: [Section] {
         return interview.parts.flatMap { $0.sections }
     }
+ 
+    var filename: String {
+        return interview.primaryKey
+    }
     
     lazy var currentIndex: Index = Index(part: 0, section: 0, row: 0)
     

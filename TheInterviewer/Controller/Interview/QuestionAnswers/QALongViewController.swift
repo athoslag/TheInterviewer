@@ -51,7 +51,7 @@ final class QALongViewController: UIViewController {
     }
     
     private var dirPath: URL {
-        return recordingsPath.appendingPathComponent(viewModel.title.replacingOccurrences(of: " ", with: "_"), isDirectory: true)
+        return recordingsPath.appendingPathComponent(viewModel.filename, isDirectory: true)        
     }
     
     private var filenameURL: URL {
