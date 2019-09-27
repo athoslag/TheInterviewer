@@ -83,13 +83,18 @@ final class OverviewViewController: UIViewController {
         actionButton.backgroundColor = !(disabled ?? true) ? AppConfiguration.mainColor : .lightGray
     }
     
+    private func proceedWithInterview(index: Index) {
+        viewModel.saveInterview()
+        delegate?.didSelect(self, index: index)
+    }
+    
     @objc
     private func backTapped() {
         delegate?.shouldDismiss(self)
     }
     
     @IBAction func didTapActionButton(_ sender: UIButton) {
-        delegate?.didSelect(self, index: Index(part: 0, section: 0, row: 0))
+        proceedWithInterview(index: Index(part: 0, section: 0, row: 0))
     }
 }
 
@@ -120,7 +125,7 @@ extension OverviewViewController: UITableViewDataSource {
 
 extension OverviewViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.didSelect(self, index: Index(part: indexPath.section, section: indexPath.row, row: 0))
+        proceedWithInterview(index: Index(part: indexPath.section, section: indexPath.row, row: 0))
     }
 }
 
@@ -133,7 +138,6 @@ extension OverviewViewController: UITextFieldDelegate {
             return
         }
         
-        viewModel.saveInterview()
         viewModel.updateTitle(newTitle)
     }
     
@@ -146,7 +150,6 @@ extension OverviewViewController: UITextFieldDelegate {
             return
         }
         
-        viewModel.saveInterview()
         viewModel.updateTitle(newTitle)
     }
 }
