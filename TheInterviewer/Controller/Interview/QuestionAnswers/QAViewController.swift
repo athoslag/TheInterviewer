@@ -77,7 +77,7 @@ final class QAViewController: UIViewController {
         hideKeyboardWhenTappedAround()
         
         // Navigation
-        let item = UIBarButtonItem(title: "Overview", style: .plain, target: self, action: #selector(tapOverview(sender:)))
+        let item = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(tapOverview(sender:)))
         navigationItem.setRightBarButton(item, animated: false)
         
         // Progression

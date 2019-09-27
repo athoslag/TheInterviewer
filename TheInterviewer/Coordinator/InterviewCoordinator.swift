@@ -165,6 +165,11 @@ extension InterviewCoordinator: QALongViewControllerDelegate {
         self.viewModel = viewModel
     }
     
+    func didTapOverview(_ viewController: QALongViewController, viewModel: InterviewViewModel) {
+        self.viewModel = viewModel
+        requestOverview()
+    }
+    
     func didFinishAnswer(_ viewController: QALongViewController, viewModel: InterviewViewModel, index: Index) {
         self.currentIndex = index
         self.viewModel = viewModel

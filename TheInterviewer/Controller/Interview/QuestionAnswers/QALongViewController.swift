@@ -11,6 +11,7 @@ import UIKit
 
 protocol QALongViewControllerDelegate: class {
     func didTapBack(_ viewController: QALongViewController, viewModel: InterviewViewModel)
+    func didTapOverview(_ viewController: QALongViewController, viewModel: InterviewViewModel)
     func didFinishAnswer(_ viewController: QALongViewController, viewModel: InterviewViewModel, index: Index)
 }
 
@@ -122,6 +123,11 @@ final class QALongViewController: UIViewController {
     
     private func configureUI() {
         hideKeyboardWhenTappedAround()
+        
+        // Navigation
+        let item = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(tapOverview(sender:)))
+        navigationItem.setRightBarButton(item, animated: false)
+        
         // Progression
         partProgressionLabel.font = UIFont(SFPro: .display, variant: .medium, size: 26)
         sectionProgressionLabel.font = UIFont(SFPro: .display, variant: .medium, size: 24)
@@ -327,6 +333,11 @@ extension QALongViewController {
 
 // MARK: - Actions
 extension QALongViewController {
+    @objc
+    private func tapOverview(sender: Any) {
+        delegate?.didTapOverview(self, viewModel: viewModel)
+    }
+    
     @objc
     private func nextTapped() {
         viewModel.updateAnswer(textView.text, for: questionIndex)
