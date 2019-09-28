@@ -85,13 +85,28 @@ final class ReviewMenuViewController: UIViewController {
         deleteAll.setTitleColor(.red, for: .normal)
         deleteAll.addTarget(self, action: #selector(deleteAllTapped), for: .touchUpInside)
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: deleteAll)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: deleteAll)
+        refreshButton()
     }
     
     @objc
     private func deleteAllTapped() {
-        viewModel.deleteAll()
-        tableView.reloadData()
+        let cancelOpt = AlertOption(title: "Cancelar", style: .cancel) { _ in }
+        let deleteOpt = AlertOption(title: "Deletar", style: .destructive) { _ in
+            self.viewModel.deleteAll()
+            self.tableView.reloadData()
+            self.refreshButton()
+        }
+        
+        let title = "Você tem certeza?"
+        let message = "Uma vez deletadas, as entrevistas não poderão ser recuperadas."
+        
+        let bundle = AlertBundle(title: title, details: message, options: [cancelOpt, deleteOpt])
+        presentAlert(bundle)
+    }
+    
+    private func refreshButton() {
+        navigationItem.rightBarButtonItem?.isEnabled = viewModel.interviewCount != 0
     }
 }
 
@@ -123,6 +138,7 @@ extension ReviewMenuViewController: UITableViewDataSource {
             let confirmation = UIAlertAction(title: "Deletar", style: .destructive) { _ in
                 self.viewModel.deleteInterview(at: indexPath.row)
                 tableView.reloadData()
+                self.refreshButton()
             }
             
             alert.addAction(cancel)
