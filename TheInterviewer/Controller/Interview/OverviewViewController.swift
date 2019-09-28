@@ -84,7 +84,6 @@ final class OverviewViewController: UIViewController {
     }
     
     private func proceedWithInterview(index: Index) {
-        viewModel.saveInterview()
         delegate?.didSelect(self, index: index)
     }
     
