@@ -180,7 +180,11 @@ extension InterviewCoordinator: QALongViewControllerDelegate {
 extension InterviewCoordinator: FinalScreenDelegate {
     func didTapShare(_ viewController: FinalScreenViewController) {
         guard let interview = viewModel.shareInterview() else { return }
-        let items: [Any] = [interview]
+        var items: [Any] = [interview]
+        
+        if let url = ZipfileService.zipFilesAt(path: viewModel.interviewDirectory, filename: viewModel.title) {
+            items.append(url)
+        }
         
         let shareViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
         shareViewController.popoverPresentationController?.sourceView = viewController.view
