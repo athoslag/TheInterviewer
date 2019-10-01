@@ -37,6 +37,7 @@
 		7E7E634423219ED1001A8D24 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E7E633823219ED1001A8D24 /* SF-Pro-Text-Semibold.otf */; };
 		7E7E634523219ED1001A8D24 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E7E633923219ED1001A8D24 /* SF-Pro-Text-Medium.otf */; };
 		7E936652230F434E00D636DF /* InterviewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E936651230F434E00D636DF /* InterviewModels.swift */; };
+		7E9BD4222343149900FB51F3 /* ZipfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9BD4212343149900FB51F3 /* ZipfileService.swift */; };
 		7EB0923A230ADA010026001C /* QAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB09238230ADA010026001C /* QAViewController.swift */; };
 		7EB0923B230ADA010026001C /* QAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB09239230ADA010026001C /* QAViewController.xib */; };
 		7EB4B52D22F39329005410EF /* InterviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB4B52C22F39329005410EF /* InterviewViewModel.swift */; };
@@ -90,6 +91,7 @@
 		7E7E633823219ED1001A8D24 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		7E7E633923219ED1001A8D24 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
 		7E936651230F434E00D636DF /* InterviewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewModels.swift; sourceTree = "<group>"; };
+		7E9BD4212343149900FB51F3 /* ZipfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipfileService.swift; sourceTree = "<group>"; };
 		7EB09238230ADA010026001C /* QAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAViewController.swift; sourceTree = "<group>"; };
 		7EB09239230ADA010026001C /* QAViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QAViewController.xib; sourceTree = "<group>"; };
 		7EB4B52C22F39329005410EF /* InterviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewViewModel.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				7EB5669B231F58F80020E077 /* InterviewService.swift */,
+				7E9BD4212343149900FB51F3 /* ZipfileService.swift */,
 				7ED28712232052F500C005E7 /* Wrapper.swift */,
 			);
 			path = Service;
@@ -447,6 +450,7 @@
 				7ECC273E232BCA8D00B3D90E /* Double.swift in Sources */,
 				7EB0923A230ADA010026001C /* QAViewController.swift in Sources */,
 				7E5A918F22BAC20A00963ABB /* MainScreenViewController.swift in Sources */,
+				7E9BD4222343149900FB51F3 /* ZipfileService.swift in Sources */,
 				7EF19E1322C4415000E95AAF /* Coordinator.swift in Sources */,
 				7E3C4D3422BAB9E200490D16 /* AppDelegate.swift in Sources */,
 				7ED28713232052F500C005E7 /* Wrapper.swift in Sources */,
