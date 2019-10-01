@@ -9,5 +9,6 @@ target 'TheInterviewer' do
   pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod 'Reusable'
   pod 'RealmSwift'
+  pod 'Zip', '~> 1.1'
 
 end
