@@ -14,6 +14,9 @@ final class AppConfiguration {
     private init() { }
     static var shared: AppConfiguration = AppConfiguration()
 
+    // Interview
+    static var interviewType: Interview.InterviewModel = .test
+    
     // Placeholders
     enum Placeholders: String {
         case answer = "Resposta..."
