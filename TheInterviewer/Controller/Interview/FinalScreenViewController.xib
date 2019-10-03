@@ -26,17 +26,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6c-Ne-rhT">
-                    <rect key="frame" x="20" y="20" width="728" height="21"/>
+                    <rect key="frame" x="20" y="20" width="728" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rZM-iZ-Kgb">
-                    <rect key="frame" x="20" y="91" width="728" height="703"/>
+                    <rect key="frame" x="20" y="90.5" width="728" height="713.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9BX-cB-Tef">
-                    <rect key="frame" x="20" y="844" width="728" height="50"/>
+                    <rect key="frame" x="20" y="854" width="728" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="f7A-gs-CVf"/>
                     </constraints>
@@ -45,43 +45,47 @@
                         <action selector="didTapShare:" destination="-1" eventType="touchUpInside" id="F6G-am-RLG"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDZ-UK-u2g">
-                    <rect key="frame" x="394" y="924" width="354" height="50"/>
-                    <state key="normal" title="Salvar e sair"/>
-                    <connections>
-                        <action selector="didTapSave:" destination="-1" eventType="touchUpInside" id="qyD-gN-fxv"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOk-Ei-tLc">
-                    <rect key="frame" x="20" y="924" width="354" height="50"/>
-                    <state key="normal" title="Descartar e sair"/>
-                    <connections>
-                        <action selector="didTapDiscard:" destination="-1" eventType="touchUpInside" id="Tgu-Su-6hA"/>
-                    </connections>
-                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="s4D-SI-Xss">
+                    <rect key="frame" x="20" y="924" width="728" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDZ-UK-u2g">
+                            <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
+                            <state key="normal" title="Salvar e sair"/>
+                            <connections>
+                                <action selector="didTapSave:" destination="-1" eventType="touchUpInside" id="qyD-gN-fxv"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOk-Ei-tLc">
+                            <rect key="frame" x="374" y="0.0" width="354" height="50"/>
+                            <state key="normal" title="Descartar e sair"/>
+                            <connections>
+                                <action selector="didTapDiscard:" destination="-1" eventType="touchUpInside" id="Tgu-Su-6hA"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="3eZ-Qw-80r"/>
+                    </constraints>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="9BX-cB-Tef" firstAttribute="trailing" secondItem="SDZ-UK-u2g" secondAttribute="trailing" id="5E1-D2-mEo"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="s4D-SI-Xss" secondAttribute="bottom" constant="50" id="48E-Lv-r9w"/>
                 <constraint firstItem="9BX-cB-Tef" firstAttribute="top" secondItem="rZM-iZ-Kgb" secondAttribute="bottom" constant="50" id="5Xa-KB-6Ys"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="E6c-Ne-rhT" secondAttribute="trailing" constant="20" id="6zu-Ns-jWL"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SDZ-UK-u2g" secondAttribute="trailing" constant="20" id="AwT-B6-cv8"/>
+                <constraint firstItem="9BX-cB-Tef" firstAttribute="trailing" secondItem="rZM-iZ-Kgb" secondAttribute="trailing" id="7Ow-sL-0ZO"/>
                 <constraint firstItem="E6c-Ne-rhT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="D8t-in-NrF"/>
-                <constraint firstItem="SDZ-UK-u2g" firstAttribute="top" secondItem="9BX-cB-Tef" secondAttribute="bottom" constant="30" id="FMb-pT-C99"/>
-                <constraint firstItem="NOk-Ei-tLc" firstAttribute="height" secondItem="SDZ-UK-u2g" secondAttribute="height" id="HJi-2y-VAd"/>
+                <constraint firstItem="s4D-SI-Xss" firstAttribute="leading" secondItem="9BX-cB-Tef" secondAttribute="leading" id="IGU-UN-tJj"/>
                 <constraint firstItem="rZM-iZ-Kgb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="LF7-Yq-GcM"/>
-                <constraint firstItem="SDZ-UK-u2g" firstAttribute="leading" secondItem="NOk-Ei-tLc" secondAttribute="trailing" constant="20" id="MWo-kD-wLa"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="NOk-Ei-tLc" secondAttribute="bottom" constant="50" id="UNW-wv-99D"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="SDZ-UK-u2g" secondAttribute="bottom" constant="50" id="YqD-hx-6kY"/>
                 <constraint firstItem="rZM-iZ-Kgb" firstAttribute="top" secondItem="E6c-Ne-rhT" secondAttribute="bottom" constant="50" id="aTN-0t-H7r"/>
-                <constraint firstItem="9BX-cB-Tef" firstAttribute="leading" secondItem="NOk-Ei-tLc" secondAttribute="leading" id="b5b-9f-lA4"/>
-                <constraint firstItem="NOk-Ei-tLc" firstAttribute="width" secondItem="SDZ-UK-u2g" secondAttribute="width" id="bnL-Jp-EhC"/>
-                <constraint firstItem="SDZ-UK-u2g" firstAttribute="height" secondItem="9BX-cB-Tef" secondAttribute="height" id="eH1-FP-j19"/>
+                <constraint firstItem="s4D-SI-Xss" firstAttribute="top" secondItem="9BX-cB-Tef" secondAttribute="bottom" constant="20" id="dGd-fb-f3R"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rZM-iZ-Kgb" secondAttribute="trailing" constant="20" id="gw6-7x-7nf"/>
+                <constraint firstItem="s4D-SI-Xss" firstAttribute="trailing" secondItem="9BX-cB-Tef" secondAttribute="trailing" id="lQc-wa-XL9"/>
                 <constraint firstItem="E6c-Ne-rhT" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="nxs-dq-RQw"/>
-                <constraint firstItem="NOk-Ei-tLc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="r3i-VX-u2L"/>
+                <constraint firstItem="9BX-cB-Tef" firstAttribute="leading" secondItem="rZM-iZ-Kgb" secondAttribute="leading" id="yxv-Vr-SDx"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="139.84375" y="153.515625"/>
         </view>
     </objects>
 </document>
