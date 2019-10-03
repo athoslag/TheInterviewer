@@ -83,6 +83,7 @@ final class ReviewMenuViewController: UIViewController {
         let deleteAll = UIButton(type: .custom)
         deleteAll.setTitle("Deletar todas", for: .normal)
         deleteAll.setTitleColor(.red, for: .normal)
+        deleteAll.setTitleColor(.lightGray, for: .disabled)
         deleteAll.addTarget(self, action: #selector(deleteAllTapped), for: .touchUpInside)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: deleteAll)
@@ -106,7 +107,7 @@ final class ReviewMenuViewController: UIViewController {
     }
     
     private func refreshButton() {
-        navigationItem.rightBarButtonItem?.isEnabled = viewModel.interviewCount != 0
+        navigationItem.rightBarButtonItem?.isEnabled = viewModel.interviewCount > 0
     }
 }
 

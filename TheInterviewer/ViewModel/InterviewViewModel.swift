@@ -59,6 +59,18 @@ final class InterviewViewModel {
     }
 }
 
+// MARK: Directory URLs
+extension InterviewViewModel {
+    var recordingsDirectory: URL {
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        return path.appendingPathComponent("recordings", isDirectory: true)
+    }
+    
+    var interviewDirectory: URL {
+        return recordingsDirectory.appendingPathComponent(filename, isDirectory: true)
+    }
+}
+
 // MARK: Base methods
 extension InterviewViewModel {
     private func validateIndex(_ index: Index) -> Bool {

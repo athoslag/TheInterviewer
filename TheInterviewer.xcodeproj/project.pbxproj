@@ -22,6 +22,7 @@
 		7E5A918F22BAC20A00963ABB /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A918D22BAC20A00963ABB /* MainScreenViewController.swift */; };
 		7E5A919022BAC20A00963ABB /* MainScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5A918E22BAC20A00963ABB /* MainScreenViewController.xib */; };
 		7E5A919222BAC28800963ABB /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A919122BAC28800963ABB /* AppCoordinator.swift */; };
+		7E632BA423457A6200192F09 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E632BA323457A6200192F09 /* String.swift */; };
 		7E63E66C2315C3EB00F2999E /* SectionOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E63E66A2315C3EB00F2999E /* SectionOverviewViewController.swift */; };
 		7E63E66D2315C3EB00F2999E /* SectionOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E63E66B2315C3EB00F2999E /* SectionOverviewViewController.xib */; };
 		7E7E633A23219ED1001A8D24 /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E7E632E23219ED1001A8D24 /* SF-Pro-Text-Heavy.otf */; };
@@ -37,6 +38,7 @@
 		7E7E634423219ED1001A8D24 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E7E633823219ED1001A8D24 /* SF-Pro-Text-Semibold.otf */; };
 		7E7E634523219ED1001A8D24 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E7E633923219ED1001A8D24 /* SF-Pro-Text-Medium.otf */; };
 		7E936652230F434E00D636DF /* InterviewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E936651230F434E00D636DF /* InterviewModels.swift */; };
+		7E9BD4222343149900FB51F3 /* ZipfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9BD4212343149900FB51F3 /* ZipfileService.swift */; };
 		7EB0923A230ADA010026001C /* QAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB09238230ADA010026001C /* QAViewController.swift */; };
 		7EB0923B230ADA010026001C /* QAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB09239230ADA010026001C /* QAViewController.xib */; };
 		7EB4B52D22F39329005410EF /* InterviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB4B52C22F39329005410EF /* InterviewViewModel.swift */; };
@@ -53,7 +55,6 @@
 		7ECC273C2329814D00B3D90E /* FinalScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ECC273A2329814D00B3D90E /* FinalScreenViewController.xib */; };
 		7ECC273E232BCA8D00B3D90E /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECC273D232BCA8D00B3D90E /* Double.swift */; };
 		7ED28713232052F500C005E7 /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED28712232052F500C005E7 /* Wrapper.swift */; };
-		7EED1F65233902850043C2A9 /* RecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EED1F64233902850043C2A9 /* RecordManager.swift */; };
 		7EF19E1322C4415000E95AAF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF19E1222C4415000E95AAF /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		7E5A918D22BAC20A00963ABB /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		7E5A918E22BAC20A00963ABB /* MainScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainScreenViewController.xib; sourceTree = "<group>"; };
 		7E5A919122BAC28800963ABB /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		7E632BA323457A6200192F09 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7E63E66A2315C3EB00F2999E /* SectionOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionOverviewViewController.swift; sourceTree = "<group>"; };
 		7E63E66B2315C3EB00F2999E /* SectionOverviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionOverviewViewController.xib; sourceTree = "<group>"; };
 		7E7E632E23219ED1001A8D24 /* SF-Pro-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Heavy.otf"; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 		7E7E633823219ED1001A8D24 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		7E7E633923219ED1001A8D24 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
 		7E936651230F434E00D636DF /* InterviewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewModels.swift; sourceTree = "<group>"; };
+		7E9BD4212343149900FB51F3 /* ZipfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipfileService.swift; sourceTree = "<group>"; };
 		7EB09238230ADA010026001C /* QAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAViewController.swift; sourceTree = "<group>"; };
 		7EB09239230ADA010026001C /* QAViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QAViewController.xib; sourceTree = "<group>"; };
 		7EB4B52C22F39329005410EF /* InterviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewViewModel.swift; sourceTree = "<group>"; };
@@ -107,7 +110,6 @@
 		7ECC273A2329814D00B3D90E /* FinalScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinalScreenViewController.xib; sourceTree = "<group>"; };
 		7ECC273D232BCA8D00B3D90E /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		7ED28712232052F500C005E7 /* Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrapper.swift; sourceTree = "<group>"; };
-		7EED1F64233902850043C2A9 /* RecordManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordManager.swift; sourceTree = "<group>"; };
 		7EF19E1222C4415000E95AAF /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C4409D55E2C59E1EB80DE33F /* Pods-TheInterviewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheInterviewer.debug.xcconfig"; path = "Target Support Files/Pods-TheInterviewer/Pods-TheInterviewer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,7 +204,6 @@
 				7EF19E1422C442D700E95AAF /* Coordinator */,
 				7E570DE4231731340092D538 /* Extensions */,
 				7E7E632D23219ED1001A8D24 /* Fonts */,
-				7EED1F63233902850043C2A9 /* Manager */,
 				7E42034122EF917300DFA490 /* Model */,
 				7EB56698231F55510020E077 /* Service */,
 				7E39420522CC0A0F00579F29 /* ViewModel */,
@@ -239,6 +240,7 @@
 				7EB8BA982328137500276D1A /* Date.swift */,
 				7EB8BA9C232861E900276D1A /* NavigationBar.swift */,
 				7ECC273D232BCA8D00B3D90E /* Double.swift */,
+				7E632BA323457A6200192F09 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -277,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				7EB5669B231F58F80020E077 /* InterviewService.swift */,
+				7E9BD4212343149900FB51F3 /* ZipfileService.swift */,
 				7ED28712232052F500C005E7 /* Wrapper.swift */,
 			);
 			path = Service;
@@ -289,14 +292,6 @@
 				7EB8BA93232810CF00276D1A /* ReviewMenuViewController.xib */,
 			);
 			path = Review;
-			sourceTree = "<group>";
-		};
-		7EED1F63233902850043C2A9 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				7EED1F64233902850043C2A9 /* RecordManager.swift */,
-			);
-			path = Manager;
 			sourceTree = "<group>";
 		};
 		7EF19E1422C442D700E95AAF /* Coordinator */ = {
@@ -454,10 +449,12 @@
 				7EB4B52D22F39329005410EF /* InterviewViewModel.swift in Sources */,
 				7E63E66C2315C3EB00F2999E /* SectionOverviewViewController.swift in Sources */,
 				7E5A919222BAC28800963ABB /* AppCoordinator.swift in Sources */,
+				7E632BA423457A6200192F09 /* String.swift in Sources */,
 				7ECC273B2329814D00B3D90E /* FinalScreenViewController.swift in Sources */,
 				7ECC273E232BCA8D00B3D90E /* Double.swift in Sources */,
 				7EB0923A230ADA010026001C /* QAViewController.swift in Sources */,
 				7E5A918F22BAC20A00963ABB /* MainScreenViewController.swift in Sources */,
+				7E9BD4222343149900FB51F3 /* ZipfileService.swift in Sources */,
 				7EF19E1322C4415000E95AAF /* Coordinator.swift in Sources */,
 				7E3C4D3422BAB9E200490D16 /* AppDelegate.swift in Sources */,
 				7ED28713232052F500C005E7 /* Wrapper.swift in Sources */,
@@ -469,7 +466,6 @@
 				7E42034022EF8C7800DFA490 /* InterviewCoordinator.swift in Sources */,
 				7EB5669C231F58F80020E077 /* InterviewService.swift in Sources */,
 				7EB8BA9B2328297500276D1A /* ReviewCoordinator.swift in Sources */,
-				7EED1F65233902850043C2A9 /* RecordManager.swift in Sources */,
 				7E51B94122FA32E10091C9A1 /* Extensions.swift in Sources */,
 				7E936652230F434E00D636DF /* InterviewModels.swift in Sources */,
 				7EB8BA992328137500276D1A /* Date.swift in Sources */,
