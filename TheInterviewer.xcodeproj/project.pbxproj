@@ -22,6 +22,7 @@
 		7E5A918F22BAC20A00963ABB /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A918D22BAC20A00963ABB /* MainScreenViewController.swift */; };
 		7E5A919022BAC20A00963ABB /* MainScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5A918E22BAC20A00963ABB /* MainScreenViewController.xib */; };
 		7E5A919222BAC28800963ABB /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A919122BAC28800963ABB /* AppCoordinator.swift */; };
+		7E632BA423457A6200192F09 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E632BA323457A6200192F09 /* String.swift */; };
 		7E63E66C2315C3EB00F2999E /* SectionOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E63E66A2315C3EB00F2999E /* SectionOverviewViewController.swift */; };
 		7E63E66D2315C3EB00F2999E /* SectionOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E63E66B2315C3EB00F2999E /* SectionOverviewViewController.xib */; };
 		7E7E633A23219ED1001A8D24 /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E7E632E23219ED1001A8D24 /* SF-Pro-Text-Heavy.otf */; };
@@ -76,6 +77,7 @@
 		7E5A918D22BAC20A00963ABB /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		7E5A918E22BAC20A00963ABB /* MainScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainScreenViewController.xib; sourceTree = "<group>"; };
 		7E5A919122BAC28800963ABB /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		7E632BA323457A6200192F09 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7E63E66A2315C3EB00F2999E /* SectionOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionOverviewViewController.swift; sourceTree = "<group>"; };
 		7E63E66B2315C3EB00F2999E /* SectionOverviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionOverviewViewController.xib; sourceTree = "<group>"; };
 		7E7E632E23219ED1001A8D24 /* SF-Pro-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Heavy.otf"; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				7EB8BA982328137500276D1A /* Date.swift */,
 				7EB8BA9C232861E900276D1A /* NavigationBar.swift */,
 				7ECC273D232BCA8D00B3D90E /* Double.swift */,
+				7E632BA323457A6200192F09 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				7EB4B52D22F39329005410EF /* InterviewViewModel.swift in Sources */,
 				7E63E66C2315C3EB00F2999E /* SectionOverviewViewController.swift in Sources */,
 				7E5A919222BAC28800963ABB /* AppCoordinator.swift in Sources */,
+				7E632BA423457A6200192F09 /* String.swift in Sources */,
 				7ECC273B2329814D00B3D90E /* FinalScreenViewController.swift in Sources */,
 				7ECC273E232BCA8D00B3D90E /* Double.swift in Sources */,
 				7EB0923A230ADA010026001C /* QAViewController.swift in Sources */,

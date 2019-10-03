@@ -25,12 +25,7 @@ final class Interview: Codable {
     let date: Date = Date()
     
     var primaryKey: String {
-        do {
-            let encoded = try self.encode()
-            return encoded.base64EncodedString()
-        } catch {
-            return title.replacingOccurrences(of: " ", with: "_")
-        }
+        return title.convertedToSlug() ?? "Interview"
     }
     
     init(title: String, parts: [Part] = []) {
