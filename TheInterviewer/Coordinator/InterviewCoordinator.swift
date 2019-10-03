@@ -184,6 +184,8 @@ extension InterviewCoordinator: FinalScreenDelegate {
         
         if let url = ZipfileService.zipFilesAt(path: viewModel.interviewDirectory, filename: viewModel.title) {
             items.append(url)
+        } else {
+            print("Failed to zip files.")
         }
         
         let shareViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
