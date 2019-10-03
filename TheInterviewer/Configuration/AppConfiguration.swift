@@ -15,7 +15,7 @@ final class AppConfiguration {
     static var shared: AppConfiguration = AppConfiguration()
 
     // Interview
-    static var interviewType: Interview.InterviewModel = .test
+    static var interviewType: Interview.InterviewModel = .bpm
     
     // Placeholders
     enum Placeholders: String {

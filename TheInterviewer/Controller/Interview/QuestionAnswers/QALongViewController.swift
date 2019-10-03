@@ -45,15 +45,6 @@ final class QALongViewController: UIViewController {
     private var recordingSession: AVAudioSession!
     private var audioRecorder: AVAudioRecorder?
     
-//    private var recordingsPath: URL {
-//        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-//        return paths[0].appendingPathComponent("recordings", isDirectory: true)
-//    }
-//
-//    private var dirPath: URL {
-//        return recordingsPath.appendingPathComponent(viewModel.filename, isDirectory: true)
-//    }
-    
     private var filenameURL: URL {
         let filename = viewModel.interviewDirectory.appendingPathComponent("\(questionIndex.filename).m4a")
         debugPrint("audioFilename: \(filename.path)")
