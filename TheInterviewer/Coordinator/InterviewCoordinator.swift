@@ -182,6 +182,11 @@ extension InterviewCoordinator: FinalScreenDelegate {
         guard let interview = viewModel.shareInterview() else { return }
         var items: [Any] = [interview]
         
+        let json = viewModel.interviewDirectory.appendingPathComponent("\(viewModel.title).json")
+        if FileManager.default.createFile(atPath: json.path, contents: interview, attributes: nil) {
+            items.removeAll()
+        }
+        
         if let url = ZipfileService.zipFilesAt(path: viewModel.interviewDirectory, filename: viewModel.title) {
             items.append(url)
         } else {
