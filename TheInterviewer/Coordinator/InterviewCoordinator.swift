@@ -91,7 +91,9 @@ extension InterviewCoordinator {
 // MARK: ViewController Factory
 extension InterviewCoordinator {
     func makeOverviewController(viewModel: InterviewViewModel, canEditTitle: Bool) -> UIViewController {
-        let overview = OverviewViewController(interviewVM: viewModel, canEditTitle: canEditTitle)
+        // editable if in edition mode AND canEditTitle
+        let editable = mode == .edition ? canEditTitle : false
+        let overview = OverviewViewController(interviewVM: viewModel, canEditTitle: editable)
         overview.delegate = self
         return overview
     }
