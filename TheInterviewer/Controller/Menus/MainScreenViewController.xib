@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TheInterviewer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Emv-Fu-8nz">
-                    <rect key="frame" x="20" y="254" width="191" height="34"/>
+                    <rect key="frame" x="175" y="254" width="191" height="34"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="28"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -56,15 +56,17 @@
             <constraints>
                 <constraint firstItem="k2l-Dd-eks" firstAttribute="trailing" secondItem="6Ev-ls-C04" secondAttribute="trailing" id="2eu-Ha-Hb7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Emv-Fu-8nz" secondAttribute="trailing" constant="20" id="3Of-8n-d3g"/>
-                <constraint firstItem="Emv-Fu-8nz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="8f0-Zl-h1e"/>
                 <constraint firstItem="k2l-Dd-eks" firstAttribute="leading" secondItem="6Ev-ls-C04" secondAttribute="leading" id="Xzb-Cp-WWQ"/>
                 <constraint firstItem="k2l-Dd-eks" firstAttribute="top" secondItem="6Ev-ls-C04" secondAttribute="bottom" constant="30" id="j7E-AT-rph"/>
+                <constraint firstItem="Emv-Fu-8nz" firstAttribute="leading" secondItem="6Ev-ls-C04" secondAttribute="leading" id="l9A-pN-ORc"/>
                 <constraint firstItem="6Ev-ls-C04" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="rGw-eI-aCm"/>
                 <constraint firstItem="6Ev-ls-C04" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="sLw-qf-rIA"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6Ev-ls-C04" secondAttribute="trailing" constant="175" id="w6h-cW-vBQ">
                     <variation key="widthClass=compact" constant="20"/>
                 </constraint>
-                <constraint firstItem="Emv-Fu-8nz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="230" id="wnm-9b-b62"/>
+                <constraint firstItem="Emv-Fu-8nz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="230" id="wnm-9b-b62">
+                    <variation key="widthClass=compact" constant="100"/>
+                </constraint>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="138.84892086330936" y="128.643216080402"/>
