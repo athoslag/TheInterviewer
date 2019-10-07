@@ -15,7 +15,6 @@ protocol OverviewDelegate: class {
 }
 
 final class OverviewViewController: UIViewController {
-
     @IBOutlet private weak var titleTextField: SkyFloatingLabelTextField!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var actionButton: UIButton!
@@ -46,6 +45,7 @@ final class OverviewViewController: UIViewController {
         configureUI()
     }
     
+    // MARK: - UI
     private func configureUI() {
         // Navigation
         navigationController?.navigationBar.setupNavigationBar()
@@ -87,6 +87,7 @@ final class OverviewViewController: UIViewController {
         delegate?.didSelect(self, index: index)
     }
     
+    // MARK: - Actions
     @objc
     private func backTapped() {
         delegate?.shouldDismiss(self)
@@ -97,8 +98,8 @@ final class OverviewViewController: UIViewController {
     }
 }
 
+// MARK: - DataSource
 extension OverviewViewController: UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.numberOfParts
     }
@@ -114,6 +115,7 @@ extension OverviewViewController: UITableViewDataSource {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "reuseID")
         cell.textLabel?.text = "\(viewModel.sectionTitle(part: part, section: section)): \(viewModel.numberOfQuestions(section: section, part: part)) itens"
         cell.textLabel?.font = UIFont(SFPro: .text, variant: .medium, size: 20)
+        cell.textLabel?.numberOfLines = 2
         return cell
     }
     
@@ -122,6 +124,7 @@ extension OverviewViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - Delegates
 extension OverviewViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         proceedWithInterview(index: Index(part: indexPath.section, section: indexPath.row, row: 0))
