@@ -107,7 +107,19 @@ final class OverviewViewController: UIViewController {
     
     @objc
     private func finalizeTapped() {
-        delegate?.shouldFinalize(self)
+        guard canEditTitle else {
+            delegate?.shouldFinalize(self)
+            return
+        }
+        
+        let bundle = AlertBundle(title: "Você tem certeza?",
+                                 details: "Uma vez finalizada, a entrevista não poderá mais ser alterada.",
+                                 options: [
+                                    AlertOption(title: "Cancelar", style: .cancel, completion: { _ in }),
+                                    AlertOption(title: "Finalizar", style: .destructive, completion: { _ in
+                                        self.delegate?.shouldFinalize(self)
+                                    })])
+        presentAlert(bundle)
     }
     
     @IBAction func didTapActionButton(_ sender: UIButton) {
