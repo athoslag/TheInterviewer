@@ -11,6 +11,7 @@ import SkyFloatingLabelTextField
 
 protocol OverviewDelegate: class {
     func didSelect(_ viewController: OverviewViewController, index: Index)
+    func shouldFinalize(_ viewController: OverviewViewController)
     func shouldDismiss(_ viewController: OverviewViewController)
 }
 
@@ -65,7 +66,9 @@ final class OverviewViewController: UIViewController {
         actionButton.setTitleColor(.white, for: .disabled)
         actionButton.titleLabel?.font = UIFont(SFPro: .display, variant: .medium, size: 22)
         
+        // Navigation buttons & states
         addBackButton()
+        addFinalizeButton()
         updateButtonState(titleTextField.text?.isEmpty)
     }
     
@@ -76,6 +79,15 @@ final class OverviewViewController: UIViewController {
         backButton.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+    }
+    
+    private func addFinalizeButton() {
+        let finalizeButton = UIButton(type: .custom)
+        finalizeButton.setTitle("Finalizar", for: .normal)
+        finalizeButton.setTitleColor(.black, for: .normal)
+        finalizeButton.addTarget(self, action: #selector(finalizeTapped), for: .touchUpInside)
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: finalizeButton)
     }
     
     private func updateButtonState(_ disabled: Bool?) {
@@ -91,6 +103,11 @@ final class OverviewViewController: UIViewController {
     @objc
     private func backTapped() {
         delegate?.shouldDismiss(self)
+    }
+    
+    @objc
+    private func finalizeTapped() {
+        delegate?.shouldFinalize(self)
     }
     
     @IBAction func didTapActionButton(_ sender: UIButton) {

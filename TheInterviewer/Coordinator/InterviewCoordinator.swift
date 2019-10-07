@@ -133,6 +133,11 @@ extension InterviewCoordinator: OverviewDelegate {
         nextStep(advance: false)
     }
     
+    func shouldFinalize(_ viewController: OverviewViewController) {
+        self.currentIndex = nil
+        nextStep(advance: false)
+    }
+    
     func shouldDismiss(_ viewController: OverviewViewController) {
         endFlow()
     }
