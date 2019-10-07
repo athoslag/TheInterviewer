@@ -31,22 +31,28 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ev-ls-C04">
                     <rect key="frame" x="175" y="574" width="484" height="50"/>
+                    <color key="backgroundColor" red="0.74117647058823533" green="0.69803921568627447" blue="0.56470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="ABr-ro-scv"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <state key="normal" title="Nova entrevista"/>
+                    <state key="normal" title="Nova entrevista">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                     <connections>
                         <action selector="didTapNew:" destination="-1" eventType="touchUpInside" id="R6Y-hc-hIb"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2l-Dd-eks">
                     <rect key="frame" x="175" y="654" width="484" height="50"/>
+                    <color key="backgroundColor" red="0.74117647058823533" green="0.69803921568627447" blue="0.56470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="x6f-Dn-2wD"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <state key="normal" title="Revisar entrevistas anteriores"/>
+                    <state key="normal" title="Revisar entrevistas anteriores">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                     <connections>
                         <action selector="didTapReview:" destination="-1" eventType="touchUpInside" id="QVj-m7-YyN"/>
                     </connections>

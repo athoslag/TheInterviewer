@@ -54,21 +54,19 @@ final class FinalScreenViewController: UIViewController {
         shareButton.setTitleColor(.white, for: .normal)
         shareButton.backgroundColor = AppConfiguration.mainColor
         shareButton.layer.cornerRadius = shareButton.layer.bounds.height / 2
-        shareButton.titleLabel?.font = UIFont(SFPro: .text, variant: .regular, size: 18)
+        shareButton.titleLabel?.font = UIFont(SFPro: .text, variant: .semibold, size: 18)
         
         // Save
-        saveButton.setTitleColor(.blue, for: .normal)
+        saveButton.setTitleColor(.white, for: .normal)
+        saveButton.backgroundColor = .navyBlue
         saveButton.layer.cornerRadius = saveButton.layer.bounds.height / 2
-        saveButton.titleLabel?.font = UIFont(SFPro: .text, variant: .regular, size: 18)
-        saveButton.layer.borderColor = UIColor.darkGray.cgColor
-        saveButton.layer.borderWidth = 0.5
-        
+        saveButton.titleLabel?.font = UIFont(SFPro: .text, variant: .semibold, size: 18)
+
         // Discard
-        discardButton.setTitleColor(.red, for: .normal)
+        discardButton.setTitleColor(.white, for: .normal)
+        discardButton.backgroundColor = .fireRed
         discardButton.layer.cornerRadius = discardButton.layer.bounds.height / 2
-        discardButton.titleLabel?.font = UIFont(SFPro: .text, variant: .regular, size: 18)
-        discardButton.layer.borderColor = UIColor.darkGray.cgColor
-        discardButton.layer.borderWidth = 0.5
+        discardButton.titleLabel?.font = UIFont(SFPro: .text, variant: .semibold, size: 18)
         
         // Exit
         if displayMode == .review {

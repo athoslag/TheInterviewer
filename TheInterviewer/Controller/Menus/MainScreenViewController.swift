@@ -40,17 +40,17 @@ final class MainScreenViewController: UIViewController {
         calloutLabel.text = "The Interviewer v\(Float(UIApplication.version()))"
         
         // Buttons
-        newInterviewButton.titleLabel?.font = UIFont(SFPro: .text, variant: .medium, size: 18)
-        newInterviewButton.setTitleColor(AppConfiguration.mainColor, for: .normal)
+        newInterviewButton.titleLabel?.font = UIFont(SFPro: .text, variant: .semibold, size: 18)
+        newInterviewButton.setTitleColor(.white, for: .normal)
         newInterviewButton.layer.cornerRadius = newInterviewButton.bounds.height / 2
-        newInterviewButton.layer.borderWidth = 1.5
-        newInterviewButton.layer.borderColor = AppConfiguration.mainColor.cgColor
+//        newInterviewButton.layer.borderWidth = 1.5
+//        newInterviewButton.layer.borderColor = AppConfiguration.mainColor.cgColor
         
-        reviewInterviewButton.titleLabel?.font = UIFont(SFPro: .text, variant: .medium, size: 18)
-        reviewInterviewButton.setTitleColor(AppConfiguration.mainColor, for: .normal)
+        reviewInterviewButton.titleLabel?.font = UIFont(SFPro: .text, variant: .semibold, size: 18)
+        reviewInterviewButton.setTitleColor(.white, for: .normal)
         reviewInterviewButton.layer.cornerRadius = reviewInterviewButton.bounds.height / 2
-        reviewInterviewButton.layer.borderWidth = 1.5
-        reviewInterviewButton.layer.borderColor = AppConfiguration.mainColor.cgColor
+//        reviewInterviewButton.layer.borderWidth = 1.5
+//        reviewInterviewButton.layer.borderColor = AppConfiguration.mainColor.cgColor
     }
 }
 
