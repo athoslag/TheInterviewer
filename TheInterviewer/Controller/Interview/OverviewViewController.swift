@@ -11,11 +11,11 @@ import SkyFloatingLabelTextField
 
 protocol OverviewDelegate: class {
     func didSelect(_ viewController: OverviewViewController, index: Index)
+    func shouldFinalize(_ viewController: OverviewViewController)
     func shouldDismiss(_ viewController: OverviewViewController)
 }
 
 final class OverviewViewController: UIViewController {
-
     @IBOutlet private weak var titleTextField: SkyFloatingLabelTextField!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var actionButton: UIButton!
@@ -46,6 +46,7 @@ final class OverviewViewController: UIViewController {
         configureUI()
     }
     
+    // MARK: - UI
     private func configureUI() {
         // Navigation
         navigationController?.navigationBar.setupNavigationBar()
@@ -65,7 +66,9 @@ final class OverviewViewController: UIViewController {
         actionButton.setTitleColor(.white, for: .disabled)
         actionButton.titleLabel?.font = UIFont(SFPro: .display, variant: .medium, size: 22)
         
+        // Navigation buttons & states
         addBackButton()
+        addFinalizeButton()
         updateButtonState(titleTextField.text?.isEmpty)
     }
     
@@ -78,6 +81,15 @@ final class OverviewViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
     }
     
+    private func addFinalizeButton() {
+        let finalizeButton = UIButton(type: .custom)
+        finalizeButton.setTitle("Finalizar", for: .normal)
+        finalizeButton.setTitleColor(.black, for: .normal)
+        finalizeButton.addTarget(self, action: #selector(finalizeTapped), for: .touchUpInside)
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: finalizeButton)
+    }
+    
     private func updateButtonState(_ disabled: Bool?) {
         actionButton.isEnabled = !(disabled ?? true)
         actionButton.backgroundColor = !(disabled ?? true) ? AppConfiguration.mainColor : .lightGray
@@ -87,9 +99,27 @@ final class OverviewViewController: UIViewController {
         delegate?.didSelect(self, index: index)
     }
     
+    // MARK: - Actions
     @objc
     private func backTapped() {
         delegate?.shouldDismiss(self)
+    }
+    
+    @objc
+    private func finalizeTapped() {
+        guard canEditTitle else {
+            delegate?.shouldFinalize(self)
+            return
+        }
+        
+        let bundle = AlertBundle(title: "Você tem certeza?",
+                                 details: "Uma vez finalizada, a entrevista não poderá mais ser alterada.",
+                                 options: [
+                                    AlertOption(title: "Cancelar", style: .cancel, completion: { _ in }),
+                                    AlertOption(title: "Finalizar", style: .destructive, completion: { _ in
+                                        self.delegate?.shouldFinalize(self)
+                                    })])
+        presentAlert(bundle)
     }
     
     @IBAction func didTapActionButton(_ sender: UIButton) {
@@ -97,8 +127,8 @@ final class OverviewViewController: UIViewController {
     }
 }
 
+// MARK: - DataSource
 extension OverviewViewController: UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.numberOfParts
     }
@@ -114,6 +144,7 @@ extension OverviewViewController: UITableViewDataSource {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "reuseID")
         cell.textLabel?.text = "\(viewModel.sectionTitle(part: part, section: section)): \(viewModel.numberOfQuestions(section: section, part: part)) itens"
         cell.textLabel?.font = UIFont(SFPro: .text, variant: .medium, size: 20)
+        cell.textLabel?.numberOfLines = 2
         return cell
     }
     
@@ -122,6 +153,7 @@ extension OverviewViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - Delegates
 extension OverviewViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         proceedWithInterview(index: Index(part: indexPath.section, section: indexPath.row, row: 0))

@@ -15,7 +15,6 @@ protocol FinalScreenDelegate: class {
 }
 
 final class FinalScreenViewController: UIViewController {
-    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var shareButton: UIButton!
     @IBOutlet private weak var saveButton: UIButton!
@@ -37,19 +36,15 @@ final class FinalScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        titleLabel.text = viewModel.title
         tableView.dataSource = self
-        
         setupUI()
     }
     
     private func setupUI() {
         // Navigation
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        
-        // Title
-        titleLabel.font = UIFont(SFPro: .display, variant: .medium, size: 24)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.hidesBackButton = true
+        navigationItem.title = viewModel.title
         
         // TableView
         tableView.allowsSelection = false

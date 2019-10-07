@@ -91,7 +91,9 @@ extension InterviewCoordinator {
 // MARK: ViewController Factory
 extension InterviewCoordinator {
     func makeOverviewController(viewModel: InterviewViewModel, canEditTitle: Bool) -> UIViewController {
-        let overview = OverviewViewController(interviewVM: viewModel, canEditTitle: canEditTitle)
+        // editable if in edition mode AND canEditTitle
+        let editable = mode == .edition ? canEditTitle : false
+        let overview = OverviewViewController(interviewVM: viewModel, canEditTitle: editable)
         overview.delegate = self
         return overview
     }
@@ -128,6 +130,11 @@ extension InterviewCoordinator {
 extension InterviewCoordinator: OverviewDelegate {
     func didSelect(_ viewController: OverviewViewController, index: Index) {
         self.currentIndex = index
+        nextStep(advance: false)
+    }
+    
+    func shouldFinalize(_ viewController: OverviewViewController) {
+        self.currentIndex = nil
         nextStep(advance: false)
     }
     
@@ -181,6 +188,11 @@ extension InterviewCoordinator: FinalScreenDelegate {
     func didTapShare(_ viewController: FinalScreenViewController) {
         guard let interview = viewModel.shareInterview() else { return }
         var items: [Any] = [interview]
+        
+        let json = viewModel.interviewDirectory.appendingPathComponent("\(viewModel.title).json")
+        if FileManager.default.createFile(atPath: json.path, contents: interview, attributes: nil) {
+            items.removeAll()
+        }
         
         if let url = ZipfileService.zipFilesAt(path: viewModel.interviewDirectory, filename: viewModel.title) {
             items.append(url)

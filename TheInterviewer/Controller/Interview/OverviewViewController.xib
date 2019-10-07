@@ -23,21 +23,6 @@
             <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JgR-du-Qal" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                    <rect key="frame" x="20" y="24" width="614" height="39"/>
-                    <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
-                    <connections>
-                        <action selector="editingDidChange:" destination="-1" eventType="editingChanged" id="snY-xG-841"/>
-                        <action selector="textFieldDidEnd:" destination="-1" eventType="editingDidEndOnExit" id="di6-nu-GEm"/>
-                    </connections>
-                </textField>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3D9-gX-U6S">
-                    <rect key="frame" x="20" y="103" width="794" height="921"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9X9-4s-wdG">
                     <rect key="frame" x="20" y="1074" width="794" height="50"/>
                     <constraints>
@@ -48,21 +33,36 @@
                         <action selector="didTapActionButton:" destination="-1" eventType="touchUpInside" id="vKX-Eb-WHG"/>
                     </connections>
                 </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Lo5-G0-7tG">
+                    <rect key="frame" x="20" y="24" width="794" height="1010"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JgR-du-Qal" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                            <rect key="frame" x="0.0" y="0.0" width="794" height="49"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                            <connections>
+                                <action selector="editingDidChange:" destination="-1" eventType="editingChanged" id="snY-xG-841"/>
+                                <action selector="textFieldDidEnd:" destination="-1" eventType="editingDidEndOnExit" id="di6-nu-GEm"/>
+                            </connections>
+                        </textField>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3D9-gX-U6S">
+                            <rect key="frame" x="0.0" y="89" width="794" height="921"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </tableView>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="9X9-4s-wdG" firstAttribute="trailing" secondItem="3D9-gX-U6S" secondAttribute="trailing" id="4Mu-Cw-Rxi"/>
-                <constraint firstItem="3D9-gX-U6S" firstAttribute="top" secondItem="JgR-du-Qal" secondAttribute="bottom" constant="40" id="Pws-VY-beM"/>
-                <constraint firstItem="JgR-du-Qal" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="VWR-qm-dnm"/>
-                <constraint firstItem="9X9-4s-wdG" firstAttribute="top" secondItem="3D9-gX-U6S" secondAttribute="bottom" constant="50" id="WqA-mw-fIi"/>
-                <constraint firstItem="JgR-du-Qal" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ZbD-ek-oIj"/>
-                <constraint firstItem="9X9-4s-wdG" firstAttribute="leading" secondItem="3D9-gX-U6S" secondAttribute="leading" id="u3A-ip-FUG"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3D9-gX-U6S" secondAttribute="trailing" constant="20" id="uN2-fg-N9N"/>
+                <constraint firstItem="9X9-4s-wdG" firstAttribute="top" secondItem="Lo5-G0-7tG" secondAttribute="bottom" constant="40" id="1Zo-gk-Sq3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Lo5-G0-7tG" secondAttribute="trailing" constant="20" id="9By-XR-UH5"/>
+                <constraint firstItem="9X9-4s-wdG" firstAttribute="leading" secondItem="Lo5-G0-7tG" secondAttribute="leading" id="9mg-KH-aIN"/>
+                <constraint firstItem="9X9-4s-wdG" firstAttribute="trailing" secondItem="Lo5-G0-7tG" secondAttribute="trailing" id="TJC-FW-KKz"/>
+                <constraint firstItem="Lo5-G0-7tG" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="hez-d6-gmI"/>
+                <constraint firstItem="Lo5-G0-7tG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="uo4-X2-n9V"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="9X9-4s-wdG" secondAttribute="bottom" constant="50" id="vX0-m1-smI"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="JgR-du-Qal" secondAttribute="trailing" constant="200" id="x5I-TI-v6V">
-                    <variation key="widthClass=compact" constant="20"/>
-                </constraint>
-                <constraint firstItem="3D9-gX-U6S" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ycP-eR-fDu"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="24.46043165467626" y="26.633165829145728"/>
