@@ -37,20 +37,20 @@ final class MainScreenViewController: UIViewController {
     private func configureUI() {
         // Callout
         calloutLabel.font = UIFont(SFPro: .display, variant: .medium, size: 30)
-        calloutLabel.text = "The Interviewer v\(Float(UIApplication.version()))"
+        calloutLabel.text = "The Interviewer"
+        
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            calloutLabel.text?.append(" v\(version)")
+        }
         
         // Buttons
         newInterviewButton.titleLabel?.font = UIFont(SFPro: .text, variant: .semibold, size: 18)
         newInterviewButton.setTitleColor(.white, for: .normal)
         newInterviewButton.layer.cornerRadius = newInterviewButton.bounds.height / 2
-//        newInterviewButton.layer.borderWidth = 1.5
-//        newInterviewButton.layer.borderColor = AppConfiguration.mainColor.cgColor
         
         reviewInterviewButton.titleLabel?.font = UIFont(SFPro: .text, variant: .semibold, size: 18)
         reviewInterviewButton.setTitleColor(.white, for: .normal)
         reviewInterviewButton.layer.cornerRadius = reviewInterviewButton.bounds.height / 2
-//        reviewInterviewButton.layer.borderWidth = 1.5
-//        reviewInterviewButton.layer.borderColor = AppConfiguration.mainColor.cgColor
     }
 }
 
