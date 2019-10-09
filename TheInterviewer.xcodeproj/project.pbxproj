@@ -278,9 +278,9 @@
 		7EB56698231F55510020E077 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				7ED28712232052F500C005E7 /* Wrapper.swift */,
 				7EB5669B231F58F80020E077 /* InterviewService.swift */,
 				7E9BD4212343149900FB51F3 /* ZipfileService.swift */,
-				7ED28712232052F500C005E7 /* Wrapper.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";

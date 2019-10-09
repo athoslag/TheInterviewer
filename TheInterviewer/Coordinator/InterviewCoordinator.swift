@@ -100,7 +100,7 @@ extension InterviewCoordinator {
     
     func makeSectionOverview(section: Section) -> UIViewController {
         let partTitle = viewModel.titles(for: currentIndex).part
-        let sectionOverview = SectionOverviewViewController(section: section, partTitle: partTitle, index: currentIndex!)
+        let sectionOverview = SectionOverviewViewController(section: section, partTitle: partTitle, index: currentIndex!, mode: mode)
         sectionOverview.delegate = self
         return sectionOverview
     }
@@ -146,6 +146,11 @@ extension InterviewCoordinator: OverviewDelegate {
 extension InterviewCoordinator: SectionDelegate {
     func didSelectRow(_ viewController: SectionOverviewViewController, index: Index) {
         self.currentIndex = index
+        nextStep(advance: false)
+    }
+    
+    func didTapFinish(_ viewController: SectionOverviewViewController) {
+        self.currentIndex = nil
         nextStep(advance: false)
     }
 }

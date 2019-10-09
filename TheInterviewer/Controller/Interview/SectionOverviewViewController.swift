@@ -10,6 +10,7 @@ import UIKit
 
 protocol SectionDelegate: class {
     func didSelectRow(_ viewController: SectionOverviewViewController, index: Index)
+    func didTapFinish(_ viewController: SectionOverviewViewController)
 }
 
 final class SectionOverviewViewController: UIViewController {
@@ -20,6 +21,7 @@ final class SectionOverviewViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var beginButton: UIButton!
     
+    private let mode: Mode
     private let index: Index
     private let partTitle: String
     private let sectionModel: Section
@@ -27,7 +29,8 @@ final class SectionOverviewViewController: UIViewController {
     
     weak var delegate: SectionDelegate?
     
-    init(section: Section, partTitle: String, index: Index) {
+    init(section: Section, partTitle: String, index: Index, mode: Mode) {
+        self.mode = mode
         self.index = index
         self.sectionModel = section
         self.partTitle = partTitle
@@ -51,6 +54,10 @@ final class SectionOverviewViewController: UIViewController {
     }
     
     private func configureUI() {
+        // Navigation
+        let finishButton = UIBarButtonItem(title: "Finalizar", style: .plain, target: self, action: #selector(didTapFinish))
+        navigationItem.setRightBarButton(finishButton, animated: false)
+        
         // Titles
         partTitleLabel.font = UIFont(SFPro: .display, variant: .medium, size: 26)
         titleLabel.font = UIFont(SFPro: .display, variant: .medium, size: 24)
@@ -65,9 +72,29 @@ final class SectionOverviewViewController: UIViewController {
         beginButton.setTitleColor(.white, for: .normal)
         beginButton.titleLabel?.font = UIFont(SFPro: .display, variant: .medium, size: 22)
     }
-    
+}
+
+// MARK: - Actions
+extension SectionOverviewViewController {
     @IBAction func didTapBegin(_ sender: UIButton) {
         delegate?.didSelectRow(self, index: index.withRow(0))
+    }
+    
+    @objc
+    func didTapFinish() {
+        guard mode == .edition else {
+            delegate?.didTapFinish(self)
+            return
+        }
+        
+        let bundle = AlertBundle(title: "Você tem certeza?",
+                                 details: "Uma vez finalizada, a entrevista não poderá mais ser alterada.",
+                                 options: [
+                                    AlertOption(title: "Cancelar", style: .cancel, completion: { _ in }),
+                                    AlertOption(title: "Finalizar", style: .destructive, completion: { _ in
+                                        self.delegate?.didTapFinish(self)
+                                    })])
+        presentAlert(bundle)
     }
 }
 

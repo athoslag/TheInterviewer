@@ -26,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y1E-zk-qxH">
-                    <rect key="frame" x="20" y="163" width="728" height="711"/>
+                    <rect key="frame" x="20" y="127.5" width="728" height="746.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FxC-Cc-wM6">
@@ -35,8 +35,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O que será coberto nesta seção:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwa-CR-dfS">
-                    <rect key="frame" x="20" y="127" width="249" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O que será coberto nesta seção:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwa-CR-dfS">
+                    <rect key="frame" x="20" y="92" width="249" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -74,7 +74,7 @@
                 <constraint firstItem="EMZ-Sb-V0q" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="V2Z-Ur-lAi"/>
                 <constraint firstItem="hcA-pe-Ggx" firstAttribute="leading" secondItem="y1E-zk-qxH" secondAttribute="leading" id="VXF-b4-aod"/>
                 <constraint firstItem="hcA-pe-Ggx" firstAttribute="centerX" secondItem="y1E-zk-qxH" secondAttribute="centerX" id="bmY-pY-riK"/>
-                <constraint firstItem="Kwa-CR-dfS" firstAttribute="top" secondItem="EMZ-Sb-V0q" secondAttribute="bottom" constant="50" id="lXT-n1-zYR"/>
+                <constraint firstItem="Kwa-CR-dfS" firstAttribute="top" secondItem="EMZ-Sb-V0q" secondAttribute="bottom" constant="15" id="lXT-n1-zYR"/>
                 <constraint firstItem="EMZ-Sb-V0q" firstAttribute="top" secondItem="FxC-Cc-wM6" secondAttribute="bottom" constant="15" id="slw-sZ-np0"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hcA-pe-Ggx" secondAttribute="bottom" constant="50" id="szh-EO-EUc"/>
                 <constraint firstItem="Kwa-CR-dfS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="vxk-uY-c3x"/>
