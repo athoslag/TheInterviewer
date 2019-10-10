@@ -23,13 +23,14 @@ final class AppConfiguration {
     }
     
     // Colors
-    static var mainColor: UIColor = UIColor(hex: 0xBDB290)
+    static var mainColor: UIColor = .royalPurple
 }
 
 extension UIColor {
     static let royalPurple = UIColor(hex: 0x7851A9)
     static let navyBlue = UIColor(hex: 0x23238E)
     static let fireRed = UIColor(hex: 0xCD2626)
+    static let brownish = UIColor(hex: 0xBDB290)
 }
 
 extension UIImage {

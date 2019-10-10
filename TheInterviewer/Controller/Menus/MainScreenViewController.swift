@@ -47,10 +47,12 @@ final class MainScreenViewController: UIViewController {
         newInterviewButton.titleLabel?.font = UIFont(SFPro: .text, variant: .semibold, size: 18)
         newInterviewButton.setTitleColor(.white, for: .normal)
         newInterviewButton.layer.cornerRadius = newInterviewButton.bounds.height / 2
+        newInterviewButton.backgroundColor = AppConfiguration.mainColor
         
         reviewInterviewButton.titleLabel?.font = UIFont(SFPro: .text, variant: .semibold, size: 18)
         reviewInterviewButton.setTitleColor(.white, for: .normal)
         reviewInterviewButton.layer.cornerRadius = reviewInterviewButton.bounds.height / 2
+        reviewInterviewButton.backgroundColor = AppConfiguration.mainColor
     }
 }
 

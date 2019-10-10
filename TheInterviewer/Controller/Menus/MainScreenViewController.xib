@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="ipad11_0rounded" orientation="portrait">
+    <device id="ipad12_9rounded" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -20,18 +20,12 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TheInterviewer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Emv-Fu-8nz">
-                    <rect key="frame" x="175" y="254" width="191" height="34"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="28"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ev-ls-C04">
-                    <rect key="frame" x="175" y="574" width="484" height="50"/>
-                    <color key="backgroundColor" red="0.74117647058823533" green="0.69803921568627447" blue="0.56470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="175" y="846" width="674" height="50"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="ABr-ro-scv"/>
                     </constraints>
@@ -44,8 +38,8 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2l-Dd-eks">
-                    <rect key="frame" x="175" y="654" width="484" height="50"/>
-                    <color key="backgroundColor" red="0.74117647058823533" green="0.69803921568627447" blue="0.56470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="175" y="926" width="674" height="50"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="x6f-Dn-2wD"/>
                     </constraints>
@@ -57,25 +51,47 @@
                         <action selector="didTapReview:" destination="-1" eventType="touchUpInside" id="QVj-m7-YyN"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TheInterviewer" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Emv-Fu-8nz">
+                    <rect key="frame" x="175" y="601" width="674" height="33.5"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="28"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FinalPurple" translatesAutoresizingMaskIntoConstraints="NO" id="E98-Ei-mrC">
+                    <rect key="frame" x="343.5" y="244" width="337" height="337"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="E98-Ei-mrC" secondAttribute="height" multiplier="1:1" id="1IK-O6-GYU"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="k2l-Dd-eks" firstAttribute="trailing" secondItem="6Ev-ls-C04" secondAttribute="trailing" id="2eu-Ha-Hb7"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Emv-Fu-8nz" secondAttribute="trailing" constant="20" id="3Of-8n-d3g"/>
+                <constraint firstItem="Emv-Fu-8nz" firstAttribute="top" secondItem="E98-Ei-mrC" secondAttribute="bottom" constant="20" id="Eob-Pz-OmZ"/>
+                <constraint firstItem="E98-Ei-mrC" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="IEG-9h-rHY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="k2l-Dd-eks" secondAttribute="bottom" constant="370" id="Iw5-it-lN4">
+                    <variation key="heightClass=regular-widthClass=compact" constant="170"/>
+                </constraint>
+                <constraint firstItem="Emv-Fu-8nz" firstAttribute="trailing" secondItem="6Ev-ls-C04" secondAttribute="trailing" id="Sks-Jv-yFV"/>
+                <constraint firstItem="E98-Ei-mrC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="220" id="W6y-xB-qhO">
+                    <variation key="widthClass=compact" constant="50"/>
+                </constraint>
                 <constraint firstItem="k2l-Dd-eks" firstAttribute="leading" secondItem="6Ev-ls-C04" secondAttribute="leading" id="Xzb-Cp-WWQ"/>
+                <constraint firstItem="Emv-Fu-8nz" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="dtB-oV-znx"/>
                 <constraint firstItem="k2l-Dd-eks" firstAttribute="top" secondItem="6Ev-ls-C04" secondAttribute="bottom" constant="30" id="j7E-AT-rph"/>
-                <constraint firstItem="Emv-Fu-8nz" firstAttribute="leading" secondItem="6Ev-ls-C04" secondAttribute="leading" id="l9A-pN-ORc"/>
-                <constraint firstItem="6Ev-ls-C04" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="rGw-eI-aCm"/>
+                <constraint firstItem="6Ev-ls-C04" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Emv-Fu-8nz" secondAttribute="bottom" constant="20" id="lQB-hr-9Sg"/>
+                <constraint firstItem="E98-Ei-mrC" firstAttribute="width" secondItem="6Ev-ls-C04" secondAttribute="width" multiplier="0.5" id="pFP-Yd-5ZO"/>
+                <constraint firstItem="Emv-Fu-8nz" firstAttribute="leading" secondItem="6Ev-ls-C04" secondAttribute="leading" id="s9c-mO-cad"/>
                 <constraint firstItem="6Ev-ls-C04" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="sLw-qf-rIA"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6Ev-ls-C04" secondAttribute="trailing" constant="175" id="w6h-cW-vBQ">
                     <variation key="widthClass=compact" constant="20"/>
-                </constraint>
-                <constraint firstItem="Emv-Fu-8nz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="230" id="wnm-9b-b62">
-                    <variation key="widthClass=compact" constant="100"/>
                 </constraint>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="138.84892086330936" y="128.643216080402"/>
         </view>
     </objects>
+    <resources>
+        <image name="FinalPurple" width="245" height="245"/>
+    </resources>
 </document>

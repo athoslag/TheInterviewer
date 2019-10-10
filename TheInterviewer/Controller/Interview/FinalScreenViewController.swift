@@ -71,6 +71,10 @@ final class FinalScreenViewController: UIViewController {
         // Exit
         if displayMode == .review {
             discardButton.setTitle("Sair", for: .normal)
+            discardButton.backgroundColor = .white
+            discardButton.setTitleColor(AppConfiguration.mainColor, for: .normal)
+            discardButton.layer.borderWidth = 0.5
+            discardButton.layer.borderColor = AppConfiguration.mainColor.cgColor
             saveButton.isHidden = true
         }
     }
