@@ -57,23 +57,25 @@ final class FinalScreenViewController: UIViewController {
         shareButton.titleLabel?.font = UIFont(SFPro: .text, variant: .semibold, size: 18)
         
         // Save
-        saveButton.setTitleColor(.white, for: .normal)
-        saveButton.backgroundColor = .navyBlue
+        saveButton.setTitleColor(.navyBlue, for: .normal)
+        saveButton.backgroundColor = .white
+        saveButton.layer.borderColor = UIColor.navyBlue.cgColor
+        saveButton.layer.borderWidth = 0.5
         saveButton.layer.cornerRadius = saveButton.layer.bounds.height / 2
         saveButton.titleLabel?.font = UIFont(SFPro: .text, variant: .semibold, size: 18)
 
         // Discard
-        discardButton.setTitleColor(.white, for: .normal)
-        discardButton.backgroundColor = .fireRed
+        discardButton.setTitleColor(.fireRed, for: .normal)
+        discardButton.backgroundColor = .white
+        discardButton.layer.borderColor = UIColor.fireRed.cgColor
+        discardButton.layer.borderWidth = 0.5
         discardButton.layer.cornerRadius = discardButton.layer.bounds.height / 2
         discardButton.titleLabel?.font = UIFont(SFPro: .text, variant: .semibold, size: 18)
         
         // Exit
         if displayMode == .review {
             discardButton.setTitle("Sair", for: .normal)
-            discardButton.backgroundColor = .white
             discardButton.setTitleColor(AppConfiguration.mainColor, for: .normal)
-            discardButton.layer.borderWidth = 0.5
             discardButton.layer.borderColor = AppConfiguration.mainColor.cgColor
             saveButton.isHidden = true
         }
