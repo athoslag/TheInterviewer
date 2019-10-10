@@ -96,13 +96,6 @@ final class QALongViewController: UIViewController {
         sectionProgressionLabel.text = titles.section
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if presentationMode == .edition {
-            textView.becomeFirstResponder()
-        }
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         if presentationMode == .edition {
             finishRecording(success: true)
