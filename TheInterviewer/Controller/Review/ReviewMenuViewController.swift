@@ -48,7 +48,7 @@ final class ReviewMenuViewController: UIViewController {
         navigationController?.navigationBar.setupNavigationBar()
         
         // callout label
-        calloutLabel.font = UIFont(SFPro: .display, variant: .medium, size: 24)
+        calloutLabel.font = UIFont(SFPro: .display, variant: .semibold, size: 32)
         calloutLabel.text = "Revise aqui as suas entrevistas passadas"
         
         // table view

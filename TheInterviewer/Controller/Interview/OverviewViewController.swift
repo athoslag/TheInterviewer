@@ -50,7 +50,9 @@ final class OverviewViewController: UIViewController {
     private func configureUI() {
         // Navigation
         navigationController?.navigationBar.setupNavigationBar()
-        navigationItem.title = titleTextField.text
+        if !canEditTitle {
+            navigationItem.title = titleTextField.text
+        }
         
         // Information
         titleTextField.font = UIFont(SFPro: .text, variant: .medium, size: 26)
@@ -162,7 +164,6 @@ extension OverviewViewController: UITableViewDelegate {
 
 extension OverviewViewController: UITextFieldDelegate {
     @IBAction func editingDidChange(_ sender: SkyFloatingLabelTextField) {
-        navigationItem.title = titleTextField.text
         updateButtonState(titleTextField.text?.isEmpty)
         
         guard let newTitle = titleTextField.text, !newTitle.isEmpty else {
@@ -173,7 +174,6 @@ extension OverviewViewController: UITextFieldDelegate {
     }
     
     @IBAction func textFieldDidEnd(_ sender: SkyFloatingLabelTextField) {
-        navigationItem.title = titleTextField.text
         titleTextField.resignFirstResponder()
         updateButtonState(titleTextField.text?.isEmpty)
         
