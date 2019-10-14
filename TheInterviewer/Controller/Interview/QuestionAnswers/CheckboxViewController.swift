@@ -15,12 +15,14 @@ protocol CheckboxDelegate: class {
 struct CheckboxViewControllerConfiguration {
     let index: Index
     let calloutText: String
+    let optionText: String
 }
 
 final class CheckboxViewController: UIViewController {
     @IBOutlet private weak var partProgressionLabel: UILabel!
     @IBOutlet private weak var sectionProgressionLabel: UILabel!
     @IBOutlet private weak var calloutLabel: UILabel!
+    @IBOutlet private weak var optionText: UILabel!
     @IBOutlet private weak var nextButton: UIButton!
     
     private let configuration: CheckboxViewControllerConfiguration
@@ -48,9 +50,11 @@ final class CheckboxViewController: UIViewController {
         partProgressionLabel.font = UIFont(SFPro: .display, variant: .medium, size: 22)
         sectionProgressionLabel.font = UIFont(SFPro: .display, variant: .medium, size: 22)
         calloutLabel.font = UIFont(SFPro: .text, variant: .regular, size: 22)
+        optionText.font = UIFont(SFPro: .text, variant: .regular, size: 22)
         
         // texts
         calloutLabel.text = configuration.calloutText
+        optionText.text = configuration.optionText
         
         // button
         nextButton.titleLabel?.font = UIFont(SFPro: .text, variant: .medium, size: 22)

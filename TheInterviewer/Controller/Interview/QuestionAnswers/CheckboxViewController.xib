@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="calloutLabel" destination="vUX-0D-Dqa" id="bSH-wk-fRb"/>
                 <outlet property="nextButton" destination="mCw-hd-reh" id="4ra-WU-JKH"/>
+                <outlet property="optionText" destination="KAx-GN-d0I" id="Xw1-r7-eAb"/>
                 <outlet property="partProgressionLabel" destination="O8C-gp-TNz" id="lc9-80-81c"/>
                 <outlet property="sectionProgressionLabel" destination="dLI-8Y-RmK" id="Tkt-Fd-l0C"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
