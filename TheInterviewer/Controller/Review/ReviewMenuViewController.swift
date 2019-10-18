@@ -129,17 +129,8 @@ extension ReviewMenuViewController: UITableViewDataSource {
         do {
             let attr = try FileManager.default.attributesOfItem(atPath: viewModel.path(indexPath.row).path)
             if let size = attr[.size] {
-                cell.detailTextLabel?.text?.append(" (\(size)) KB)")
+                cell.detailTextLabel?.text?.append(" (~\(size) KB)")
             }
-            
-            var totalSize: Int = 0
-            for item in try FileManager.default.contentsOfDirectory(atPath: viewModel.path(indexPath.row).path) {
-                if let size = try FileManager.default.attributesOfItem(atPath: item)[.size] {
-                    totalSize += size as! Int
-                }
-            }
-            
-            cell.detailTextLabel?.text?.append("(total: \(totalSize)")
             
         } catch {
             print("Could not size file.")
