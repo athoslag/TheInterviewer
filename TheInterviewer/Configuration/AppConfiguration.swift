@@ -24,6 +24,16 @@ final class AppConfiguration {
     
     // Colors
     static var mainColor: UIColor = .royalPurple
+    
+    // Recordings dir
+    static var recordingsDirectory: URL {
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        return path.appendingPathComponent("recordings", isDirectory: true)
+    }
+    
+    static func interviewDirectory(_ interview: Interview) -> URL {
+        return recordingsDirectory.appendingPathComponent(interview.primaryKey, isDirectory: true)
+    }
 }
 
 extension UIColor {

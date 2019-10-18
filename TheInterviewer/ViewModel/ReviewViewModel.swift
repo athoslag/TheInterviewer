@@ -36,6 +36,10 @@ final class ReviewViewModel {
         return interviews[row]
     }
     
+    func path(_ row: Int) -> URL {
+        AppConfiguration.interviewDirectory(interviews[row])
+    }
+    
     /// Deletes an interview at the specified index
     ///
     /// - Parameter index: The specified index to be deleted
