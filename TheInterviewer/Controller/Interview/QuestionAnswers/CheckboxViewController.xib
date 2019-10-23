@@ -14,8 +14,8 @@
                 <outlet property="checkboxButton" destination="0nh-HP-YuH" id="qUM-Au-9ui"/>
                 <outlet property="checkboxButton2" destination="Bec-q3-XGF" id="1gE-lV-dUJ"/>
                 <outlet property="nextButton" destination="mCw-hd-reh" id="4ra-WU-JKH"/>
-                <outlet property="optionText" destination="KAx-GN-d0I" id="Xw1-r7-eAb"/>
-                <outlet property="optionText2" destination="jKC-dn-gvU" id="qzB-2H-6ID"/>
+                <outlet property="optionText" destination="Nsd-oF-ALa" id="3A4-E5-6EQ"/>
+                <outlet property="optionText2" destination="abQ-lB-ti8" id="p4S-tX-ryU"/>
                 <outlet property="partProgressionLabel" destination="O8C-gp-TNz" id="lc9-80-81c"/>
                 <outlet property="sectionProgressionLabel" destination="dLI-8Y-RmK" id="Tkt-Fd-l0C"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -38,6 +38,12 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUX-0D-Dqa">
+                    <rect key="frame" x="20" y="106" width="42" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCw-hd-reh">
                     <rect key="frame" x="768" y="1124" width="46" height="30"/>
                     <state key="normal" title="Button"/>
@@ -46,50 +52,64 @@
                     </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0pr-rn-GO6">
-                    <rect key="frame" x="373.5" y="547" width="87" height="80"/>
+                    <rect key="frame" x="377" y="547" width="80" height="80"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="redraw" distribution="equalCentering" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="8Lq-SZ-Avc">
-                            <rect key="frame" x="0.0" y="0.0" width="87" height="30"/>
+                        <stackView opaque="NO" contentMode="redraw" distribution="equalCentering" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8Lq-SZ-Avc">
+                            <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0nh-HP-YuH">
-                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                    <rect key="frame" x="0.0" y="6" width="18" height="18"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="0nh-HP-YuH" secondAttribute="height" multiplier="1:1" id="V5t-So-49V"/>
+                                    </constraints>
                                     <connections>
                                         <action selector="didTapCheck:" destination="-1" eventType="touchUpInside" id="itG-ZU-Svb"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAx-GN-d0I">
-                                    <rect key="frame" x="45" y="5" width="42" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nsd-oF-ALa">
+                                    <rect key="frame" x="30" y="0.0" width="50" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="m2u-zk-6nH"/>
+                                    </constraints>
+                                    <state key="normal" title="option1"/>
+                                    <connections>
+                                        <action selector="didTapCheckText:" destination="-1" eventType="touchUpInside" id="VrZ-MU-v46"/>
+                                    </connections>
+                                </button>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="0nh-HP-YuH" firstAttribute="height" secondItem="Nsd-oF-ALa" secondAttribute="height" multiplier="0.6" id="WUz-Kk-1iS"/>
+                            </constraints>
                         </stackView>
-                        <stackView opaque="NO" contentMode="redraw" distribution="equalCentering" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="6AH-wH-kiE">
-                            <rect key="frame" x="0.0" y="50" width="87" height="30"/>
+                        <stackView opaque="NO" contentMode="redraw" distribution="equalCentering" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6AH-wH-kiE">
+                            <rect key="frame" x="0.0" y="50" width="80" height="30"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bec-q3-XGF">
-                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                    <rect key="frame" x="0.0" y="6" width="18" height="18"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="Bec-q3-XGF" secondAttribute="height" multiplier="1:1" id="b87-eP-J9P"/>
+                                    </constraints>
                                     <connections>
                                         <action selector="didTapCheck2:" destination="-1" eventType="touchUpInside" id="eUD-qt-GuG"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKC-dn-gvU">
-                                    <rect key="frame" x="45" y="5" width="42" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abQ-lB-ti8">
+                                    <rect key="frame" x="23" y="0.0" width="57" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="HLr-vD-nON"/>
+                                    </constraints>
+                                    <state key="normal" title="option 2"/>
+                                    <connections>
+                                        <action selector="didTapCheckText2:" destination="-1" eventType="touchUpInside" id="PDo-9n-php"/>
+                                    </connections>
+                                </button>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="Bec-q3-XGF" firstAttribute="height" secondItem="abQ-lB-ti8" secondAttribute="height" multiplier="0.6" id="405-Hz-KBh"/>
+                            </constraints>
                         </stackView>
                     </subviews>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUX-0D-Dqa">
-                    <rect key="frame" x="20" y="106" width="42" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -114,7 +134,7 @@
                     <exclude reference="Nrh-jS-KDD"/>
                 </mask>
             </variation>
-            <variation key="heightClass=compact">
+            <variation key="widthClass=compact">
                 <mask key="constraints">
                     <exclude reference="MNG-KU-9bZ"/>
                     <include reference="Nrh-jS-KDD"/>

@@ -26,8 +26,8 @@ final class CheckboxViewController: UIViewController {
     @IBOutlet private weak var calloutLabel: UILabel!
     @IBOutlet private weak var checkboxButton: UIButton!
     @IBOutlet private weak var checkboxButton2: UIButton!
-    @IBOutlet private weak var optionText: UILabel!
-    @IBOutlet private weak var optionText2: UILabel!
+    @IBOutlet private weak var optionText: UIButton!
+    @IBOutlet private weak var optionText2: UIButton!
     @IBOutlet private weak var nextButton: UIButton!
     
     private let configuration: CheckboxViewControllerConfiguration
@@ -70,13 +70,16 @@ final class CheckboxViewController: UIViewController {
         partProgressionLabel.font = UIFont(SFPro: .display, variant: .medium, size: 26)
         sectionProgressionLabel.font = UIFont(SFPro: .display, variant: .medium, size: 24)
         calloutLabel.font = UIFont(SFPro: .text, variant: .medium, size: 24)
-        optionText.font = UIFont(SFPro: .text, variant: .regular, size: 20)
-        optionText2.font = UIFont(SFPro: .text, variant: .regular, size: 20)
+        optionText.titleLabel?.font = UIFont(SFPro: .text, variant: .regular, size: 20)
+        optionText2.titleLabel?.font = UIFont(SFPro: .text, variant: .regular, size: 20)
+
+        optionText.setTitleColor(.black, for: .normal)
+        optionText2.setTitleColor(.black, for: .normal)
         
         // texts
         calloutLabel.text = configuration.calloutText
-        optionText.text = configuration.answer1
-        optionText2.text = configuration.answer2
+        optionText.setTitle(configuration.answer1, for: .normal)
+        optionText2.setTitle(configuration.answer2, for: .normal)
         
         // checks
         checkboxButton.layer.borderColor = UIColor.black.cgColor
@@ -94,13 +97,19 @@ final class CheckboxViewController: UIViewController {
     }
     
     @IBAction func didTapCheck(_ sender: UIButton) {
-        checked.first.toggle()
-        checked.second = false
+        tapCheck1()
+    }
+    
+    @IBAction func didTapCheckText(_ sender: UIButton) {
+        tapCheck1()
     }
     
     @IBAction func didTapCheck2(_ sender: UIButton) {
-        checked.first = false
-        checked.second.toggle()
+        tapCheck2()
+    }
+    
+    @IBAction func didTapCheckText2(_ sender: UIButton) {
+        tapCheck2()
     }
     
     @IBAction private func didTapNext(_ sender: UIButton) {
@@ -112,7 +121,18 @@ final class CheckboxViewController: UIViewController {
             ans = configuration.answer2
         }
 
+        viewModel.updateAnswer(ans, for: index)
         delegate?.didComplete(self, answer: ans)
+    }
+    
+    private func tapCheck1() {
+        checked.first.toggle()
+        checked.second = false
+    }
+    
+    private func tapCheck2() {
+        checked.first = false
+        checked.second.toggle()
     }
     
     private func updateNextButtonStatus() {
