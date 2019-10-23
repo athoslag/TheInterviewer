@@ -20,7 +20,7 @@ final class InterviewCoordinator: Coordinator<Void> {
     private var viewModel: InterviewViewModel
     
     private let mode: Mode
-    private var canRecord: Bool?
+    private var canRecord: Bool = false
     
     private var currentIndex: Index? = Index(part: 0, section: 0, row: 0)
     
@@ -206,13 +206,16 @@ extension InterviewCoordinator: QALongViewControllerDelegate {
 }
 
 extension InterviewCoordinator: CheckboxDelegate {
-    func didTapBack(_ viewController: CheckboxViewController, answer: String?) {
+    func didTapBack(_ viewController: CheckboxViewController, viewModel: InterviewViewModel, answer: String?) {
         canRecord = answer == "Sim"
+        self.viewModel = viewModel
     }
     
-    func didComplete(_ viewController: CheckboxViewController, answer: String) {
+    func didComplete(_ viewController: CheckboxViewController, viewModel: InterviewViewModel, index: Index, answer: String) {
         canRecord = answer == "Sim"
-        navigationController.pushViewController(makeOverviewController(viewModel: viewModel, canEditTitle: true), animated: true)
+        self.currentIndex = index
+        self.viewModel = viewModel
+        nextStep(advance: true)
     }
 }
 

@@ -9,8 +9,8 @@
 import UIKit
 
 protocol CheckboxDelegate: class {
-    func didTapBack(_ viewController: CheckboxViewController, answer: String?)
-    func didComplete(_ viewController: CheckboxViewController, answer: String)
+    func didTapBack(_ viewController: CheckboxViewController, viewModel: InterviewViewModel, answer: String?)
+    func didComplete(_ viewController: CheckboxViewController, viewModel: InterviewViewModel, index: Index, answer: String)
 }
 
 struct CheckboxViewControllerConfiguration {
@@ -122,7 +122,7 @@ final class CheckboxViewController: UIViewController {
         }
 
         viewModel.updateAnswer(ans, for: index)
-        delegate?.didComplete(self, answer: ans)
+        delegate?.didComplete(self, viewModel: viewModel, index: index, answer: ans)
     }
     
     private func tapCheck1() {
