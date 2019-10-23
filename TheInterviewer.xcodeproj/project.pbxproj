@@ -58,6 +58,7 @@
 		7ECC273C2329814D00B3D90E /* FinalScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ECC273A2329814D00B3D90E /* FinalScreenViewController.xib */; };
 		7ECC273E232BCA8D00B3D90E /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECC273D232BCA8D00B3D90E /* Double.swift */; };
 		7ED28713232052F500C005E7 /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED28712232052F500C005E7 /* Wrapper.swift */; };
+		7ED7A4C5236104D9006438E5 /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED7A4C4236104D9006438E5 /* Operator.swift */; };
 		7EF19E1322C4415000E95AAF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF19E1222C4415000E95AAF /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +117,7 @@
 		7ECC273A2329814D00B3D90E /* FinalScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinalScreenViewController.xib; sourceTree = "<group>"; };
 		7ECC273D232BCA8D00B3D90E /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		7ED28712232052F500C005E7 /* Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrapper.swift; sourceTree = "<group>"; };
+		7ED7A4C4236104D9006438E5 /* Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
 		7EF19E1222C4415000E95AAF /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C4409D55E2C59E1EB80DE33F /* Pods-TheInterviewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheInterviewer.debug.xcconfig"; path = "Target Support Files/Pods-TheInterviewer/Pods-TheInterviewer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -318,6 +320,7 @@
 				7E5A919122BAC28800963ABB /* AppCoordinator.swift */,
 				7E42033F22EF8C7800DFA490 /* InterviewCoordinator.swift */,
 				7EB8BA9A2328297500276D1A /* ReviewCoordinator.swift */,
+				7ED7A4C4236104D9006438E5 /* Operator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				7ECC273B2329814D00B3D90E /* FinalScreenViewController.swift in Sources */,
 				7ECC273E232BCA8D00B3D90E /* Double.swift in Sources */,
 				7EB0923A230ADA010026001C /* QAViewController.swift in Sources */,
+				7ED7A4C5236104D9006438E5 /* Operator.swift in Sources */,
 				7E5A918F22BAC20A00963ABB /* MainScreenViewController.swift in Sources */,
 				7E9BD4222343149900FB51F3 /* ZipfileService.swift in Sources */,
 				7EF19E1322C4415000E95AAF /* Coordinator.swift in Sources */,

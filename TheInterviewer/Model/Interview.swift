@@ -47,6 +47,7 @@ final class Interview: Codable {
                                     QuestionPair(question: "Área de atuação", answer: nil, type: .short),
                                     QuestionPair(question: "Quantidade de funcionários", answer: nil, type: .number),
                                     QuestionPair(question: "Contato", answer: nil, type: .short),
+                                    QuestionPair(question: "O interlocutor permite a gravação das respostas em áudio?", answer: nil, type: .boolean),
                                     QuestionPair(question: "Observações", answer: nil, type: .long)
                                 ]
                             ),

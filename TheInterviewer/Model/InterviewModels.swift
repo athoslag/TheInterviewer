@@ -13,6 +13,7 @@ enum AnswerType: String, Codable {
     case short
     case long
     case number
+    case boolean
 }
 
 struct QuestionPair: Codable {
