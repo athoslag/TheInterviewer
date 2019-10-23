@@ -211,6 +211,11 @@ extension InterviewCoordinator: CheckboxDelegate {
         self.viewModel = viewModel
     }
     
+    func didTapOverview(_ viewController: CheckboxViewController, viewModel: InterviewViewModel) {
+        self.viewModel = viewModel
+        requestOverview()
+    }
+    
     func didComplete(_ viewController: CheckboxViewController, viewModel: InterviewViewModel, index: Index, answer: String) {
         canRecord = answer == "Sim"
         self.currentIndex = index

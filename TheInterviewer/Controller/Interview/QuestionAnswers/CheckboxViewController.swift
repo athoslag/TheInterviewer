@@ -10,6 +10,7 @@ import UIKit
 
 protocol CheckboxDelegate: class {
     func didTapBack(_ viewController: CheckboxViewController, viewModel: InterviewViewModel, answer: String?)
+    func didTapOverview(_ viewController: CheckboxViewController, viewModel: InterviewViewModel)
     func didComplete(_ viewController: CheckboxViewController, viewModel: InterviewViewModel, index: Index, answer: String)
 }
 
@@ -66,6 +67,10 @@ final class CheckboxViewController: UIViewController {
     }
     
     private func configureUI() {
+        // navigation
+        let item = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(tapOverview(sender:)))
+        navigationItem.setRightBarButton(item, animated: false)
+        
         // fonts
         partProgressionLabel.font = UIFont(SFPro: .display, variant: .medium, size: 26)
         sectionProgressionLabel.font = UIFont(SFPro: .display, variant: .medium, size: 24)
@@ -96,19 +101,25 @@ final class CheckboxViewController: UIViewController {
         nextButton.setTitle("Próximo", for: .normal)
     }
     
-    @IBAction func didTapCheck(_ sender: UIButton) {
+    // MARK: - Actions
+    @objc
+    private func tapOverview(sender: Any) {
+        delegate?.didTapOverview(self, viewModel: viewModel)
+    }
+    
+    @IBAction private func didTapCheck(_ sender: UIButton) {
         tapCheck1()
     }
     
-    @IBAction func didTapCheckText(_ sender: UIButton) {
+    @IBAction private func didTapCheckText(_ sender: UIButton) {
         tapCheck1()
     }
     
-    @IBAction func didTapCheck2(_ sender: UIButton) {
+    @IBAction private func didTapCheck2(_ sender: UIButton) {
         tapCheck2()
     }
     
-    @IBAction func didTapCheckText2(_ sender: UIButton) {
+    @IBAction private func didTapCheckText2(_ sender: UIButton) {
         tapCheck2()
     }
     
@@ -135,6 +146,7 @@ final class CheckboxViewController: UIViewController {
         checked.second.toggle()
     }
     
+    // MARK: - Updates
     private func updateNextButtonStatus() {
         nextButton.isEnabled = xor(checked.first, checked.second)
     }
