@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CheckboxViewController" customModule="TheInterviewer" customModuleProvider="target">
             <connections>
                 <outlet property="calloutLabel" destination="vUX-0D-Dqa" id="bSH-wk-fRb"/>
+                <outlet property="checkboxButton" destination="0nh-HP-YuH" id="qUM-Au-9ui"/>
                 <outlet property="nextButton" destination="mCw-hd-reh" id="4ra-WU-JKH"/>
                 <outlet property="optionText" destination="KAx-GN-d0I" id="Xw1-r7-eAb"/>
                 <outlet property="partProgressionLabel" destination="O8C-gp-TNz" id="lc9-80-81c"/>
@@ -49,19 +50,16 @@
                     </connections>
                 </button>
                 <stackView opaque="NO" contentMode="redraw" distribution="equalCentering" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="8Lq-SZ-Avc">
-                    <rect key="frame" x="381" y="577" width="72" height="20.5"/>
+                    <rect key="frame" x="373.5" y="572" width="87" height="30"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MHc-OL-XXT" customClass="Checkbox" customModule="TheInterviewer" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="2.5" width="15" height="15"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="MHc-OL-XXT" secondAttribute="height" multiplier="1:1" id="1LL-eB-Vee"/>
-                                <constraint firstAttribute="width" constant="15" id="GaE-vz-nj3"/>
-                                <constraint firstAttribute="height" constant="15" id="una-xo-Tw5"/>
-                            </constraints>
-                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0nh-HP-YuH">
+                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                            <connections>
+                                <action selector="didTapCheck:" destination="-1" eventType="touchUpInside" id="itG-ZU-Svb"/>
+                            </connections>
+                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAx-GN-d0I">
-                            <rect key="frame" x="30" y="0.0" width="42" height="20.5"/>
+                            <rect key="frame" x="45" y="5" width="42" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>

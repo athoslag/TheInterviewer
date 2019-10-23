@@ -9,29 +9,32 @@
 import UIKit
 
 protocol CheckboxDelegate: class {
+    func didTapBack(_ viewController: CheckboxViewController, answer: Bool?)
     func didComplete(_ viewController: CheckboxViewController, answer: Bool)
 }
 
 struct CheckboxViewControllerConfiguration {
-    let index: Index
     let calloutText: String
-    let optionText: String
+    let option1Text: String
+    let option2Text: String
+    let mode: Mode
 }
 
 final class CheckboxViewController: UIViewController {
     @IBOutlet private weak var partProgressionLabel: UILabel!
     @IBOutlet private weak var sectionProgressionLabel: UILabel!
     @IBOutlet private weak var calloutLabel: UILabel!
+    @IBOutlet private weak var checkboxButton: UIButton!
     @IBOutlet private weak var optionText: UILabel!
     @IBOutlet private weak var nextButton: UIButton!
     
     private let configuration: CheckboxViewControllerConfiguration
-    private var checkbox: Checkbox
+    private var checked: Bool
     
     weak var delegate: CheckboxDelegate?
     
-    init(configuration: CheckboxViewControllerConfiguration) {
-        self.checkbox = Checkbox(style: .rounded, checked: false)
+    init(checked: Bool, configuration: CheckboxViewControllerConfiguration) {
+        self.checked = checked
         self.configuration = configuration
         super.init(nibName: nil, bundle: nil)
     }
@@ -54,7 +57,11 @@ final class CheckboxViewController: UIViewController {
         
         // texts
         calloutLabel.text = configuration.calloutText
-        optionText.text = configuration.optionText
+        optionText.text = configuration.option1Text
+        
+        // check
+        let imageName = checked ? "checked" : "unchecked"
+        checkboxButton.setImage(UIImage(named: imageName), for: .normal)
         
         // button
         nextButton.titleLabel?.font = UIFont(SFPro: .text, variant: .medium, size: 22)
@@ -62,7 +69,13 @@ final class CheckboxViewController: UIViewController {
         nextButton.setTitle("Próximo", for: .normal)
     }
     
+    @IBAction func didTapCheck(_ sender: UIButton) {
+        checked.toggle()
+        let imageName = checked ? "checked" : "unchecked"
+        checkboxButton.setImage(UIImage(named: imageName), for: .normal)
+    }
+    
     @IBAction private func didTapNext(_ sender: UIButton) {
-        delegate?.didComplete(self, answer: checkbox.isChecked)
+        delegate?.didComplete(self, answer: checked)
     }
 }

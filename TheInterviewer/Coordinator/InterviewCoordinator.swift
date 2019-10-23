@@ -19,8 +19,8 @@ final class InterviewCoordinator: Coordinator<Void> {
     private var navigationController: UINavigationController!
     private var viewModel: InterviewViewModel
     
-    // Allows coordinator reuse
     private let mode: Mode
+    private var canRecord: Bool?
     
     private var currentIndex: Index? = Index(part: 0, section: 0, row: 0)
     
@@ -31,7 +31,7 @@ final class InterviewCoordinator: Coordinator<Void> {
     }
     
     override func start() -> Void {
-        navigationController = UINavigationController(rootViewController: makeOverviewController(viewModel: viewModel, canEditTitle: true))
+        navigationController = UINavigationController(rootViewController: makeCheckboxController())
         navigationController.navigationBar.tintColor = .black
         navigationController.modalPresentationStyle = .fullScreen
         
@@ -103,6 +103,17 @@ extension InterviewCoordinator {
         let sectionOverview = SectionOverviewViewController(section: section, partTitle: partTitle, index: currentIndex!, mode: mode)
         sectionOverview.delegate = self
         return sectionOverview
+    }
+    
+    func makeCheckboxController() -> UIViewController {
+        let configuration = CheckboxViewControllerConfiguration(calloutText: "O entrevistado autoriza a gravação desta conversa?",
+                                                                option1Text: "Sim",
+                                                                option2Text: "Não",
+                                                                mode: mode)
+        
+        let checkboxController = CheckboxViewController(checked: false, configuration: configuration)
+        checkboxController.delegate = self
+        return checkboxController
     }
     
     func makeQAViewController(questionPair: QuestionPair, index: Index) -> UIViewController {
@@ -186,6 +197,17 @@ extension InterviewCoordinator: QALongViewControllerDelegate {
         self.currentIndex = index
         self.viewModel = viewModel
         nextStep(advance: true)
+    }
+}
+
+extension InterviewCoordinator: CheckboxDelegate {
+    func didTapBack(_ viewController: CheckboxViewController, answer: Bool?) {
+        canRecord = answer
+    }
+    
+    func didComplete(_ viewController: CheckboxViewController, answer: Bool) {
+        canRecord = answer
+        navigationController.pushViewController(makeOverviewController(viewModel: viewModel, canEditTitle: true), animated: true)
     }
 }
 
