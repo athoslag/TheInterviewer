@@ -40,6 +40,7 @@ final class QALongViewController: UIViewController {
     private let questionIndex: Index
     private let viewModel: InterviewViewModel
     private let presentationMode: Mode
+    private let recordingEnabled: Bool
     
     // Recording
     private var recordingSession: AVAudioSession!
@@ -59,10 +60,11 @@ final class QALongViewController: UIViewController {
     
     weak var delegate: QALongViewControllerDelegate?
     
-    init(viewModel: InterviewViewModel, index: Index, presentationMode: Mode) {
+    init(viewModel: InterviewViewModel, index: Index, presentationMode: Mode, recordingEnabled: Bool) {
         self.viewModel = viewModel
         self.questionIndex = index
         self.presentationMode = presentationMode
+        self.recordingEnabled = recordingEnabled
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -130,7 +132,9 @@ final class QALongViewController: UIViewController {
         
         recordButton.titleLabel?.textColor = .white
         recordButton.titleLabel?.font = UIFont(SFPro: .text, variant: .regular, size: 17)
-        recordButton.backgroundColor = AppConfiguration.mainColor
+        recordButton.backgroundColor = recordingEnabled ? AppConfiguration.mainColor : .lightGray
+        recordButton.setTitleColor(.white, for: .normal)
+        recordButton.setTitleColor(.black, for: .disabled)
         recordButton.layer.cornerRadius = 5.0
         recordButton.titleLabel?.numberOfLines = 1
     }
@@ -156,7 +160,7 @@ extension QALongViewController {
     
     private func loadRecordingUI(state: RecordState) {
         recordButton.isHidden = false
-        recordButton.isEnabled = true
+        recordButton.isEnabled = recordingEnabled
         
         switch state {
         case .hide:

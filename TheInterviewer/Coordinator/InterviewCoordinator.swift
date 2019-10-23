@@ -122,7 +122,7 @@ extension InterviewCoordinator {
     func makeQAViewController(questionPair: QuestionPair, index: Index) -> UIViewController {
         switch questionPair.type {
         case .long:
-            let longController = QALongViewController(viewModel: viewModel, index: index, presentationMode: mode)
+            let longController = QALongViewController(viewModel: viewModel, index: index, presentationMode: mode, recordingEnabled: canRecord)
             longController.delegate = self
             return longController
         case .boolean:
