@@ -19,8 +19,9 @@ final class InterviewCoordinator: Coordinator<Void> {
     private var navigationController: UINavigationController!
     private var viewModel: InterviewViewModel
     
-    // Allows coordinator reuse
     private let mode: Mode
+    private var canRecord: Bool = false
+    private var chosenRecordOptions: Bool = false
     
     private var currentIndex: Index? = Index(part: 0, section: 0, row: 0)
     
@@ -105,10 +106,22 @@ extension InterviewCoordinator {
         return sectionOverview
     }
     
+    func makeCheckboxController() -> UIViewController {
+        let configuration = CheckboxViewControllerConfiguration(calloutText: "O interlocutor permite a gravação das respostas em áudio?",
+                                                                mode: mode,
+                                                                answer1: "Sim",
+                                                                answer2: "Não")
+        
+        let checkboxController = CheckboxViewController(checked: (canRecord, false),
+                                                        configuration: configuration)
+        checkboxController.delegate = self
+        return checkboxController
+    }
+    
     func makeQAViewController(questionPair: QuestionPair, index: Index) -> UIViewController {
         switch questionPair.type {
         case .long:
-            let longController = QALongViewController(viewModel: viewModel, index: index, presentationMode: mode)
+            let longController = QALongViewController(viewModel: viewModel, index: index, presentationMode: mode, recordingEnabled: canRecord)
             longController.delegate = self
             return longController
         default:
@@ -130,7 +143,14 @@ extension InterviewCoordinator {
 extension InterviewCoordinator: OverviewDelegate {
     func didSelect(_ viewController: OverviewViewController, index: Index) {
         self.currentIndex = index
-        nextStep(advance: false)
+        
+        if !chosenRecordOptions {
+            chosenRecordOptions = true
+            let checkbox = makeCheckboxController()
+            navigationController.pushViewController(checkbox, animated: true)
+        } else {
+            nextStep(advance: false)
+        }
     }
     
     func shouldFinalize(_ viewController: OverviewViewController) {
@@ -186,6 +206,21 @@ extension InterviewCoordinator: QALongViewControllerDelegate {
         self.currentIndex = index
         self.viewModel = viewModel
         nextStep(advance: true)
+    }
+}
+
+extension InterviewCoordinator: CheckboxDelegate {
+    func didTapExit(_ viewController: CheckboxViewController) {
+        endFlow()
+    }
+    
+    func didTapOverview(_ viewController: CheckboxViewController) {
+        requestOverview()
+    }
+    
+    func didComplete(_ viewController: CheckboxViewController, answer: String) {
+        canRecord = answer == "Sim"
+        nextStep(advance: false)
     }
 }
 
