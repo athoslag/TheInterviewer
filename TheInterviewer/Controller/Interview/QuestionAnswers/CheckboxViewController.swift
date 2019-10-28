@@ -9,9 +9,9 @@
 import UIKit
 
 protocol CheckboxDelegate: class {
-    func didTapBack(_ viewController: CheckboxViewController, viewModel: InterviewViewModel, answer: String?)
-    func didTapOverview(_ viewController: CheckboxViewController, viewModel: InterviewViewModel)
-    func didComplete(_ viewController: CheckboxViewController, viewModel: InterviewViewModel, index: Index, answer: String)
+    func didTapExit(_ viewController: CheckboxViewController)
+    func didTapOverview(_ viewController: CheckboxViewController)
+    func didComplete(_ viewController: CheckboxViewController, answer: String)
 }
 
 struct CheckboxViewControllerConfiguration {
@@ -32,8 +32,6 @@ final class CheckboxViewController: UIViewController {
     @IBOutlet private weak var nextButton: UIButton!
     
     private let configuration: CheckboxViewControllerConfiguration
-    private var viewModel: InterviewViewModel
-    private var index: Index
     private var checked: (first: Bool, second: Bool) {
         didSet {
             updateNextButtonStatus()
@@ -43,9 +41,7 @@ final class CheckboxViewController: UIViewController {
     
     weak var delegate: CheckboxDelegate?
     
-    init(viewModel: InterviewViewModel, index: Index, checked: (Bool, Bool), configuration: CheckboxViewControllerConfiguration) {
-        self.viewModel = viewModel
-        self.index = index
+    init(checked: (Bool, Bool), configuration: CheckboxViewControllerConfiguration) {
         self.checked = checked
         self.configuration = configuration
         super.init(nibName: nil, bundle: nil)
@@ -61,15 +57,24 @@ final class CheckboxViewController: UIViewController {
         updateNextButtonStatus()
         updateCheckboxes()
         
-        let titles = viewModel.titles(for: index)
-        partProgressionLabel.text = titles.part
-        sectionProgressionLabel.text = titles.section
+        partProgressionLabel.text = ""
+        sectionProgressionLabel.text = ""
+        
     }
     
     private func configureUI() {
         // navigation
+        navigationController?.navigationBar.setupNavigationBar()
+        
+        let backButton = UIButton(type: .custom)
+        backButton.setTitle("Sair", for: .normal)
+        backButton.setTitleColor(.black, for: .normal)
+        backButton.addTarget(self, action: #selector(tapBack(sender:)), for: .touchUpInside)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        
         let item = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(tapOverview(sender:)))
         navigationItem.setRightBarButton(item, animated: false)
+        navigationItem.hidesBackButton = true
         
         // fonts
         partProgressionLabel.font = UIFont(SFPro: .display, variant: .medium, size: 26)
@@ -90,10 +95,12 @@ final class CheckboxViewController: UIViewController {
         checkboxButton.layer.borderColor = UIColor.black.cgColor
         checkboxButton.layer.borderWidth = 0.5
         checkboxButton.layer.cornerRadius = checkboxButton.layer.bounds.height / 2
+        checkboxButton.isEnabled = configuration.mode == .edition
         
         checkboxButton2.layer.borderColor = UIColor.black.cgColor
         checkboxButton2.layer.borderWidth = 0.5
         checkboxButton2.layer.cornerRadius = checkboxButton2.layer.bounds.height / 2
+        checkboxButton2.isEnabled = configuration.mode == .edition
         
         // button
         nextButton.setTitleColor(.black, for: .normal)
@@ -103,8 +110,13 @@ final class CheckboxViewController: UIViewController {
     
     // MARK: - Actions
     @objc
+    private func tapBack(sender: Any) {
+        delegate?.didTapExit(self)
+    }
+    
+    @objc
     private func tapOverview(sender: Any) {
-        delegate?.didTapOverview(self, viewModel: viewModel)
+        delegate?.didTapOverview(self)
     }
     
     @IBAction private func didTapCheck(_ sender: UIButton) {
@@ -132,8 +144,7 @@ final class CheckboxViewController: UIViewController {
             ans = configuration.answer2
         }
 
-        viewModel.updateAnswer(ans, for: index)
-        delegate?.didComplete(self, viewModel: viewModel, index: index, answer: ans)
+        delegate?.didComplete(self, answer: ans)
     }
     
     private func tapCheck1() {
