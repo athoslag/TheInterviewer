@@ -30,6 +30,7 @@ final class QALongViewController: UIViewController {
         case hide
     }
     
+    @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var partProgressionLabel: UILabel!
     @IBOutlet private weak var sectionProgressionLabel: UILabel!
     @IBOutlet private weak var questionLabel: UILabel!
@@ -85,6 +86,9 @@ final class QALongViewController: UIViewController {
             configureAudioPlayback()
         }
         
+        // observers & delegates
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         textView.delegate = self
         
         if let pair = viewModel.questionPair(for: questionIndex) {
@@ -113,6 +117,7 @@ final class QALongViewController: UIViewController {
         // Navigation
         let item = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(tapOverview(sender:)))
         navigationItem.setRightBarButton(item, animated: false)
+        navigationController?.navigationBar.prefersLargeTitles = false
         
         // Progression
         partProgressionLabel.font = UIFont(SFPro: .display, variant: .medium, size: 26)
@@ -364,7 +369,18 @@ extension QALongViewController: UITextViewDelegate {
             tabAccessoryView?.items = [barSpacer, barNext]
             textView.inputAccessoryView = tabAccessoryView
         }
+        
+        scrollView.scrollRectToVisible(textView.frame, animated: true)
+        
         return true
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        scrollView.scrollRectToVisible(textView.frame, animated: true)
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        scrollView.scrollRectToVisible(textView.frame, animated: true)
     }
 }
 
@@ -381,5 +397,26 @@ extension QALongViewController: AVAudioRecorderDelegate {
 extension QALongViewController: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         loadPlaybackUI(state: .ready)
+    }
+}
+
+// MARK: - Keyboard Management
+extension QALongViewController {
+    @objc
+    func keyboardWillShow(notification:NSNotification) {
+        let userInfo = notification.userInfo!
+        var keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        scrollView.contentInset = contentInset
+    }
+
+    @objc
+    func keyboardWillHide(notification:NSNotification) {
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInset
     }
 }
