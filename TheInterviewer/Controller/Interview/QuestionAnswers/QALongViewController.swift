@@ -30,6 +30,7 @@ final class QALongViewController: UIViewController {
         case hide
     }
     
+    @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var partProgressionLabel: UILabel!
     @IBOutlet private weak var sectionProgressionLabel: UILabel!
     @IBOutlet private weak var questionLabel: UILabel!
@@ -113,6 +114,7 @@ final class QALongViewController: UIViewController {
         // Navigation
         let item = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(tapOverview(sender:)))
         navigationItem.setRightBarButton(item, animated: false)
+        navigationController?.navigationBar.prefersLargeTitles = false
         
         // Progression
         partProgressionLabel.font = UIFont(SFPro: .display, variant: .medium, size: 26)
@@ -349,6 +351,10 @@ extension QALongViewController {
     @IBAction private func didTapNext(_ sender: UIButton) {
         nextTapped()
     }
+    
+    private func kkk() {
+        
+    }
 }
 
 // MARK: - TextView Delegate
@@ -364,7 +370,14 @@ extension QALongViewController: UITextViewDelegate {
             tabAccessoryView?.items = [barSpacer, barNext]
             textView.inputAccessoryView = tabAccessoryView
         }
+        
+        scrollView.scrollRectToVisible(textView.frame, animated: true)
+        
         return true
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        scrollView.scrollRectToVisible(textView.frame, animated: true)
     }
 }
 
