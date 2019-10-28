@@ -25,6 +25,7 @@ final class QAViewController: UIViewController {
     @IBOutlet private weak var sectionProgressionLabel: UILabel!
     @IBOutlet private weak var questionLabel: UILabel!
     @IBOutlet private weak var textField: SkyFloatingLabelTextField!
+    @IBOutlet private weak var scrollView: UIScrollView!
     private var tabAccessoryView: UIToolbar?
     
     private let questionIndex: Index
@@ -48,6 +49,9 @@ final class QAViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         
+        // observers & delegates
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         textField.delegate = self
         
         if let pair = viewModel.questionPair(for: questionIndex) {
@@ -136,5 +140,34 @@ extension QAViewController: UITextFieldDelegate {
             textField.inputAccessoryView = tabAccessoryView
         }
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        scrollView.scrollRectToVisible(textField.frame, animated: true)
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        scrollView.scrollRectToVisible(textField.frame, animated: true)
+    }
+}
+
+// MARK: - Keyboard Management
+extension QAViewController {
+    @objc
+    func keyboardWillShow(notification:NSNotification) {
+        let userInfo = notification.userInfo!
+        var keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        scrollView.contentInset = contentInset
+    }
+
+    @objc
+    func keyboardWillHide(notification:NSNotification) {
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInset
     }
 }
