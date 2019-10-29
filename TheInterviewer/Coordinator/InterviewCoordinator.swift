@@ -21,7 +21,7 @@ final class InterviewCoordinator: Coordinator<Void> {
     
     private let mode: Mode
     private var canRecord: Bool = false
-    private var chosenRecordOptions: Bool = false
+    private lazy var chosenRecordOptions: Bool = (mode == .review)
     
     private var currentIndex: Index? = Index(part: 0, section: 0, row: 0)
     
