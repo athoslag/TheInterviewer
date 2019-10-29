@@ -159,7 +159,23 @@ extension InterviewCoordinator: OverviewDelegate {
     }
     
     func shouldDismiss(_ viewController: OverviewViewController) {
-        endFlow()
+        guard mode == .edition else {
+            self.endFlow()
+            return
+        }
+        
+        let options: [AlertOption] = [
+            AlertOption(title: "Sair", style: .destructive, completion: { _ in
+                self.endFlow()
+            }),
+            AlertOption(title: "Cancelar", style: .cancel, completion: { _ in })
+        ]
+        
+        let bundle = AlertBundle(title: "Você tem certeza de que deseja sair?",
+                                 details: "Todo o progresso será perdido",
+                                 options: options)
+        
+        viewController.presentAlert(bundle)
     }
 }
 
