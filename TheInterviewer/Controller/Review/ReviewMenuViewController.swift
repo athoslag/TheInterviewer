@@ -126,16 +126,6 @@ extension ReviewMenuViewController: UITableViewDataSource {
         cell.textLabel?.text = interview.title
         cell.detailTextLabel?.text = interview.date
         
-        do {
-            let attr = try FileManager.default.attributesOfItem(atPath: viewModel.path(indexPath.row).path)
-            if let size = attr[.size] {
-                cell.detailTextLabel?.text?.append(" (~\(size) KB)")
-            }
-            
-        } catch {
-            print("Could not size file.")
-        }
-        
         return cell
     }
     
