@@ -36,7 +36,7 @@ final class Interview: Codable {
     init(_ model: InterviewModel) {
         switch model {
         case .bpm:
-            self.title = "Entrevista BPM"
+            self.title = "Minha entrevista"
             self.parts =
                 [
                     Part(title: "Análise Quantitativa", sections:
@@ -54,15 +54,15 @@ final class Interview: Codable {
                                 [
                                     QuestionPair(question: "Nome do entrevistado", answer: nil, type: .name),
                                     QuestionPair(question: "Cargo do entrevistado", answer: nil, type: .short),
+                                    QuestionPair(question: "Formação do entrevistado", answer: nil, type: .short),
                                     QuestionPair(question: "Tempo de empresa", answer: nil, type: .short),
                                     QuestionPair(question: "Contato do entrevistado", answer: nil, type: .short)
                                 ]
                             ),
                             Section(title: "Sobre a entrevista", questionPairs:
                                 [
-                                    QuestionPair(question: "Quantos fluxos serão cobertos nessa entrevista", answer: nil, type: .number),
-                                    QuestionPair(question: "Quais fluxos serão os fluxos analisados nesta entrevista", answer: nil, type: .long),
-                                    QuestionPair(question: "Relação do entrevistado com cada fluxo", answer: nil, type: .long)
+                                    QuestionPair(question: "Qual(is) fluxo(s) será(ão) analisado(s) nesta entrevista?", answer: nil, type: .long),
+                                    QuestionPair(question: "Qual a relação do entrevistado com cada fluxo?", answer: nil, type: .long)
                                 ]
                             )
                         ]
@@ -75,30 +75,31 @@ final class Interview: Codable {
                                     QuestionPair(question: "As suas respostas são 'oficiais'?", answer: nil, type: .short),
                                     QuestionPair(question: "Qual é o objetivo deste fluxo?", answer: nil, type: .long),
                                     QuestionPair(question: "Quem são os atores envolvidos neste processo? (atores primários e secundários)", answer: nil, type: .long),
-                                    QuestionPair(question: "Quais são os objetivos de cada ator dentro deste fluxo?", answer: nil, type: .long),
+                                    QuestionPair(question: "Quais são as metas (objetivos) do ator dentro deste fluxo, para cada ator?", answer: nil, type: .long),
                                     QuestionPair(question: "Suposição inicial (montar cenário)", answer: nil, type: .long)
                                 ]
                             ),
                             Section(title: "Sunny days (caso esperado / normal)", questionPairs:
                                 [
-                                    QuestionPair(question: "Pré-requisitos: o que é necessário para que este fluxo ocorra?", answer: nil, type: .long),
+                                    QuestionPair(question: "Pré-requisitos: o que precisa acontecer para que o fluxo em questão ocorra?", answer: nil, type: .long),
                                     QuestionPair(question: "Caso normal: quais são os processos, dentro da situação esperada?", answer: nil, type: .long),
-                                    QuestionPair(question: "(repetir) Para cada atividade, anotar quem faz o quê, com qual pré-condição, e com que objetivo.", answer: nil, type: .long),
+                                    QuestionPair(question: "Quais são as principais tarefas ou funções realizadas por cada ator?", answer: nil, type: .long),
+                                    QuestionPair(question: "Para cada atividade, qual é a pré-condição, qual é o objetivo e quem é o ator?", answer: nil, type: .long),
                                     QuestionPair(question: "Observações", answer: nil, type: .long)
                                 ]
                             ),
                             Section(title: "Rainy days (exceções)", questionPairs:
                                 [
-                                    QuestionPair(question: "O que pode dar errado?", answer: nil, type: .long),
-                                    QuestionPair(question: "(repetir) Para cada caso, que procedimento será tomado?", answer: nil, type: .long),
+                                    QuestionPair(question: "O que pode dar errado? E que procedimento será tomado, neste caso?", answer: nil, type: .long),
+                                    QuestionPair(question: "Descreva novamente o fluxo. Que exceções deveriam ser consideradas, à medida que o fluxo é descrito?", answer: nil, type: .long),
                                     QuestionPair(question: "Como casos inesperados são resolvidos?", answer: nil, type: .long),
                                     QuestionPair(question: "Observações", answer: nil, type: .long)
                                 ]
                             ),
                             Section(title: "Fechamento / Conclusão", questionPairs:
                                 [
-                                    QuestionPair(question: "Qual é o estado esperado do sistema na conclusão?", answer: nil, type: .long),
-                                    QuestionPair(question: "Atividades relacionadas", answer: nil, type: .long),
+                                    QuestionPair(question: "Qual é o estado esperado do sistema, quando o fluxo terminar? O que mudou?", answer: nil, type: .long),
+                                    QuestionPair(question: "Quais são as atividades relacionadas a este processo?", answer: nil, type: .long),
                                     QuestionPair(question: "Alguma outra pessoa poderia me prestar informações adicionais?", answer: nil, type: .long),
                                     QuestionPair(question: "Eu deveria lhe perguntar algo mais?", answer: nil, type: .long),
                                     QuestionPair(question: "Observações", answer: nil, type: .long)
