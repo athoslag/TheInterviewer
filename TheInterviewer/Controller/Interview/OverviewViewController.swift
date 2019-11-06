@@ -46,6 +46,13 @@ final class OverviewViewController: UIViewController {
         configureUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.indexPathsForSelectedRows?.forEach({ indexPath in
+            tableView.deselectRow(at: indexPath, animated: false)
+        })
+    }
+    
     // MARK: - UI
     private func configureUI() {
         // Navigation

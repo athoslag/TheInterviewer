@@ -53,6 +53,13 @@ final class SectionOverviewViewController: UIViewController {
         configureUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.indexPathsForSelectedRows?.forEach({ indexPath in
+            tableView.deselectRow(at: indexPath, animated: false)
+        })
+    }
+    
     private func configureUI() {
         // Navigation
         let finishButton = UIBarButtonItem(title: "Finalizar", style: .plain, target: self, action: #selector(didTapFinish))
@@ -109,6 +116,7 @@ extension SectionOverviewViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath)
         cell.textLabel?.text = questionAnswer.question
         cell.detailTextLabel?.text = questionAnswer.answer
+        cell.textLabel?.numberOfLines = 0
         return cell
     }
 }
