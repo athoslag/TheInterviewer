@@ -61,7 +61,7 @@ final class Interview: Codable {
                             ),
                             Section(title: "Sobre a entrevista", questionPairs:
                                 [
-                                    QuestionPair(question: "Qual(is) fluxo(s) será(ão) analisado(s) nesta entrevista?", answer: nil, type: .long),
+                                    QuestionPair(question: "Qual ou quais fluxos serão analisados nesta entrevista?", answer: nil, type: .long),
                                     QuestionPair(question: "Qual a relação do entrevistado com cada fluxo?", answer: nil, type: .long)
                                 ]
                             )
