@@ -1,6 +1,6 @@
 # TheInterviewer
 An app designed to guide the interviewer in a BPM interview.
-This prototype was implemented to validate a *Guided Interview structure* proposed in the author's paper.
+This prototype was implemented to validate a *Guided Interview structure* proposed by the author, intended to guide an *Business Process Management* analyst through a process discovery interview.
 
 ## Building the Project
 Before running the project, ensure that you meet the following requirements.
